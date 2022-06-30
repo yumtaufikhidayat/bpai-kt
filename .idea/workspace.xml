@@ -10,9 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../2. Belajar Fundamental Aplikasi Android/bfaa/app/src/main/java/com/yumtaufikhidayat/gitser/ui/adapter/BaseDiffCallback.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../2. Belajar Fundamental Aplikasi Android/bfaa/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../2. Belajar Fundamental Aplikasi Android/bfaa/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../2. Belajar Fundamental Aplikasi Android/bfaa/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../2. Belajar Fundamental Aplikasi Android/bfaa/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
