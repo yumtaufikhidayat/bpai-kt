@@ -18,5 +18,6 @@
 
     <string name="action_signup">Daftar</string>
     <string name="action_login">Masuk</string>
+    <string name="action_show_password">Tampilkan password</string>
 
 </resources>

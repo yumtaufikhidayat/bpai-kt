@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_email.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_lock.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_clear.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.20614035087719298" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.17039473684210527" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25462962962962965" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25333333333333335" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.165" />

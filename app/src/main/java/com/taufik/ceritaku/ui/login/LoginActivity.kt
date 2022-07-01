@@ -3,27 +3,31 @@ package com.taufik.ceritaku.ui.login
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.taufik.ceritaku.databinding.ActivityLoginBinding
+import com.taufik.ceritaku.model.User
+import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.ui.signup.SignupActivity
 import com.taufik.ceritaku.utils.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.CommonConstant.DURATION_ALT
 import com.taufik.ceritaku.utils.CommonConstant.LEFT
 import com.taufik.ceritaku.utils.CommonConstant.RIGHT
 import com.taufik.ceritaku.utils.CommonConstant.VALUES
-import com.taufik.ceritaku.databinding.ActivityLoginBinding
-import com.taufik.ceritaku.model.User
-import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.utils.ViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
@@ -69,8 +73,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setUpAction() = with(binding) {
         btnLogin.setOnClickListener {
-            val email = etEmail.text.toString()
-            val password = etPassword.text.toString()
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString().trim()
 
             when {
                 email != user.email -> etEmail.error = "Email tidak sesuai"
@@ -84,6 +88,19 @@ class LoginActivity : AppCompatActivity() {
 
         etEmail.addTextChangedListener(textWatcher())
         etPassword.addTextChangedListener(textWatcher())
+
+        cbShowPassword.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                etPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                etPassword.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
+            }
+        }
+
+        tvDoNotHaveAccount.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, SignupActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
+            finish()
+        }
     }
 
     private fun textWatcher(): TextWatcher = object : TextWatcher {
@@ -121,14 +138,15 @@ class LoginActivity : AppCompatActivity() {
         val passwordInput = ObjectAnimator.ofFloat(etPassword, View.ALPHA, VALUES).setDuration(DURATION_ALT)
 
         val loginButton = ObjectAnimator.ofFloat(btnLogin, View.ALPHA, VALUES).setDuration(DURATION_ALT)
-        val doNotHaveAccount = ObjectAnimator.ofFloat(tvDontHaveAccount, View.ALPHA, VALUES).setDuration(DURATION_ALT)
+        val showPassword = ObjectAnimator.ofFloat(cbShowPassword, View.ALPHA, VALUES).setDuration(DURATION_ALT)
+        val doNotHaveAccount = ObjectAnimator.ofFloat(tvDoNotHaveAccount, View.ALPHA, VALUES).setDuration(DURATION_ALT)
 
         AnimatorSet().apply {
             playSequentially(
                 login, message,
                 emailTitle, emailInput,
                 passwordTitle, passwordInput,
-                loginButton, doNotHaveAccount
+                showPassword, loginButton, doNotHaveAccount
             )
             start()
         }

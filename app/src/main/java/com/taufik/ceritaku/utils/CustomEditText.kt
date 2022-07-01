@@ -13,6 +13,7 @@ import com.taufik.ceritaku.R
 
 class CustomEditText: AppCompatEditText, View.OnTouchListener {
 
+    private lateinit var emailIcon: Drawable
     private lateinit var passwordIcon: Drawable
     private lateinit var clearIcon: Drawable
 
@@ -29,29 +30,44 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
     }
 
     private fun init() {
+        emailIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_email) as Drawable
         passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_lock) as Drawable
         clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
         setOnTouchListener(this)
 
-        addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        when (id) {
+            R.id.etEmail -> {
+                addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (p0.toString().isNotEmpty()) {
-                    showClearButton()
-                } else {
-                    hideClearButton()
-                }
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        val email = p0.toString().trim()
+                        val isEmailValid = CommonExtension.isValidEmailId(email)
+                        if (!isEmailValid) {
+                            this@CustomEditText.error = "Email tidak valid"
+                        }
+                    }
 
+                    override fun afterTextChanged(p0: Editable?) {}
+                })
             }
 
-            override fun afterTextChanged(p0: Editable?) {
+            R.id.etPassword -> {
+                addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-                if (this@CustomEditText.text?.trim().toString().length < 6) {
-                    this@CustomEditText.error = "Password kurang dari 6 karakter"
-                }
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        if (p0.toString().isNotEmpty()) showClearButton() else hideClearButton()
+                    }
+
+                    override fun afterTextChanged(p0: Editable?) {
+                        if (this@CustomEditText.text?.trim().toString().length < 6) {
+                            this@CustomEditText.error = "Password kurang dari 6 karakter"
+                        }
+                    }
+                })
             }
-        })
+        }
     }
 
     private fun showClearButton() {
@@ -77,46 +93,114 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
     }
 
     override fun onTouch(view: View?, event: MotionEvent): Boolean {
-        if (compoundDrawables[2] != null) {
-            val clearButtonStart: Float
-            val clearButtonEnd: Float
-            var isClearButtonClicked = false
-            if (layoutDirection == View.LAYOUT_DIRECTION_RTL) {
-                clearButtonEnd = (clearIcon.intrinsicWidth + paddingStart).toFloat()
-                when {
-                    event.x < clearButtonEnd -> isClearButtonClicked = true
-                }
-            } else {
-                clearButtonStart = (width - paddingEnd - clearIcon.intrinsicWidth).toFloat()
-                when {
-                    event.x > clearButtonStart -> isClearButtonClicked = true
+        when (view?.id) {
+            R.id.etEmail -> {
+                if (compoundDrawables[2] != null) {
+                    val clearButtonStart: Float
+                    val clearButtonEnd: Float
+                    var isClearButtonClicked = false
+                    if (layoutDirection == View.LAYOUT_DIRECTION_RTL) {
+                        clearButtonEnd = (clearIcon.intrinsicWidth + paddingStart).toFloat()
+                        when {
+                            event.x < clearButtonEnd -> isClearButtonClicked = true
+                        }
+                    } else {
+                        clearButtonStart = (width - paddingEnd - clearIcon.intrinsicWidth).toFloat()
+                        when {
+                            event.x > clearButtonStart -> isClearButtonClicked = true
+                        }
+                    }
+
+                    if (isClearButtonClicked) {
+                        when (event.action) {
+                            MotionEvent.ACTION_DOWN -> {
+                                passwordIcon = ContextCompat.getDrawable(
+                                    context,
+                                    R.drawable.ic_baseline_email
+                                ) as Drawable
+                                clearIcon = ContextCompat.getDrawable(
+                                    context,
+                                    R.drawable.ic_outline_clear
+                                ) as Drawable
+                                showClearButton()
+                                return true
+                            }
+
+                            MotionEvent.ACTION_UP -> {
+                                passwordIcon = ContextCompat.getDrawable(
+                                    context,
+                                    R.drawable.ic_baseline_email
+                                ) as Drawable
+                                clearIcon = ContextCompat.getDrawable(
+                                    context,
+                                    R.drawable.ic_outline_clear
+                                ) as Drawable
+                                when {
+                                    text != null -> text?.clear()
+                                }
+
+                                hideClearButton()
+                                return true
+                            }
+                            else -> return false
+                        }
+                    } else return false
                 }
             }
-
-            if (isClearButtonClicked) {
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_lock) as Drawable
-                        clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
-                        showClearButton()
-                        return true
-                    }
-
-                    MotionEvent.ACTION_UP -> {
-                        passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_lock) as Drawable
-                        clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
+            R.id.etPassword -> {
+                if (compoundDrawables[2] != null) {
+                    val clearButtonStart: Float
+                    val clearButtonEnd: Float
+                    var isClearButtonClicked = false
+                    if (layoutDirection == View.LAYOUT_DIRECTION_RTL) {
+                        clearButtonEnd = (clearIcon.intrinsicWidth + paddingStart).toFloat()
                         when {
-                            text != null -> text?.clear()
+                            event.x < clearButtonEnd -> isClearButtonClicked = true
                         }
-
-                        hideClearButton()
-                        return true
+                    } else {
+                        clearButtonStart = (width - paddingEnd - clearIcon.intrinsicWidth).toFloat()
+                        when {
+                            event.x > clearButtonStart -> isClearButtonClicked = true
+                        }
                     }
 
-                    else -> return false
-                }
+                    if (isClearButtonClicked) {
+                        when (event.action) {
+                            MotionEvent.ACTION_DOWN -> {
+                                passwordIcon = ContextCompat.getDrawable(
+                                    context,
+                                    R.drawable.ic_baseline_lock
+                                ) as Drawable
+                                clearIcon = ContextCompat.getDrawable(
+                                    context,
+                                    R.drawable.ic_outline_clear
+                                ) as Drawable
+                                showClearButton()
+                                return true
+                            }
 
-            } else return false
+                            MotionEvent.ACTION_UP -> {
+                                passwordIcon = ContextCompat.getDrawable(
+                                    context,
+                                    R.drawable.ic_baseline_lock
+                                ) as Drawable
+                                clearIcon = ContextCompat.getDrawable(
+                                    context,
+                                    R.drawable.ic_outline_clear
+                                ) as Drawable
+                                when {
+                                    text != null -> text?.clear()
+                                }
+
+                                hideClearButton()
+                                return true
+                            }
+                            else -> return false
+                        }
+                    } else return false
+                }
+            }
+            else -> return false
         }
 
         return false

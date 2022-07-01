@@ -20,16 +20,16 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/value_64dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineSecondHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/value_64dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"
+        app:layout_constraintGuide_percent="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -38,10 +38,10 @@
         android:layout_width="@dimen/value_0dp"
         android:layout_height="@dimen/value_0dp"
         android:contentDescription="@string/action_login"
-        android:layout_marginHorizontal="@dimen/value_32dp"
+        android:layout_marginHorizontal="@dimen/value_16dp"
         app:srcCompat="@drawable/image_login"
-        app:layout_constraintTop_toTopOf="@id/guidelineSecondHorizontal"
-        app:layout_constraintBottom_toTopOf="@id/guidelineFirstHorizontal"
+        app:layout_constraintTop_toTopOf="@id/guidelineFirstHorizontal"
+        app:layout_constraintBottom_toTopOf="@id/guidelineSecondHorizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -50,7 +50,6 @@
         android:layout_width="@dimen/value_0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/value_8dp"
-        android:layout_marginHorizontal="@dimen/value_32dp"
         android:alpha="0"
         android:textStyle="bold"
         android:fontFamily="sans-serif-black"
@@ -58,9 +57,9 @@
         android:textAlignment="center"
         android:textColor="@color/purple_700"
         android:text="@string/text_login"
-        app:layout_constraintTop_toTopOf="@id/guidelineFirstHorizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/guidelineSecondHorizontal"
+        app:layout_constraintStart_toStartOf="@id/imgLogin"
+        app:layout_constraintEnd_toEndOf="@id/imgLogin"/>
 
     <TextView
         android:id="@+id/tvMessage"
@@ -80,21 +79,19 @@
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/value_24dp"
-        android:layout_marginStart="@dimen/value_32dp"
+        android:layout_marginTop="@dimen/value_12dp"
         android:alpha="0"
         android:text="@string/text_email"
         android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/tvMessage"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="@id/tvLogin"/>
 
-    <EditText
+    <com.taufik.ceritaku.utils.CustomEditText
         android:id="@+id/etEmail"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/value_0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/value_8dp"
-        android:layout_marginHorizontal="@dimen/value_32dp"
         android:alpha="0"
         android:drawableStart="@drawable/ic_baseline_email"
         android:drawablePadding="@dimen/value_8dp"
@@ -103,29 +100,31 @@
         android:hint="@string/text_email_eg"
         android:textSize="@dimen/value_14sp"
         android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
+        android:nextFocusDown="@id/etPassword"
         android:autofillHints="emailAddress"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        app:layout_constraintStart_toStartOf="@id/tvLogin"
+        app:layout_constraintEnd_toEndOf="@id/tvLogin"/>
 
     <TextView
         android:id="@+id/tvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/value_12dp"
-        android:layout_marginStart="@dimen/value_32dp"
+        android:layout_marginTop="@dimen/value_16dp"
         android:alpha="0"
         android:text="@string/text_password"
         android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/etEmail"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="@id/tvLogin"/>
 
     <com.taufik.ceritaku.utils.CustomEditText
         android:id="@+id/etPassword"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/value_0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/value_8dp"
         android:alpha="0"
-        android:layout_marginHorizontal="@dimen/value_32dp"
         android:drawableStart="@drawable/ic_baseline_lock"
         android:drawablePadding="@dimen/value_8dp"
         android:padding="@dimen/value_8dp"
@@ -133,27 +132,40 @@
         android:hint="@string/text_password"
         android:textSize="@dimen/value_14sp"
         android:inputType="textPassword"
+        android:imeOptions="actionDone"
         android:autofillHints="emailAddress"
-        app:layout_constraintTop_toBottomOf="@id/tvPassword"/>
+        app:layout_constraintTop_toBottomOf="@id/tvPassword"
+        app:layout_constraintStart_toStartOf="@id/tvLogin"
+        app:layout_constraintEnd_toEndOf="@id/tvLogin"/>
+
+    <CheckBox
+        android:id="@+id/cbShowPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:buttonTint="@color/purple_700"
+        android:text="@string/action_show_password"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintStart_toStartOf="@id/tvLogin"
+        app:layout_constraintEnd_toEndOf="@id/tvLogin"/>
 
     <com.taufik.ceritaku.utils.MaterialCustomButton
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/value_0dp"
         android:layout_height="wrap_content"
         android:alpha="0"
-        android:layout_marginTop="@dimen/value_16dp"
-        android:layout_marginHorizontal="@dimen/value_32dp"
+        android:layout_marginTop="@dimen/value_8dp"
         android:enabled="false"
         android:textAllCaps="false"
         android:text="@string/action_login"
         android:textColor="@color/white"
         app:cornerRadius="@dimen/value_10dp"
-        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintTop_toBottomOf="@id/cbShowPassword"
         app:layout_constraintStart_toStartOf="@id/tvLogin"
         app:layout_constraintEnd_toEndOf="@id/tvLogin"/>
 
     <TextView
-        android:id="@+id/tvDontHaveAccount"
+        android:id="@+id/tvDoNotHaveAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="0"
