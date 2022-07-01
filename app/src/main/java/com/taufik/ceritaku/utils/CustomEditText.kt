@@ -41,14 +41,16 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
                     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
                     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        if (p0.toString().isNotEmpty()) showClearButton() else hideClearButton()
+                    }
+
+                    override fun afterTextChanged(p0: Editable?) {
                         val email = p0.toString().trim()
                         val isEmailValid = CommonExtension.isValidEmailId(email)
                         if (!isEmailValid) {
                             this@CustomEditText.error = "Email tidak valid"
                         }
                     }
-
-                    override fun afterTextChanged(p0: Editable?) {}
                 })
             }
 
@@ -113,8 +115,8 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
         setCompoundDrawablesWithIntrinsicBounds(startOfTheText, topOfTheText, endOfTheText, bottomOfTheText)
     }
 
-    override fun onTouch(view: View?, event: MotionEvent): Boolean {
-        when (view?.id) {
+    override fun onTouch(view: View, event: MotionEvent): Boolean {
+        when (view.id) {
             R.id.etEmail -> {
                 if (compoundDrawables[2] != null) {
                     val clearButtonStart: Float
@@ -135,27 +137,15 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
                     if (isClearButtonClicked) {
                         when (event.action) {
                             MotionEvent.ACTION_DOWN -> {
-                                emailIcon = ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.ic_baseline_email
-                                ) as Drawable
-                                clearIcon = ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.ic_outline_clear
-                                ) as Drawable
+                                emailIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_email) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
                                 showClearButton()
                                 return true
                             }
 
                             MotionEvent.ACTION_UP -> {
-                                emailIcon = ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.ic_baseline_email
-                                ) as Drawable
-                                clearIcon = ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.ic_outline_clear
-                                ) as Drawable
+                                emailIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_email) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
                                 when {
                                     text != null -> text?.clear()
                                 }
@@ -168,6 +158,7 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
                     } else return false
                 }
             }
+
             R.id.etPassword -> {
                 if (compoundDrawables[2] != null) {
                     val clearButtonStart: Float
@@ -188,27 +179,15 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
                     if (isClearButtonClicked) {
                         when (event.action) {
                             MotionEvent.ACTION_DOWN -> {
-                                passwordIcon = ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.ic_baseline_lock
-                                ) as Drawable
-                                clearIcon = ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.ic_outline_clear
-                                ) as Drawable
+                                passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_lock) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
                                 showClearButton()
                                 return true
                             }
 
                             MotionEvent.ACTION_UP -> {
-                                passwordIcon = ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.ic_baseline_lock
-                                ) as Drawable
-                                clearIcon = ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.ic_outline_clear
-                                ) as Drawable
+                                passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_lock) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
                                 when {
                                     text != null -> text?.clear()
                                 }
