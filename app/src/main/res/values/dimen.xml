@@ -14,7 +14,9 @@
     <dimen name="value_24dp">24dp</dimen>
     <dimen name="value_30dp">30dp</dimen>
     <dimen name="value_32dp">32dp</dimen>
+    <dimen name="value_36dp">36dp</dimen>
     <dimen name="value_40dp">40dp</dimen>
+    <dimen name="value_48dp">48dp</dimen>
     <dimen name="value_50dp">50dp</dimen>
     <dimen name="value_60dp">60dp</dimen>
     <dimen name="value_64dp">64dp</dimen>
