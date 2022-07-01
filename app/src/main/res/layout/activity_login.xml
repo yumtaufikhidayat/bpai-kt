@@ -169,9 +169,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="0"
-        android:layout_marginBottom="@dimen/value_16dp"
+        android:layout_marginTop="@dimen/value_16dp"
         android:text="@string/text_do_not_have_account"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
         app:layout_constraintEnd_toEndOf="@id/tvLogin"
         app:layout_constraintStart_toStartOf="@id/tvLogin"/>
 
