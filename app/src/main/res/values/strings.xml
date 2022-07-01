@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Ceritaku</string>
+    <string name="app_version">1.0</string>
+    <string name="app_logo">Logo</string>
+    <string name="text_bg">Background</string>
 </resources>

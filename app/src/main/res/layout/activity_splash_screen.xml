@@ -6,13 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".ui.splashscreen.SplashScreenActivity">
 
+    <ImageView
+        android:id="@+id/imgBackground"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/value_0dp"
+        android:contentDescription="@string/text_bg"
+        android:src="@drawable/bg_splash_screen"
+        android:scaleType="centerCrop"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="@dimen/value_100dp"
+        android:layout_height="@dimen/value_100dp"
+        android:contentDescription="@string/app_logo"
+        android:src="@drawable/ic_android"
+        app:layout_constraintVertical_bias=".1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
+        android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:fontFamily="sans-serif"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/value_36sp"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintTop_toBottomOf="@id/imgLogo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimation"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/value_250dp"
+        app:layout_constraintVertical_bias="0"
+        app:lottie_rawRes="@raw/trophy"
+        app:lottie_autoPlay="true"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvAppVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/app_version"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginBottom="@dimen/value_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
