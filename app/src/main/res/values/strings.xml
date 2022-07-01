@@ -14,7 +14,7 @@
     <string name="text_email_eg">johndoe@email.com</string>
     <string name="text_password">Password</string>
     <string name="text_have_account">Sudah punya akun? <font fgcolor="#FF3700B3">Masuk</font></string>
-    <string name="text_dont_have_account">Belum punya akun? <font fgcolor="#FF3700B3">Daftar</font></string>
+    <string name="text_do_not_have_account">Belum punya akun? <font fgcolor="#FF3700B3">Daftar</font></string>
 
     <string name="action_signup">Daftar</string>
     <string name="action_login">Masuk</string>
