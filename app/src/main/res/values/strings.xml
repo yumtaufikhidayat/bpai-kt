@@ -8,6 +8,13 @@
     <string name="text_description">Di Ceritaku, kamu bisa loh membagikan pengalaman menyenangkanmu belajar bersama Dicoding.
         Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja.
         Yuk ceritakan dan bagikan pengalaman belajarmu.</string>
+    <string name="text_login">Siap untuk berbagi cerita pengalaman belajarmu?</string>
+    <string name="text_message_login">Masukkan dulu datamu ya</string>
+    <string name="text_email">Email</string>
+    <string name="text_email_eg">johndoe@email.com</string>
+    <string name="text_password">Password</string>
+    <string name="text_have_account">Sudah punya akun? <font fgcolor="#FF3700B3">Masuk</font></string>
+    <string name="text_dont_have_account">Belum punya akun? <font fgcolor="#FF3700B3">Daftar</font></string>
 
     <string name="action_signup">Daftar</string>
     <string name="action_login">Masuk</string>

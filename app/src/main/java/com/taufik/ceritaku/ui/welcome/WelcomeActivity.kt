@@ -9,6 +9,12 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
+import com.taufik.ceritaku.utils.CommonConstant.DURATION_ALT
+import com.taufik.ceritaku.utils.CommonConstant.DURATION
+import com.taufik.ceritaku.utils.CommonConstant.LEFT
+import com.taufik.ceritaku.utils.CommonConstant.RIGHT
+import com.taufik.ceritaku.utils.CommonConstant.VALUES
 import com.taufik.ceritaku.databinding.ActivityWelcomeBinding
 import com.taufik.ceritaku.ui.login.LoginActivity
 import com.taufik.ceritaku.ui.signup.SignupActivity
@@ -42,22 +48,16 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun playAnimation() = with(binding) {
-        val left = -30f
-        val right = 30f
-        val durationWelcome = 6000L
-        val durationAlt = 500L
-        val values = 1f
-
-        ObjectAnimator.ofFloat(imgWelcome, View.TRANSLATION_X, left, right).apply {
-            this.duration = durationWelcome
+        ObjectAnimator.ofFloat(imgWelcome, View.TRANSLATION_X, LEFT, RIGHT).apply {
+            duration = DURATION
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }.start()
 
-        val welcome = ObjectAnimator.ofFloat(tvWelcome, View.ALPHA, values).setDuration(durationAlt)
-        val desc = ObjectAnimator.ofFloat(tvDescription, View.ALPHA, values).setDuration(durationAlt)
-        val signup = ObjectAnimator.ofFloat(btnSignup, View.ALPHA, values).setDuration(durationAlt)
-        val login = ObjectAnimator.ofFloat(btnLogin, View.ALPHA, values).setDuration(durationAlt)
+        val welcome = ObjectAnimator.ofFloat(tvWelcome, View.ALPHA, VALUES).setDuration(DURATION_ALT)
+        val desc = ObjectAnimator.ofFloat(tvDescription, View.ALPHA, VALUES).setDuration(DURATION_ALT)
+        val signup = ObjectAnimator.ofFloat(btnSignup, View.ALPHA, VALUES).setDuration(DURATION_ALT)
+        val login = ObjectAnimator.ofFloat(btnLogin, View.ALPHA, VALUES).setDuration(DURATION_ALT)
 
         AnimatorSet().apply {
             playSequentially(welcome, desc, signup, login)
@@ -67,11 +67,13 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setAction() = with(binding) {
         btnSignup.setOnClickListener {
-            startActivity(Intent(this@WelcomeActivity, SignupActivity::class.java))
+            startActivity(Intent(this@WelcomeActivity, SignupActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@WelcomeActivity).toBundle())
+            finish()
         }
 
         btnLogin.setOnClickListener {
-            startActivity(Intent(this@WelcomeActivity, LoginActivity::class.java))
+            startActivity(Intent(this@WelcomeActivity, LoginActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@WelcomeActivity).toBundle())
+            finish()
         }
     }
 }
