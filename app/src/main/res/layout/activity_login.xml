@@ -21,7 +21,7 @@
         android:layout_height="@dimen/value_64dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintGuide_percent="0.02"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
