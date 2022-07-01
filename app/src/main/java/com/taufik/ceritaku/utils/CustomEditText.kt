@@ -71,16 +71,37 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
     }
 
     private fun showClearButton() {
-        setButtonDrawables(
-            startOfTheText = passwordIcon,
-            endOfTheText = clearIcon
-        )
+        when (id) {
+            R.id.etEmail -> {
+                setButtonDrawables(
+                    startOfTheText = emailIcon,
+                    endOfTheText = clearIcon
+                )
+            }
+
+            R.id.etPassword -> {
+                setButtonDrawables(
+                    startOfTheText = passwordIcon,
+                    endOfTheText = clearIcon
+                )
+            }
+        }
     }
 
     private fun hideClearButton() {
-        setButtonDrawables(
-            startOfTheText = passwordIcon,
-        )
+        when (id) {
+            R.id.etEmail -> {
+                setButtonDrawables(
+                    startOfTheText = emailIcon,
+                )
+            }
+
+            R.id.etPassword -> {
+                setButtonDrawables(
+                    startOfTheText = passwordIcon,
+                )
+            }
+        }
     }
 
     private fun setButtonDrawables(
@@ -114,7 +135,7 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
                     if (isClearButtonClicked) {
                         when (event.action) {
                             MotionEvent.ACTION_DOWN -> {
-                                passwordIcon = ContextCompat.getDrawable(
+                                emailIcon = ContextCompat.getDrawable(
                                     context,
                                     R.drawable.ic_baseline_email
                                 ) as Drawable
@@ -127,7 +148,7 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
                             }
 
                             MotionEvent.ACTION_UP -> {
-                                passwordIcon = ContextCompat.getDrawable(
+                                emailIcon = ContextCompat.getDrawable(
                                     context,
                                     R.drawable.ic_baseline_email
                                 ) as Drawable
