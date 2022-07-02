@@ -16,8 +16,8 @@ import com.taufik.ceritaku.utils.CommonConstant.LEFT
 import com.taufik.ceritaku.utils.CommonConstant.RIGHT
 import com.taufik.ceritaku.utils.CommonConstant.VALUES
 import com.taufik.ceritaku.databinding.ActivityWelcomeBinding
-import com.taufik.ceritaku.ui.login.LoginActivity
-import com.taufik.ceritaku.ui.signup.SignupActivity
+import com.taufik.ceritaku.ui.auth.login.LoginActivity
+import com.taufik.ceritaku.ui.auth.signup.SignupActivity
 
 class WelcomeActivity : AppCompatActivity() {
 

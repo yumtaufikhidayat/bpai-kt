@@ -3,9 +3,9 @@ package com.taufik.ceritaku.utils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.model.UserPreference
-import com.taufik.ceritaku.ui.login.LoginViewModel
+import com.taufik.ceritaku.ui.auth.login.LoginViewModel
 import com.taufik.ceritaku.ui.main.MainViewModel
-import com.taufik.ceritaku.ui.signup.SignupViewModel
+import com.taufik.ceritaku.ui.auth.signup.SignupViewModel
 
 class ViewModelFactory(private val pref: UserPreference): ViewModelProvider.NewInstanceFactory() {
 

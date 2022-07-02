@@ -1,4 +1,4 @@
-package com.taufik.ceritaku.ui.login
+package com.taufik.ceritaku.ui.auth.login
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -23,7 +23,7 @@ import com.taufik.ceritaku.databinding.ActivityLoginBinding
 import com.taufik.ceritaku.model.User
 import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.main.MainActivity
-import com.taufik.ceritaku.ui.signup.SignupActivity
+import com.taufik.ceritaku.ui.auth.signup.SignupActivity
 import com.taufik.ceritaku.utils.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.CommonConstant.DURATION_ALT
 import com.taufik.ceritaku.utils.CommonConstant.LEFT

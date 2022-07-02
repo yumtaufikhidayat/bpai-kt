@@ -1,4 +1,4 @@
-package com.taufik.ceritaku.ui.signup
+package com.taufik.ceritaku.ui.auth.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

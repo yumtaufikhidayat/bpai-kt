@@ -1,4 +1,4 @@
-package com.taufik.ceritaku.ui.signup
+package com.taufik.ceritaku.ui.auth.signup
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -21,7 +21,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.databinding.ActivitySignupBinding
 import com.taufik.ceritaku.model.User
 import com.taufik.ceritaku.model.UserPreference
-import com.taufik.ceritaku.ui.login.LoginActivity
+import com.taufik.ceritaku.ui.auth.login.LoginActivity
 import com.taufik.ceritaku.utils.CommonConstant
 import com.taufik.ceritaku.utils.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.CommonConstant.VALUES

@@ -1,4 +1,4 @@
-package com.taufik.ceritaku.ui.login
+package com.taufik.ceritaku.ui.auth.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
