@@ -84,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
                     viewModel.login()
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
                     finish()
-                    Toast.makeText(this@LoginActivity, "Halo ${user.name}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Halo, ${user.name}", Toast.LENGTH_SHORT).show()
                 }
             }
         }

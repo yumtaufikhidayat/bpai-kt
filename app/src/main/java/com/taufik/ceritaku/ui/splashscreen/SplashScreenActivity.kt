@@ -1,5 +1,6 @@
 package com.taufik.ceritaku.ui.splashscreen
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
@@ -12,14 +13,25 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.os.postDelayed
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.databinding.ActivitySplashScreenBinding
+import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.ui.main.MainActivity
+import com.taufik.ceritaku.ui.main.MainViewModel
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
+import com.taufik.ceritaku.utils.ViewModelFactory
 
 class SplashScreenActivity : AppCompatActivity() {
 
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         ActivitySplashScreenBinding.inflate(layoutInflater)
     }
+
+    private lateinit var viewModel: MainViewModel
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,12 +70,21 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun setSplashscreen() {
+        viewModel = ViewModelProvider(this@SplashScreenActivity, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainViewModel::class.java]
+
         val delayMillis = 6000L
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(delayMillis) {
-            val intent = Intent(this, WelcomeActivity::class.java)
-            startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
-            finish()
+            viewModel.getUser().observe(this@SplashScreenActivity) { user ->
+                if (user.isLogin) {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
+                    finish()
+                } else {
+                    startActivity(Intent(this@SplashScreenActivity, WelcomeActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@SplashScreenActivity).toBundle())
+                    finish()
+                }
+            }
         }
     }
 

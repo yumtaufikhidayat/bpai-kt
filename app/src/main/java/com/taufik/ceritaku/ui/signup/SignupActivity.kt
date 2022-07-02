@@ -40,13 +40,13 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setUpView()
-        setUpViewModel()
+        setupView()
+        setupViewModel()
         playAnimation()
-        setUpAction()
+        setupAction()
     }
 
-    private fun setUpView() {
+    private fun setupView() {
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
@@ -59,7 +59,7 @@ class SignupActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    private fun setUpViewModel() {
+    private fun setupViewModel() {
         viewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[SignupViewModel::class.java]
     }
 
@@ -102,7 +102,7 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpAction() = with(binding) {
+    private fun setupAction() = with(binding) {
         btnSignup.setOnClickListener {
             val name = etName.text.toString()
             val email = etEmail.text.toString().trim()
