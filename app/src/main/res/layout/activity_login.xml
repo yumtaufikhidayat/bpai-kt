@@ -159,7 +159,7 @@
         android:textAllCaps="false"
         android:text="@string/action_login"
         android:textColor="@color/white"
-        app:cornerRadius="@dimen/value_10dp"
+        app:cornerRadius="@dimen/value_100dp"
         app:layout_constraintTop_toBottomOf="@id/cbShowPassword"
         app:layout_constraintStart_toStartOf="@id/tvLogin"
         app:layout_constraintEnd_toEndOf="@id/tvLogin"/>

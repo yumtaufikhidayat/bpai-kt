@@ -3,15 +3,15 @@
     <item android:state_pressed="true">
         <shape>
             <solid android:color="@color/purple_700" />
-            <corners android:radius="6dp" />
-            <padding android:left="4dp" android:right="4dp" />
+            <corners android:radius="@dimen/value_100dp" />
+            <padding android:left="@dimen/value_100dp" android:right="@dimen/value_100dp" />
         </shape>
     </item>
     <item>
         <shape>
             <solid android:color="@color/purple_700" />
-            <corners android:radius="8dp" />
-            <padding android:left="4dp" android:right="4dp" />
+            <corners android:radius="@dimen/value_100dp" />
+            <padding android:left="@dimen/value_100dp" android:right="@dimen/value_100dp" />
         </shape>
     </item>
 </selector>

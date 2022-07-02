@@ -4,5 +4,5 @@
         android:color="@color/purple_500"
         />
     <corners
-        android:radius="@dimen/value_8dp"/>
+        android:radius="@dimen/value_100dp"/>
 </shape>

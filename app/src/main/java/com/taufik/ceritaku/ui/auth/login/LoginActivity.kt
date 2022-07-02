@@ -12,7 +12,6 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.datastore.core.DataStore
@@ -22,8 +21,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.databinding.ActivityLoginBinding
 import com.taufik.ceritaku.model.User
 import com.taufik.ceritaku.model.UserPreference
-import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.ui.auth.signup.SignupActivity
+import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.utils.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.CommonConstant.DURATION_ALT
 import com.taufik.ceritaku.utils.CommonConstant.LEFT
@@ -84,7 +83,6 @@ class LoginActivity : AppCompatActivity() {
                     viewModel.login()
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
                     finish()
-                    Toast.makeText(this@LoginActivity, "Halo, ${user.name}", Toast.LENGTH_SHORT).show()
                 }
             }
         }

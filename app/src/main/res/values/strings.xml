@@ -18,9 +18,13 @@
     <string name="text_password">Password</string>
     <string name="text_have_account">Sudah punya akun? <font fgcolor="#FF3700B3">Masuk</font></string>
     <string name="text_do_not_have_account">Belum punya akun? <font fgcolor="#FF3700B3">Daftar</font></string>
+    <string name="text_exit">Apakah kamu yakin ingin keluar?</string>
 
     <string name="action_signup">Daftar</string>
     <string name="action_login">Masuk</string>
     <string name="action_show_password">Tampilkan password</string>
+    <string name="action_exit">Keluar</string>
+    <string name="action_yes">Ya</string>
+    <string name="action_no">Tidak</string>
 
 </resources>
