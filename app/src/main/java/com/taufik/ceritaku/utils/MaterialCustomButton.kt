@@ -35,7 +35,12 @@ class MaterialCustomButton: MaterialButton {
 
         setTextColor(txtColor)
         gravity = Gravity.CENTER
-        text = this.context.getString(R.string.action_login)
+
+        text = when (id) {
+            R.id.btnLogin -> this.context.getString(R.string.action_login)
+            R.id.btnSignup -> this.context.getString(R.string.action_signup)
+            else -> ""
+        }
     }
 
     private fun init() {

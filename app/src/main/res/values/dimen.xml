@@ -11,6 +11,7 @@
     <dimen name="value_10dp">10dp</dimen>
     <dimen name="value_12dp">12dp</dimen>
     <dimen name="value_16dp">16dp</dimen>
+    <dimen name="value_20dp">20dp</dimen>
     <dimen name="value_24dp">24dp</dimen>
     <dimen name="value_30dp">30dp</dimen>
     <dimen name="value_32dp">32dp</dimen>

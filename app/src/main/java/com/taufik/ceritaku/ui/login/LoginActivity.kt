@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.databinding.ActivityLoginBinding
 import com.taufik.ceritaku.model.User
 import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.ui.signup.SignupActivity
 import com.taufik.ceritaku.utils.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.CommonConstant.DURATION_ALT
@@ -80,7 +81,9 @@ class LoginActivity : AppCompatActivity() {
                 email != user.email -> etEmail.error = "Email tidak sesuai"
                 password != user.password -> etPassword.error = "Password tidak sesuai"
                 else -> {
-//                    viewModel.login()
+                    viewModel.login()
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
+                    finish()
                     Toast.makeText(this@LoginActivity, "Halo ${user.name}", Toast.LENGTH_SHORT).show()
                 }
             }

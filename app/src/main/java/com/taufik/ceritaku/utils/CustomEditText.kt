@@ -13,6 +13,7 @@ import com.taufik.ceritaku.R
 
 class CustomEditText: AppCompatEditText, View.OnTouchListener {
 
+    private lateinit var personIcon: Drawable
     private lateinit var emailIcon: Drawable
     private lateinit var passwordIcon: Drawable
     private lateinit var clearIcon: Drawable
@@ -30,12 +31,30 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
     }
 
     private fun init() {
-        emailIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_email) as Drawable
-        passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_lock) as Drawable
-        clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
+        personIcon = ContextCompat.getDrawable(context, R.drawable.ic_person) as Drawable
+        emailIcon = ContextCompat.getDrawable(context, R.drawable.ic_email) as Drawable
+        passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_password) as Drawable
+        clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_clear) as Drawable
         setOnTouchListener(this)
 
         when (id) {
+            R.id.etName -> {
+                addTextChangedListener(object: TextWatcher {
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        if (p0.toString().isNotEmpty()) showClearButton() else hideClearButton()
+
+                    }
+
+                    override fun afterTextChanged(p0: Editable?) {
+                        if (p0.toString().isEmpty()) {
+                            this@CustomEditText.error = "Masukkan nama"
+                        }
+                    }
+                })
+            }
+
             R.id.etEmail -> {
                 addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -74,6 +93,13 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
 
     private fun showClearButton() {
         when (id) {
+            R.id.etName -> {
+                setButtonDrawables(
+                    startOfTheText = personIcon,
+                    endOfTheText = clearIcon
+                )
+            }
+
             R.id.etEmail -> {
                 setButtonDrawables(
                     startOfTheText = emailIcon,
@@ -92,6 +118,12 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
 
     private fun hideClearButton() {
         when (id) {
+            R.id.etName -> {
+                setButtonDrawables(
+                    startOfTheText = personIcon
+                )
+            }
+
             R.id.etEmail -> {
                 setButtonDrawables(
                     startOfTheText = emailIcon,
@@ -117,6 +149,48 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
 
     override fun onTouch(view: View, event: MotionEvent): Boolean {
         when (view.id) {
+            R.id.etName -> {
+                if (compoundDrawables[2] != null) {
+                    val clearButtonStart: Float
+                    val clearButtonEnd: Float
+                    var isClearButtonClicked = false
+                    if (layoutDirection == View.LAYOUT_DIRECTION_RTL) {
+                        clearButtonEnd = (clearIcon.intrinsicWidth + paddingStart).toFloat()
+                        when {
+                            event.x < clearButtonEnd -> isClearButtonClicked = true
+                        }
+                    } else {
+                        clearButtonStart = (width - paddingEnd - clearIcon.intrinsicWidth).toFloat()
+                        when {
+                            event.x > clearButtonStart -> isClearButtonClicked = true
+                        }
+                    }
+
+                    if (isClearButtonClicked) {
+                        when (event.action) {
+                            MotionEvent.ACTION_DOWN -> {
+                                personIcon = ContextCompat.getDrawable(context, R.drawable.ic_person) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_clear) as Drawable
+                                showClearButton()
+                                return true
+                            }
+
+                            MotionEvent.ACTION_UP -> {
+                                personIcon = ContextCompat.getDrawable(context, R.drawable.ic_person) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_clear) as Drawable
+                                when {
+                                    text != null -> text?.clear()
+                                }
+
+                                hideClearButton()
+                                return true
+                            }
+                            else -> return false
+                        }
+                    } else return false
+                }
+            }
+
             R.id.etEmail -> {
                 if (compoundDrawables[2] != null) {
                     val clearButtonStart: Float
@@ -137,15 +211,15 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
                     if (isClearButtonClicked) {
                         when (event.action) {
                             MotionEvent.ACTION_DOWN -> {
-                                emailIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_email) as Drawable
-                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
+                                emailIcon = ContextCompat.getDrawable(context, R.drawable.ic_email) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_clear) as Drawable
                                 showClearButton()
                                 return true
                             }
 
                             MotionEvent.ACTION_UP -> {
-                                emailIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_email) as Drawable
-                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
+                                emailIcon = ContextCompat.getDrawable(context, R.drawable.ic_email) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_clear) as Drawable
                                 when {
                                     text != null -> text?.clear()
                                 }
@@ -179,15 +253,15 @@ class CustomEditText: AppCompatEditText, View.OnTouchListener {
                     if (isClearButtonClicked) {
                         when (event.action) {
                             MotionEvent.ACTION_DOWN -> {
-                                passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_lock) as Drawable
-                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
+                                passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_password) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_clear) as Drawable
                                 showClearButton()
                                 return true
                             }
 
                             MotionEvent.ACTION_UP -> {
-                                passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_lock) as Drawable
-                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_outline_clear) as Drawable
+                                passwordIcon = ContextCompat.getDrawable(context, R.drawable.ic_password) as Drawable
+                                clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_clear) as Drawable
                                 when {
                                     text != null -> text?.clear()
                                 }

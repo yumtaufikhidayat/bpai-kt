@@ -9,7 +9,10 @@
         Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja.
         Yuk ceritakan dan bagikan pengalaman belajarmu.</string>
     <string name="text_login">Siap untuk berbagi cerita pengalaman belajarmu?</string>
-    <string name="text_message_login">Masukkan dulu datamu ya</string>
+    <string name="text_message_login">Masukkan data kamu telebih dahulu ya!</string>
+    <string name="text_message_signup">Lengkapi data dirimu di bawah ini dahulu ya!</string>
+    <string name="text_name">Nama</string>
+    <string name="text_name_eg">John Doe</string>
     <string name="text_email">Email</string>
     <string name="text_email_eg">johndoe@email.com</string>
     <string name="text_password">Password</string>
