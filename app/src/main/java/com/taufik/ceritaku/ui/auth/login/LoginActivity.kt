@@ -12,6 +12,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.datastore.core.DataStore
@@ -21,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.databinding.ActivityLoginBinding
 import com.taufik.ceritaku.model.User
 import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.ui.auth.login.data.LoginLocalViewModel
 import com.taufik.ceritaku.ui.auth.register.RegisterActivity
 import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.utils.CommonConstant.DURATION
@@ -36,7 +38,8 @@ class LoginActivity : AppCompatActivity() {
         ActivityLoginBinding.inflate(layoutInflater)
     }
 
-    private lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by viewModels()
+    private lateinit var viewModelLogin: LoginLocalViewModel
     private lateinit var user: User
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -65,9 +68,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[LoginViewModel::class.java]
-        viewModel.getUser().observe(this) {
-            this.user = it
+        viewModelLogin = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[LoginLocalViewModel::class.java]
+        viewModelLogin.getUser().observe(this) {
+            user = it
+        }
+
+        viewModel.apply {
+            isLoading.observe(this@LoginActivity) {
+                showLoading(it)
+            }
         }
     }
 
@@ -80,9 +89,14 @@ class LoginActivity : AppCompatActivity() {
                 email != user.email -> etEmail.error = "Email tidak sesuai"
                 password != user.password -> etPassword.error = "Password tidak sesuai"
                 else -> {
-                    viewModel.login()
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
-                    finish()
+                    viewModel.apply {
+                        login(email, password)
+                        viewModel.loginResponse.observe(this@LoginActivity) {
+                            viewModelLogin.login()
+                            startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
+                            finish()
+                        }
+                    }
                 }
             }
         }
@@ -150,6 +164,14 @@ class LoginActivity : AppCompatActivity() {
                 showPassword, loginButton, doNotHaveAccount
             )
             start()
+        }
+    }
+
+    private fun showLoading(isShow: Boolean) = with(binding) {
+        progressLogin.visibility = if (isShow) {
+            View.VISIBLE
+        } else {
+            View.GONE
         }
     }
 }

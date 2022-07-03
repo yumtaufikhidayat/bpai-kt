@@ -11,11 +11,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-/*
-class RegisterViewModel(private val pref: UserPreference): ViewModel() {
-    fun saveUser(user: User) = viewModelScope.launch { pref.saveUser(user) }
-}
-*/
 
 class RegisterViewModel : ViewModel() {
 
