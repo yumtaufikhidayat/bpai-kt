@@ -4,6 +4,7 @@
     <string name="app_logo">Logo</string>
     <string name="text_bg">Background</string>
     <string name="text_welcome">Selamat datang</string>
+    <string name="text_welcome_alt">Selamat datang,</string>
     <string name="text_hi_welcome">Halo, selamat datang di Ceritaku!.</string>
     <string name="text_description">Di Ceritaku, kamu bisa loh membagikan pengalaman menyenangkanmu belajar bersama Dicoding.
         Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja.
@@ -16,9 +17,11 @@
     <string name="text_email">Email</string>
     <string name="text_email_eg">johndoe@email.com</string>
     <string name="text_password">Password</string>
+    <string name="text_search">Cari cerita sukses…</string>
     <string name="text_have_account">Sudah punya akun? <font fgcolor="#FF3700B3">Masuk</font></string>
     <string name="text_do_not_have_account">Belum punya akun? <font fgcolor="#FF3700B3">Daftar</font></string>
     <string name="text_exit">Apakah kamu yakin ingin keluar?</string>
+    <string name="text_your_story">Cerita kamu</string>
 
     <string name="action_signup">Daftar</string>
     <string name="action_login">Masuk</string>
@@ -26,5 +29,6 @@
     <string name="action_exit">Keluar</string>
     <string name="action_yes">Ya</string>
     <string name="action_no">Tidak</string>
+    <string name="action_add_story">Tambah Cerita</string>
 
 </resources>

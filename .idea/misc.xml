@@ -8,13 +8,20 @@
         <entry key="app/src/main/res/drawable/bg_button_enabled.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_edit_text.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_rounded_button.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_search.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_splash_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_add_story.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/ic_baseline_email.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_lock.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_clear.xml" value="0.1725" />
+        <entry key="app/src/main/res/drawable/ic_clear_grey.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/ic_outline_clear.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_person.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_password.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2325" />
+        <entry key="app/src/main/res/drawable/ic_search_alt.xml" value="0.1725" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.17039473684210527" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16872964169381108" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.16872964169381108" />

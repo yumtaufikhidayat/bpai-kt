@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvMessage"
         app:layout_constraintStart_toStartOf="@id/tvLogin"/>
 
-    <com.taufik.ceritaku.utils.CustomEditText
+    <com.taufik.ceritaku.utils.MaterialCustomEditText
         android:id="@+id/etEmail"
         android:layout_width="@dimen/value_0dp"
         android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etEmail"
         app:layout_constraintStart_toStartOf="@id/tvLogin"/>
 
-    <com.taufik.ceritaku.utils.CustomEditText
+    <com.taufik.ceritaku.utils.MaterialCustomEditText
         android:id="@+id/etPassword"
         android:layout_width="@dimen/value_0dp"
         android:layout_height="wrap_content"

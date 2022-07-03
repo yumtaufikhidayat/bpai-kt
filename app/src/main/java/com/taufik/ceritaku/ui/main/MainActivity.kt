@@ -2,10 +2,10 @@ package com.taufik.ceritaku.ui.main
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.view.WindowInsets
-import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
@@ -20,6 +20,7 @@ import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
 import com.taufik.ceritaku.utils.ViewModelFactory
 
+
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
@@ -33,21 +34,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setupView()
+        setupActionBar()
         setupViewModel()
         setupLoginLogout()
+        searchStory()
     }
 
-    private fun setupView() {
-        @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
+    private fun setupActionBar() {
         supportActionBar?.hide()
     }
 
@@ -59,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getUser().observe(this@MainActivity) { user ->
             if (user.isLogin) {
                 tvName.text = user.name
-                Toast.makeText(this@MainActivity, "Selamat datang, ${user.name}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, getString(R.string.text_welcome) + user.name, Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -81,5 +74,21 @@ class MainActivity : AppCompatActivity() {
                 show()
             }
         }
+    }
+
+    private fun searchStory() = with(binding) {
+        etSearch.setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                hideKeyboard()
+                return@OnEditorActionListener true
+            }
+            false
+        })
+    }
+
+    private fun hideKeyboard() = with(binding) {
+        etSearch.clearFocus()
+        val imm: InputMethodManager = this@MainActivity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(etSearch.windowToken, 0)
     }
 }

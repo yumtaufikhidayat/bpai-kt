@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/value_16dp"
         android:layout_marginStart="@dimen/value_16dp"
-        android:text="@string/text_welcome"
+        android:text="@string/text_welcome_alt"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -35,14 +35,60 @@
 
     <ImageView
         android:id="@+id/imgExitApp"
+        android:layout_width="@dimen/value_24dp"
+        android:layout_height="@dimen/value_24dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:contentDescription="@string/action_exit"
+        android:focusable="true"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/tvWelcome" />
+
+    <com.taufik.ceritaku.utils.MaterialCustomEditText
+        android:id="@+id/etSearch"
+        android:layout_width="@dimen/value_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/value_16dp"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/value_8dp"
+        android:padding="@dimen/value_8dp"
+        android:background="@drawable/bg_search"
+        android:hint="@string/text_search"
+        android:textSize="@dimen/value_14sp"
+        android:inputType="text"
+        android:imeOptions="actionSearch"
+        android:autofillHints=""
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvWelcome"
+        app:layout_constraintEnd_toEndOf="@id/tvName"/>
+
+    <TextView
+        android:id="@+id/tvYourStory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/action_exit"
-        android:src="@drawable/ic_logout"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?android:attr/selectableItemBackground"
-        app:layout_constraintTop_toTopOf="@id/tvWelcome"
-        app:layout_constraintEnd_toEndOf="@id/tvName"/>
+        android:layout_marginTop="@dimen/value_16dp"
+        android:text="@string/text_your_story"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/etSearch"
+        app:layout_constraintStart_toStartOf="@id/tvWelcome" />
+    
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddStory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/value_16dp"
+        android:contentDescription="@string/action_add_story"
+        android:text="@string/action_add_story"
+        android:textColor="@color/white"
+        app:srcCompat="@drawable/ic_add_story"
+        app:tint="@color/white"
+        app:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
