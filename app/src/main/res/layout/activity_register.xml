@@ -199,12 +199,11 @@
 
         <ProgressBar
             android:id="@+id/progressRegister"
-            android:layout_width="@dimen/value_0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"
             android:indeterminateTint="@color/purple_700"
             android:visibility="gone"
-            tools:visibility="visible"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

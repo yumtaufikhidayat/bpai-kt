@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getUser().observe(this@MainActivity) { user ->
             if (user.isLogin) {
                 tvName.text = user.name
-                Toast.makeText(this@MainActivity, getString(R.string.text_welcome) + user.name, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "${getString(R.string.text_welcome)} ${user.name}", Toast.LENGTH_SHORT).show()
             }
         }
 
