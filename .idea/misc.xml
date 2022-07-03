@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/drawable/ic_search_alt.xml" value="0.1725" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.17039473684210527" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16872964169381108" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.16872964169381108" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.16872964169381108" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16872964169381108" />

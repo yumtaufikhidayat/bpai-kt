@@ -22,6 +22,9 @@
     <string name="text_do_not_have_account">Belum punya akun? <font fgcolor="#FF3700B3">Daftar</font></string>
     <string name="text_exit">Apakah kamu yakin ingin keluar?</string>
     <string name="text_your_story">Cerita kamu</string>
+    <string name="text_register_waiting_message">Mohon menunggu. Akunmu sedang didaftarkan…</string>
+    <string name="text_register_success">Pendaftaran akunmu berhasil. Yuk login dan berbagi pengalaman belajrmu.</string>
+    <string name="text_register_failed">Pendaftaran akunmu gagal. Silakan mencoba kembali.</string>
 
     <string name="action_signup">Daftar</string>
     <string name="action_login">Masuk</string>
@@ -30,5 +33,7 @@
     <string name="action_yes">Ya</string>
     <string name="action_no">Tidak</string>
     <string name="action_add_story">Tambah Cerita</string>
+    <string name="action_close">Tutup</string>
+
 
 </resources>

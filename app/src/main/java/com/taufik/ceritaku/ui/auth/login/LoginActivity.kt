@@ -21,7 +21,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.databinding.ActivityLoginBinding
 import com.taufik.ceritaku.model.User
 import com.taufik.ceritaku.model.UserPreference
-import com.taufik.ceritaku.ui.auth.signup.SignupActivity
+import com.taufik.ceritaku.ui.auth.register.RegisterActivity
 import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.utils.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.CommonConstant.DURATION_ALT
@@ -99,7 +99,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         tvDoNotHaveAccount.setOnClickListener {
-            startActivity(Intent(this@LoginActivity, SignupActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
             finish()
         }
     }

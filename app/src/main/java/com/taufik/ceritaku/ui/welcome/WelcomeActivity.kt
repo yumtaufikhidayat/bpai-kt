@@ -17,7 +17,7 @@ import com.taufik.ceritaku.utils.CommonConstant.RIGHT
 import com.taufik.ceritaku.utils.CommonConstant.VALUES
 import com.taufik.ceritaku.databinding.ActivityWelcomeBinding
 import com.taufik.ceritaku.ui.auth.login.LoginActivity
-import com.taufik.ceritaku.ui.auth.signup.SignupActivity
+import com.taufik.ceritaku.ui.auth.register.RegisterActivity
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -67,7 +67,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setAction() = with(binding) {
         btnSignup.setOnClickListener {
-            startActivity(Intent(this@WelcomeActivity, SignupActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@WelcomeActivity).toBundle())
+            startActivity(Intent(this@WelcomeActivity, RegisterActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@WelcomeActivity).toBundle())
             finish()
         }
 
