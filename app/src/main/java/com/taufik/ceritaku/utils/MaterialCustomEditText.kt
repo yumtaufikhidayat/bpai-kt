@@ -10,6 +10,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.taufik.ceritaku.R
+import com.taufik.ceritaku.utils.Common.isValidEmailId
 
 class MaterialCustomEditText: AppCompatEditText, View.OnTouchListener {
 
@@ -81,7 +82,7 @@ class MaterialCustomEditText: AppCompatEditText, View.OnTouchListener {
 
                     override fun afterTextChanged(p0: Editable?) {
                         val email = p0.toString().trim()
-                        val isEmailValid = CommonExtension.isValidEmailId(email)
+                        val isEmailValid = isValidEmailId(email)
                         if (!isEmailValid) {
                             this@MaterialCustomEditText.error = "Email tidak valid"
                         }

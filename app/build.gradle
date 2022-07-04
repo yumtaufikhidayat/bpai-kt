@@ -79,4 +79,7 @@ dependencies {
 
 //    SnackBar
     implementation 'com.github.kishandonga:custom-snackbar:1.1'
+
+//    Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
 }

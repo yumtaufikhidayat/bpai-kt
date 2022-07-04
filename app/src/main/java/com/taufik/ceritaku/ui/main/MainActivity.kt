@@ -3,11 +3,9 @@ package com.taufik.ceritaku.ui.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView.OnEditorActionListener
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
@@ -15,6 +13,9 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityMainBinding
@@ -22,7 +23,6 @@ import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginResult
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
 import com.taufik.ceritaku.utils.ViewModelFactory
-import kotlin.math.log
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+
+    private lateinit var mainAdapter: MainAdapter
 
     private lateinit var mainLocalViewModel: MainLocalViewModel
     private lateinit var result: LoginResult
@@ -41,14 +43,35 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupActionBar()
+        setupView()
         setupViewModel()
         setupLoginLogout()
         searchStory()
-        showListOfStories()
     }
 
     private fun setupActionBar() {
         supportActionBar?.hide()
+    }
+
+    private fun setupView() {
+        mainAdapter = MainAdapter()
+        binding.apply {
+            with(rvStories) {
+                layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+                setHasFixedSize(true)
+                addOnScrollListener(object : RecyclerView.OnScrollListener(){
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        if (dy > 0 || dy < 0 && fabAddStory.isShown) fabAddStory.hide()
+                    }
+
+                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE) fabAddStory.show()
+                        super.onScrollStateChanged(recyclerView, newState)
+                    }
+                })
+                adapter = mainAdapter
+            }
+        }
     }
 
     private fun setupViewModel() {
@@ -68,11 +91,11 @@ class MainActivity : AppCompatActivity() {
                 viewModel.apply {
                     listStories(token)
                     lisOfStories.observe(this@MainActivity) {
-                        Log.i("mainActivity", "showListOfStories: $it")
+                        if (it.isNotEmpty()) {
+                            mainAdapter.submitList(it)
+                        }
                     }
                 }
-
-                Toast.makeText(this@MainActivity, "${getString(R.string.text_welcome)} ${user.name}", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -92,18 +115,6 @@ class MainActivity : AppCompatActivity() {
                     )
                 }
                 show()
-            }
-        }
-    }
-
-    private fun showListOfStories() = with(binding) {
-        if (this@MainActivity::result.isInitialized) {
-            viewModel.apply {
-                val loginResult = result.token
-                listStories(loginResult)
-                lisOfStories.observe(this@MainActivity) {
-                    Log.i("mainActivity", "showListOfStories: $it")
-                }
             }
         }
     }
