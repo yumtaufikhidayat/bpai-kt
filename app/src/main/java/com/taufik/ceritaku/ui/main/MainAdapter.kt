@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -65,7 +66,17 @@ class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDi
                 val intent = Intent(itemView.context, DetailActivity::class.java).apply {
                     putExtra(DetailActivity.EXTRA_DATA, data)
                 }
-                it.context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity).toBundle())
+
+                val optionsCompat: ActivityOptionsCompat =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        itemView.context as Activity,
+                        Pair(imgStory, "photo"),
+                        Pair(tvName, "name"),
+                        Pair(tvCreatedAt, "date"),
+                        Pair(tvDescription, "description"),
+
+                        )
+                it.context.startActivity(intent, optionsCompat.toBundle())
             }
         }
     }
