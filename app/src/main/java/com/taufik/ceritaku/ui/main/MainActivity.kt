@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBar()
         setupView()
         setupViewModel()
-        setupLoginLogout()
+        showData()
+        logout()
         searchStory()
     }
 
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupLoginLogout() = with(binding) {
+    private fun showData() = with(binding) {
         mainLocalViewModel.getUser().observe(this@MainActivity) { user ->
             if (user.isLogin) {
                 val name = result.name
@@ -98,7 +99,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
 
+    private fun logout() = with(binding) {
         imgExitApp.setOnClickListener {
             val dialog = MaterialAlertDialogBuilder(this@MainActivity)
             dialog.apply {
