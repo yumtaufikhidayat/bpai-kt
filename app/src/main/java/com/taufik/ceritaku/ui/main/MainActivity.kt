@@ -130,23 +130,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun searchStory() = with(binding) {
-        etSearch.setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                hideKeyboard()
-                return@OnEditorActionListener true
-            }
-            false
-        })
+        etSearch.apply {
+            setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    hideKeyboard()
+                    return@OnEditorActionListener true
+                }
+                false
+            })
 
-        etSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-            override fun afterTextChanged(p0: Editable?) {
-                mainAdapter.filter.filter(p0.toString())
-            }
-        })
+                override fun afterTextChanged(p0: Editable?) {
+                    mainAdapter.filter.filter(p0.toString())
+                }
+            })
+        }
     }
 
     private fun hideKeyboard() = with(binding) {
