@@ -33,7 +33,6 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setupToolbar() {
         supportActionBar?.apply {
-            title = listStoryItem.name
             setDisplayHomeAsUpEnabled(true)
             elevation = 0F
         }
