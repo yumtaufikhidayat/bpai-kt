@@ -2,6 +2,8 @@ package com.taufik.ceritaku.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,8 +13,17 @@ import com.taufik.ceritaku.utils.common.CommonConstant
 import com.taufik.ceritaku.utils.common.CommonExtension.formatDate
 import com.taufik.ceritaku.utils.common.CommonExtension.loadImage
 import com.taufik.ceritaku.utils.common.CommonExtension.parseDate
+import java.util.*
 
-class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDiffCallback) {
+class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDiffCallback), Filterable {
+
+    private var listStories = listOf<ListStoryItem>()
+
+    fun setData(list: List<ListStoryItem>) {
+        this.listStories = list
+        submitList(list)
+    }
+
     object MainDiffCallback: DiffUtil.ItemCallback<ListStoryItem>(){
         override fun areItemsTheSame(
             oldItem: ListStoryItem,
@@ -45,6 +56,32 @@ class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDi
             tvCreatedAt.text = dateFormat
 
             tvDescription.text = data.description
+        }
+    }
+
+    override fun getFilter(): Filter = searchFilter
+
+    private val searchFilter = object : Filter() {
+        override fun performFiltering(p0: CharSequence): FilterResults {
+            val filteredList = mutableListOf<ListStoryItem>()
+            if (p0.isEmpty()) {
+                filteredList.addAll(listStories)
+            } else {
+                val filterPattern = p0.toString().lowercase(Locale.ROOT).trim()
+                for (item in listStories) {
+                    if (item.name.lowercase().contains(filterPattern)) {
+                        filteredList.add(item)
+                    }
+                }
+            }
+
+            val result = FilterResults()
+            result.values = filteredList
+            return result
+        }
+
+        override fun publishResults(constraint: CharSequence?, filterResults: FilterResults?) {
+            submitList(filterResults?.values as MutableList<ListStoryItem>?)
         }
     }
 }

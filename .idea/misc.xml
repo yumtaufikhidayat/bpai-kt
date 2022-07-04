@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/bg_button_enabled.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_edit_text.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_rounded_button.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_rounded_corners.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_search.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_splash_screen.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_add_story.xml" value="0.1725" />
@@ -24,12 +25,13 @@
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/ic_search_alt.xml" value="0.1725" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16872964169381108" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.1109100341796875" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.16872964169381108" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16872964169381108" />
         <entry key="app/src/main/res/layout/item_list_stories.xml" value="0.13401894833443606" />
+        <entry key="app/src/main/res/layout/shimmer_item_list_stories.xml" value="0.10625" />
       </map>
     </option>
   </component>

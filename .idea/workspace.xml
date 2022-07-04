@@ -17,8 +17,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update item list stories.">
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Add shimmer to load list stories.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/main/MainAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/main/MainAdapter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +54,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="resourceFile" />
         <option value="Kotlin Object" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Data Class" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -98,6 +100,9 @@
       </RecentBranches>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="2" />
+  </component>
   <component name="ProjectId" id="2BJauGUbqyVFVMJIs8TGlDAY74g" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -126,14 +131,16 @@
     <property name="android-custom-view/Users/binar-taufik/Documents/Version Control/github/ceritaku-kt/bpai-kt/app/src/main/java/com/taufik/ceritaku/utils/view/MaterialCustomEditText.kt_SELECTED" value="MaterialCustomEditText" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui" />
@@ -464,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656931991856</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Add shimmer to load list stories.">
+      <created>1656933119077</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1656933119077</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -484,7 +498,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Update project." />
     <MESSAGE value="Update README.md." />
     <MESSAGE value="Rename class." />
     <MESSAGE value="Move SplashScreenActivity.kt class to a package." />
@@ -509,6 +522,7 @@
     <MESSAGE value="Update main activity." />
     <MESSAGE value="Add date parse and data format." />
     <MESSAGE value="Update item list stories." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update item list stories." />
+    <MESSAGE value="Add shimmer to load list stories." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add shimmer to load list stories." />
   </component>
 </project>

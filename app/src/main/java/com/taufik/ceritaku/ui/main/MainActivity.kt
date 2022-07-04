@@ -3,6 +3,8 @@ package com.taufik.ceritaku.ui.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -98,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                     listStories(token)
                     lisOfStories.observe(this@MainActivity) {
                         if (it.isNotEmpty()) {
-                            mainAdapter.submitList(it)
+                            mainAdapter.setData(it)
                         }
                     }
                 }
@@ -134,6 +136,16 @@ class MainActivity : AppCompatActivity() {
                 return@OnEditorActionListener true
             }
             false
+        })
+
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(p0: Editable?) {
+                mainAdapter.filter.filter(p0.toString())
+            }
         })
     }
 
