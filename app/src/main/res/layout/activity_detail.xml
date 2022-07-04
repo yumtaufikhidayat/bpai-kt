@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/value_0dp">
+
+        <ImageView
+            android:id="@+id/imgDetailStory"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/value_300dp"
+            android:contentDescription="@string/text_detail"
+            android:scaleType="fitXY"
+            tools:src="@tools:sample/avatars"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDetailDate"
+            android:layout_width="@dimen/value_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/value_64dp"
+            app:cardCornerRadius="@dimen/value_100dp"
+            android:elevation="@dimen/value_6dp"
+            app:layout_constraintVertical_bias="1.1"
+            app:layout_constraintTop_toTopOf="@id/imgDetailStory"
+            app:layout_constraintBottom_toBottomOf="@id/imgDetailStory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgDetailDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/text_date"
+                    android:padding="@dimen/value_16dp"
+                    android:src="@drawable/ic_calendar"
+                    android:background="@color/purple_700"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvUploadedOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/value_8dp"
+                    android:layout_marginStart="@dimen/value_8dp"
+                    android:text="@string/text_uploaded_on"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imgDetailDate"/>
+
+                <TextView
+                    android:id="@+id/tvDetailDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@tools:sample/date/ddmmyy"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/tvUploadedOn"
+                    app:layout_constraintStart_toStartOf="@id/tvUploadedOn" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvDetailName"
+            android:layout_width="@dimen/value_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/value_48dp"
+            android:layout_marginHorizontal="@dimen/value_16dp"
+            tools:text="@tools:sample/full_names"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintTop_toBottomOf="@id/cardDetailDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvDetailDescription"
+            android:layout_width="@dimen/value_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/value_16dp"
+            tools:text="@tools:sample/lorem/random"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvDetailName"
+            app:layout_constraintEnd_toEndOf="@id/tvDetailName"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

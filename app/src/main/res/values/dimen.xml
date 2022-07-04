@@ -27,6 +27,7 @@
     <dimen name="value_200dp">200dp</dimen>
     <dimen name="value_250dp">250dp</dimen>
     <dimen name="value_300dp">300dp</dimen>
+    <dimen name="value_350dp">350dp</dimen>
     <dimen name="value_400dp">400dp</dimen>
 
     // Text size

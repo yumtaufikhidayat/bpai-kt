@@ -27,6 +27,9 @@
     <string name="text_register_failed">Pendaftaran akunmu gagal. Silakan mencoba kembali.</string>
     <string name="text_story">Story</string>
     <string name="text_date">Tanggal</string>
+    <string name="text_detail">Detail</string>
+    <string name="text_uploaded_on">Diunggah</string>
+
 
     <string name="action_signup">Daftar</string>
     <string name="action_login">Masuk</string>

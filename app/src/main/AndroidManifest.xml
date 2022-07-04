@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Ceritaku"
         tools:targetApi="31">
         <activity
+            android:name=".ui.detail.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name="com.taufik.ceritaku.ui.auth.register.RegisterActivity"
             android:exported="false" />
         <activity

@@ -1,13 +1,17 @@
 package com.taufik.ceritaku.ui.main
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.taufik.ceritaku.databinding.ItemListStoriesBinding
+import com.taufik.ceritaku.ui.detail.DetailActivity
 import com.taufik.ceritaku.ui.main.data.ListStoryItem
 import com.taufik.ceritaku.utils.common.CommonConstant
 import com.taufik.ceritaku.utils.common.CommonExtension.formatDate
@@ -56,6 +60,13 @@ class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDi
             tvCreatedAt.text = dateFormat
 
             tvDescription.text = data.description
+
+            constraintListStories.setOnClickListener {
+                val intent = Intent(itemView.context, DetailActivity::class.java).apply {
+                    putExtra(DetailActivity.EXTRA_DATA, data)
+                }
+                it.context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity).toBundle())
+            }
         }
     }
 

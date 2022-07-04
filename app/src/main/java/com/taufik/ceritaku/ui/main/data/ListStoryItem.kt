@@ -1,7 +1,10 @@
 package com.taufik.ceritaku.ui.main.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ListStoryItem(
 
 	@SerializedName("photoUrl")
@@ -24,4 +27,4 @@ data class ListStoryItem(
 
 	@SerializedName("lat")
 	val lat: Double
-)
+): Parcelable
