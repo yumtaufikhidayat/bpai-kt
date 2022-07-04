@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/ic_add_story.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/ic_baseline_email.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_lock.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/ic_clear.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/ic_clear_grey.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.175" />
@@ -28,7 +29,7 @@
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.16872964169381108" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16872964169381108" />
-        <entry key="app/src/main/res/layout/item_list_stories.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_list_stories.xml" value="0.13401894833443606" />
       </map>
     </option>
   </component>

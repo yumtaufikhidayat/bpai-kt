@@ -44,7 +44,8 @@
             android:layout_width="@dimen/value_0dp"
             android:layout_height="wrap_content"
             tools:text="@tools:sample/date/ddmmyy"
-            android:textColor="@color/black"
+            android:textSize="@dimen/value_12sp"
+            android:textColor="@color/purple_700"
             app:layout_constraintTop_toBottomOf="@id/tvName"
             app:layout_constraintStart_toStartOf="@id/tvName"
             app:layout_constraintEnd_toEndOf="@id/tvName"/>
@@ -53,7 +54,7 @@
             android:id="@+id/tvDescription"
             android:layout_width="@dimen/value_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/value_8dp"
+            android:layout_marginTop="@dimen/value_12dp"
             android:layout_marginBottom="@dimen/value_16dp"
             tools:text="@tools:sample/lorem/random"
             android:maxLines="4"

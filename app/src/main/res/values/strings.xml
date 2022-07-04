@@ -26,6 +26,7 @@
     <string name="text_register_success">Pendaftaran akunmu berhasil. Yuk login dan berbagi pengalaman belajrmu.</string>
     <string name="text_register_failed">Pendaftaran akunmu gagal. Silakan mencoba kembali.</string>
     <string name="text_story">Story</string>
+    <string name="text_date">Tanggal</string>
 
     <string name="action_signup">Daftar</string>
     <string name="action_login">Masuk</string>
