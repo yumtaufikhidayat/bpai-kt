@@ -18,7 +18,11 @@ class MainViewModel: ViewModel() {
     private val _listOfStories = MutableLiveData<List<ListStoryItem>>()
     val lisOfStories: LiveData<List<ListStoryItem>> = _listOfStories
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun listStories(token: String) {
+        _isLoading.value = true
         apiConfig.getAllStories("Bearer $token").enqueue(object : Callback<AllStoriesResponse>{
             override fun onResponse(
                 call: Call<AllStoriesResponse>,
@@ -26,12 +30,14 @@ class MainViewModel: ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     _listOfStories.value = response.body()?.listStory
+                    _isLoading.value = false
                 } else {
                     Log.i(TAG, "onResponse: ")
                 }
             }
 
             override fun onFailure(call: Call<AllStoriesResponse>, t: Throwable) {
+                _isLoading.value = false
                 Log.e(TAG, "onFailure: ${t.printStackTrace()}")
             }
         })

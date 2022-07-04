@@ -3,6 +3,7 @@ package com.taufik.ceritaku.ui.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView.OnEditorActionListener
@@ -80,6 +81,10 @@ class MainActivity : AppCompatActivity() {
         mainLocalViewModel.getToken().observe(this@MainActivity) {
             result = it
         }
+
+        viewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
     }
 
     private fun showData() = with(binding) {
@@ -136,5 +141,15 @@ class MainActivity : AppCompatActivity() {
         etSearch.clearFocus()
         val imm: InputMethodManager = this@MainActivity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(etSearch.windowToken, 0)
+    }
+
+    private fun showLoading(isShow: Boolean) = with(binding) {
+        if (isShow) {
+            shimmerMain.visibility = View.VISIBLE
+            rvStories.visibility = View.GONE
+        } else {
+            shimmerMain.visibility = View.GONE
+            rvStories.visibility = View.VISIBLE
+        }
     }
 }

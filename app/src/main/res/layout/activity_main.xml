@@ -83,6 +83,7 @@
         android:layout_height="@dimen/value_0dp"
         android:layout_marginTop="@dimen/value_8dp"
         android:layout_marginBottom="@dimen/value_20dp"
+        android:visibility="gone"
         tools:listitem="@layout/item_list_stories"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
@@ -104,5 +105,17 @@
         app:backgroundTint="@color/purple_700"
         app:layout_constraintEnd_toEndOf="@id/tvName"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerMain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/value_0dp"
+        android:layout_marginBottom="@dimen/value_20dp"
+        app:layout_constraintTop_toBottomOf="@id/tvYourStory"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include layout="@layout/shimmer_item_list_stories"/>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

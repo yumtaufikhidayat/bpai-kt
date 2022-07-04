@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/value_8dp">
+
+    <View
+        android:id="@+id/viewShimmerOne"
+        android:layout_width="@dimen/value_0dp"
+        android:layout_height="@dimen/value_150dp"
+        android:layout_marginEnd="@dimen/value_4dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/viewShimmerTwo"/>
+
+    <View
+        android:id="@+id/viewShimmerTwo"
+        android:layout_width="@dimen/value_0dp"
+        android:layout_height="@dimen/value_150dp"
+        android:layout_marginStart="@dimen/value_4dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toTopOf="@id/viewShimmerOne"
+        app:layout_constraintStart_toEndOf="@id/viewShimmerOne"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/viewShimmerThree"
+        android:layout_width="@dimen/value_0dp"
+        android:layout_height="@dimen/value_150dp"
+        android:layout_marginTop="@dimen/value_8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerOne"
+        app:layout_constraintStart_toStartOf="@id/viewShimmerOne"
+        app:layout_constraintEnd_toEndOf="@id/viewShimmerOne"/>
+
+    <View
+        android:id="@+id/viewShimmerFour"
+        android:layout_width="@dimen/value_0dp"
+        android:layout_height="@dimen/value_150dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toTopOf="@id/viewShimmerThree"
+        app:layout_constraintStart_toStartOf="@id/viewShimmerTwo"
+        app:layout_constraintEnd_toEndOf="@id/viewShimmerTwo"/>
+
+    <View
+        android:id="@+id/viewShimmerFive"
+        android:layout_width="@dimen/value_0dp"
+        android:layout_height="@dimen/value_150dp"
+        android:layout_marginTop="@dimen/value_8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerThree"
+        app:layout_constraintStart_toStartOf="@id/viewShimmerOne"
+        app:layout_constraintEnd_toEndOf="@id/viewShimmerOne"/>
+
+    <View
+        android:id="@+id/viewShimmerSix"
+        android:layout_width="@dimen/value_0dp"
+        android:layout_height="@dimen/value_150dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toTopOf="@id/viewShimmerFive"
+        app:layout_constraintStart_toStartOf="@id/viewShimmerTwo"
+        app:layout_constraintEnd_toEndOf="@id/viewShimmerTwo"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
