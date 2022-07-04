@@ -1,7 +1,7 @@
 package com.taufik.ceritaku.api
 
 import com.taufik.ceritaku.BuildConfig
-import com.taufik.ceritaku.utils.CommonConstant
+import com.taufik.ceritaku.utils.common.CommonConstant
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

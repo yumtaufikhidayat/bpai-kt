@@ -10,11 +10,11 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
-import com.taufik.ceritaku.utils.CommonConstant.DURATION_ALT
-import com.taufik.ceritaku.utils.CommonConstant.DURATION
-import com.taufik.ceritaku.utils.CommonConstant.LEFT
-import com.taufik.ceritaku.utils.CommonConstant.RIGHT
-import com.taufik.ceritaku.utils.CommonConstant.VALUES
+import com.taufik.ceritaku.utils.common.CommonConstant.DURATION_ALT
+import com.taufik.ceritaku.utils.common.CommonConstant.DURATION
+import com.taufik.ceritaku.utils.common.CommonConstant.LEFT
+import com.taufik.ceritaku.utils.common.CommonConstant.RIGHT
+import com.taufik.ceritaku.utils.common.CommonConstant.VALUES
 import com.taufik.ceritaku.databinding.ActivityWelcomeBinding
 import com.taufik.ceritaku.ui.auth.login.LoginActivity
 import com.taufik.ceritaku.ui.auth.register.RegisterActivity

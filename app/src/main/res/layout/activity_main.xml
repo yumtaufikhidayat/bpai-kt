@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvWelcome" />
 
-    <com.taufik.ceritaku.utils.MaterialCustomEditText
+    <com.taufik.ceritaku.utils.view.MaterialCustomEditText
         android:id="@+id/etSearch"
         android:layout_width="@dimen/value_0dp"
         android:layout_height="wrap_content"

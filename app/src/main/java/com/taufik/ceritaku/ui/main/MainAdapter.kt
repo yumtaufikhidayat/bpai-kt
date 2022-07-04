@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.taufik.ceritaku.databinding.ItemListStoriesBinding
 import com.taufik.ceritaku.ui.main.data.ListStoryItem
-import com.taufik.ceritaku.utils.Common.loadImage
+import com.taufik.ceritaku.utils.common.CommonConstant
+import com.taufik.ceritaku.utils.common.CommonExtension.formatDate
+import com.taufik.ceritaku.utils.common.CommonExtension.loadImage
+import com.taufik.ceritaku.utils.common.CommonExtension.parseDate
 
 class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDiffCallback) {
     object MainDiffCallback: DiffUtil.ItemCallback<ListStoryItem>(){
@@ -35,7 +38,12 @@ class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDi
         fun onBind(data: ListStoryItem) = with(binding) {
             imgStory.loadImage(data.photoUrl)
             tvName.text = data.name
-            tvCreatedAt.text = data.createdAt
+
+            val date = data.createdAt
+            val dateParse = date.parseDate(CommonConstant.DATE_YYYY_MM_DD_FORMAT)
+            val dateFormat = dateParse.formatDate(CommonConstant.DATE_DD_MMMM_YYYY_FORMAT)
+            tvCreatedAt.text = dateFormat
+
             tvDescription.text = data.description
         }
     }

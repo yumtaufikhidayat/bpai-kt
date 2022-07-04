@@ -28,9 +28,9 @@ import com.taufik.ceritaku.databinding.ActivityRegisterBinding
 import com.taufik.ceritaku.model.User
 import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.LoginActivity
-import com.taufik.ceritaku.utils.CommonConstant
-import com.taufik.ceritaku.utils.CommonConstant.DURATION
-import com.taufik.ceritaku.utils.CommonConstant.VALUES
+import com.taufik.ceritaku.utils.common.CommonConstant
+import com.taufik.ceritaku.utils.common.CommonConstant.DURATION
+import com.taufik.ceritaku.utils.common.CommonConstant.VALUES
 import com.taufik.ceritaku.utils.ViewModelFactory
 
 class RegisterActivity : AppCompatActivity() {
@@ -90,21 +90,31 @@ class RegisterActivity : AppCompatActivity() {
             repeatMode = ObjectAnimator.REVERSE
         }.start()
 
-        val message = ObjectAnimator.ofFloat(tvMessage, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
+        val message = ObjectAnimator.ofFloat(tvMessage, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
 
-        val nameTitle = ObjectAnimator.ofFloat(tvName, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
-        val nameInput = ObjectAnimator.ofFloat(etName, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
+        val nameTitle = ObjectAnimator.ofFloat(tvName, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
+        val nameInput = ObjectAnimator.ofFloat(etName, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
 
-        val emailTitle = ObjectAnimator.ofFloat(tvEmail, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
-        val emailInput = ObjectAnimator.ofFloat(etEmail, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
+        val emailTitle = ObjectAnimator.ofFloat(tvEmail, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
+        val emailInput = ObjectAnimator.ofFloat(etEmail, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
 
-        val passwordTitle = ObjectAnimator.ofFloat(tvPassword, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
-        val passwordInput = ObjectAnimator.ofFloat(etPassword, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
+        val passwordTitle = ObjectAnimator.ofFloat(tvPassword, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
+        val passwordInput = ObjectAnimator.ofFloat(etPassword, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
 
-        val signupButton = ObjectAnimator.ofFloat(btnSignup, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
-        val showPassword = ObjectAnimator.ofFloat(cbShowPassword, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
+        val signupButton = ObjectAnimator.ofFloat(btnSignup, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
+        val showPassword = ObjectAnimator.ofFloat(cbShowPassword, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
 
-        val haveAccount = ObjectAnimator.ofFloat(tvHaveAccount, View.ALPHA, VALUES).setDuration(CommonConstant.DURATION_ALT)
+        val haveAccount = ObjectAnimator.ofFloat(tvHaveAccount, View.ALPHA, VALUES).setDuration(
+            CommonConstant.DURATION_ALT)
 
         AnimatorSet().apply {
             playSequentially(
