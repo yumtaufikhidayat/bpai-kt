@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private val viewModel: LoginViewModel by viewModels()
-    private lateinit var viewModelLogin: LoginLocalViewModel
+    private lateinit var loginLocalViewModel: LoginLocalViewModel
     private lateinit var user: User
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -68,8 +68,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModelLogin = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[LoginLocalViewModel::class.java]
-        viewModelLogin.getUser().observe(this) {
+        loginLocalViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[LoginLocalViewModel::class.java]
+        loginLocalViewModel.getUser().observe(this) {
             user = it
         }
 
@@ -92,7 +92,8 @@ class LoginActivity : AppCompatActivity() {
                     viewModel.apply {
                         login(email, password)
                         viewModel.loginResponse.observe(this@LoginActivity) {
-                            viewModelLogin.login()
+                            loginLocalViewModel.login()
+                            loginLocalViewModel.saveToken(it.loginResult.token)
                             startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
                             finish()
                         }

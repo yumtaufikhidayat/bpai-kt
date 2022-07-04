@@ -4,11 +4,12 @@ import com.taufik.ceritaku.ui.auth.login.data.LoginRequest
 import com.taufik.ceritaku.ui.auth.login.data.LoginResponse
 import com.taufik.ceritaku.ui.auth.register.data.RegisterRequest
 import com.taufik.ceritaku.ui.auth.register.data.RegisterResponse
+import com.taufik.ceritaku.ui.main.data.AllStoriesResponse
+import com.taufik.ceritaku.utils.CommonConstant.GET_ALL_STORIES
 import com.taufik.ceritaku.utils.CommonConstant.LOGIN
 import com.taufik.ceritaku.utils.CommonConstant.REGISTER
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -21,4 +22,9 @@ interface ApiService {
     fun login(
         @Body loginRequest: LoginRequest
     ): Call<LoginResponse>
+
+    @GET(GET_ALL_STORIES)
+    fun getAllStories(
+        @Header("Authorization") token: String
+    ): Call<AllStoriesResponse>
 }

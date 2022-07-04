@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.databinding.ActivitySplashScreenBinding
 import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.main.MainActivity
-import com.taufik.ceritaku.ui.main.MainViewModel
+import com.taufik.ceritaku.ui.main.MainLocalViewModel
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
 import com.taufik.ceritaku.utils.ViewModelFactory
 
@@ -30,7 +30,7 @@ class SplashScreenActivity : AppCompatActivity() {
         ActivitySplashScreenBinding.inflate(layoutInflater)
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var mainLocalViewModel: MainLocalViewModel
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,12 +70,12 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun setSplashscreen() {
-        viewModel = ViewModelProvider(this@SplashScreenActivity, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainViewModel::class.java]
+        mainLocalViewModel = ViewModelProvider(this@SplashScreenActivity, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
 
         val delayMillis = 6000L
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(delayMillis) {
-            viewModel.getUser().observe(this@SplashScreenActivity) { user ->
+            mainLocalViewModel.getUser().observe(this@SplashScreenActivity) { user ->
                 if (user.isLogin) {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())

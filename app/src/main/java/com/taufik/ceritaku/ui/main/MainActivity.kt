@@ -3,10 +3,12 @@ package com.taufik.ceritaku.ui.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.datastore.core.DataStore
@@ -17,8 +19,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityMainBinding
 import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.ui.auth.login.data.LoginResult
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
 import com.taufik.ceritaku.utils.ViewModelFactory
+import kotlin.math.log
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +31,9 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var mainLocalViewModel: MainLocalViewModel
+    private lateinit var result: LoginResult
+    private val viewModel: MainViewModel by viewModels()
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         setupViewModel()
         setupLoginLogout()
         searchStory()
+        showListOfStories()
     }
 
     private fun setupActionBar() {
@@ -45,13 +52,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel = ViewModelProvider(this@MainActivity, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainViewModel::class.java]
+        mainLocalViewModel = ViewModelProvider(this@MainActivity, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel.getToken().observe(this@MainActivity) {
+            result = it
+        }
     }
 
     private fun setupLoginLogout() = with(binding) {
-        viewModel.getUser().observe(this@MainActivity) { user ->
+        mainLocalViewModel.getUser().observe(this@MainActivity) { user ->
             if (user.isLogin) {
-                tvName.text = user.name
+                val name = result.name
+                val token = result.token
+                tvName.text = name
+
+                viewModel.apply {
+                    listStories(token)
+                    lisOfStories.observe(this@MainActivity) {
+                        Log.i("mainActivity", "showListOfStories: $it")
+                    }
+                }
+
                 Toast.makeText(this@MainActivity, "${getString(R.string.text_welcome)} ${user.name}", Toast.LENGTH_SHORT).show()
             }
         }
@@ -66,12 +86,24 @@ class MainActivity : AppCompatActivity() {
                     show().dismiss()
                 }
                 setPositiveButton(resources.getString(R.string.action_yes)) { _, _ ->
-                    viewModel.logout()
+                    mainLocalViewModel.logout()
                     startActivity(Intent(this@MainActivity, WelcomeActivity::class.java),
                         ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity).toBundle()
                     )
                 }
                 show()
+            }
+        }
+    }
+
+    private fun showListOfStories() = with(binding) {
+        if (this@MainActivity::result.isInitialized) {
+            viewModel.apply {
+                val loginResult = result.token
+                listStories(loginResult)
+                lisOfStories.observe(this@MainActivity) {
+                    Log.i("mainActivity", "showListOfStories: $it")
+                }
             }
         }
     }

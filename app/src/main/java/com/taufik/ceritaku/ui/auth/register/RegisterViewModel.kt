@@ -19,9 +19,6 @@ class RegisterViewModel : ViewModel() {
     private val _registerResponse = MutableLiveData<RegisterResponse>()
     val registerResponse: LiveData<RegisterResponse> = _registerResponse
 
-    private val _isRegisterStatus = MutableLiveData<Boolean>()
-    val isRegisterStatus: LiveData<Boolean> = _isRegisterStatus
-
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -37,7 +34,6 @@ class RegisterViewModel : ViewModel() {
                     response: Response<RegisterResponse>
                 ) {
                     _isLoading.value = false
-                    _isRegisterStatus.value = true
                     if (response.isSuccessful) {
                         _registerResponse.value = response.body()
                     }
@@ -45,7 +41,6 @@ class RegisterViewModel : ViewModel() {
 
                 override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
                     _isLoading.value = false
-                    _isRegisterStatus.value = false
                     Log.e(TAG, "onFailure: ${t.printStackTrace()}")
                 }
             })

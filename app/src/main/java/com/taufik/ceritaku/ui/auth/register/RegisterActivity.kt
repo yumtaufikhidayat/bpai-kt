@@ -21,7 +21,6 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
@@ -41,7 +40,8 @@ class RegisterActivity : AppCompatActivity() {
     }
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
     private val viewModel: RegisterViewModel by viewModels()
-    private lateinit var viewModelRegister: RegisterLocalViewModel
+    private lateinit var registerLocalViewModel: RegisterLocalViewModel
+    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,11 +67,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModelRegister = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[RegisterLocalViewModel::class.java]
+        registerLocalViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[RegisterLocalViewModel::class.java]
+        registerLocalViewModel.getUser().observe(this) {
+            user = it
+        }
+
         viewModel.apply {
-            isRegisterStatus.observe(this@RegisterActivity) {
-                showStatus(it)
-            }
 
             isLoading.observe(this@RegisterActivity) {
                 showLoading(it)
@@ -127,8 +128,17 @@ class RegisterActivity : AppCompatActivity() {
             viewModel.apply {
                 registerUser(name, email, password)
                 registerResponse.observe(this@RegisterActivity) {
-                    viewModelRegister.saveUser(User(name, email, password, false))
-                    showSnackBar(it.message)
+                    if (!it.error) {
+                        registerLocalViewModel.saveUser(User(name, email, password, false))
+                        startActivity(
+                            Intent(this@RegisterActivity, LoginActivity::class.java),
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(this@RegisterActivity)
+                                .toBundle()
+                        )
+                        finish()
+                    } else {
+                        showSnackBar(it.message)
+                    }
                 }
             }
         }
@@ -177,33 +187,6 @@ class RegisterActivity : AppCompatActivity() {
         } else {
             View.GONE
         }
-    }
-
-    private fun showStatus(isStatus: Boolean) {
-        val dialog = MaterialAlertDialogBuilder(this)
-        if (isStatus) {
-            dialog.apply {
-                setTitle(resources.getString(R.string.action_signup))
-                setMessage(resources.getString(R.string.text_register_success))
-                setCancelable(false)
-                setPositiveButton(resources.getString(R.string.action_login)) { _, _ ->
-                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java),
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(this@RegisterActivity).toBundle()
-                    )
-                    finish()
-                }
-            }
-        } else {
-            dialog.apply {
-                setTitle(resources.getString(R.string.action_signup))
-                setMessage(resources.getString(R.string.text_register_failed))
-                setCancelable(false)
-                setNegativeButton(resources.getString(R.string.action_close)) { _, _ ->
-                    show().dismiss()
-                }
-            }
-        }
-        dialog.show()
     }
 
     private fun showSnackBar(text: String) {
