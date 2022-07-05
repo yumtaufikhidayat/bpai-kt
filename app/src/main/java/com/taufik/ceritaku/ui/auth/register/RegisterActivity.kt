@@ -21,6 +21,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
@@ -28,10 +29,10 @@ import com.taufik.ceritaku.databinding.ActivityRegisterBinding
 import com.taufik.ceritaku.model.User
 import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.LoginActivity
+import com.taufik.ceritaku.utils.ViewModelFactory
 import com.taufik.ceritaku.utils.common.CommonConstant
 import com.taufik.ceritaku.utils.common.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.common.CommonConstant.VALUES
-import com.taufik.ceritaku.utils.ViewModelFactory
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -73,9 +74,14 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         viewModel.apply {
-
             isLoading.observe(this@RegisterActivity) {
                 showLoading(it)
+            }
+
+            responseMessage.observe(this@RegisterActivity) {
+                it.getContentIfNotHandled()?.let { text ->
+                    showSnackBar(text)
+                }
             }
         }
     }
@@ -138,17 +144,7 @@ class RegisterActivity : AppCompatActivity() {
             viewModel.apply {
                 registerUser(name, email, password)
                 registerResponse.observe(this@RegisterActivity) {
-                    if (!it.error) {
-                        registerLocalViewModel.saveUser(User(name, email, password, false))
-                        startActivity(
-                            Intent(this@RegisterActivity, LoginActivity::class.java),
-                            ActivityOptionsCompat.makeSceneTransitionAnimation(this@RegisterActivity)
-                                .toBundle()
-                        )
-                        finish()
-                    } else {
-                        showSnackBar(it.message)
-                    }
+                    showSuccessDialog(name, email, password)
                 }
             }
         }
@@ -196,6 +192,22 @@ class RegisterActivity : AppCompatActivity() {
             View.VISIBLE
         } else {
             View.GONE
+        }
+    }
+
+    private fun showSuccessDialog(name: String, email: String, password: String) {
+        MaterialAlertDialogBuilder(this).apply {
+            setTitle(resources.getString(R.string.action_signup))
+            setMessage(resources.getString(R.string.text_register_success))
+            setCancelable(false)
+            setPositiveButton(resources.getString(R.string.action_login)) { _, _ ->
+                registerLocalViewModel.saveUser(User(name, email, password, isLogin = false))
+                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java),
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(this@RegisterActivity).toBundle()
+                )
+                finish()
+            }
+            show()
         }
     }
 
