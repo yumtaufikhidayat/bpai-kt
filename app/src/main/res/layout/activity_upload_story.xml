@@ -159,9 +159,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:enabled="false"
-            android:textAllCaps="false"
             android:text="@string/action_upload"
-            app:cornerRadius="@dimen/value_100dp"/>
+            android:textAllCaps="false"
+            app:cornerRadius="@dimen/value_100dp"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
