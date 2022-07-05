@@ -24,6 +24,7 @@ import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityMainBinding
 import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginResult
+import com.taufik.ceritaku.ui.upload.UploadStoryActivity
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
 import com.taufik.ceritaku.utils.ViewModelFactory
 
@@ -104,7 +105,17 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
+
+                addStory()
             }
+        }
+    }
+
+    private fun addStory() = with(binding) {
+        fabAddStory.setOnClickListener {
+            startActivity(Intent(
+                this@MainActivity, UploadStoryActivity::class.java
+            ), ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity).toBundle())
         }
     }
 

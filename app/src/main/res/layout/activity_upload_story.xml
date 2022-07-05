@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.upload.UploadStoryActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/value_0dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/value_64dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgUploadedImage"
+            android:layout_width="@dimen/value_0dp"
+            android:layout_height="@dimen/value_200dp"
+            android:layout_margin="@dimen/value_16dp"
+            android:src="@drawable/ic_image"
+            app:strokeWidth="@dimen/value_2dp"
+            app:strokeColor="@color/purple_700"
+            app:shapeAppearanceOverlay="@style/RoundedShape.16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/value_16dp"
+            android:contentDescription="@string/action_camera"
+            android:text="@string/action_camera"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:srcCompat="@drawable/ic_camera"
+            app:backgroundTint="@color/purple_700"
+            app:tint="@color/white"
+            app:layout_constraintHorizontal_bias=".9"
+            app:layout_constraintTop_toBottomOf="@id/imgUploadedImage"
+            app:layout_constraintStart_toStartOf="@id/imgUploadedImage"
+            app:layout_constraintEnd_toEndOf="@id/guidelineVertical" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/action_gallery"
+            android:text="@string/action_camera"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            app:backgroundTint="@color/purple_700"
+            app:srcCompat="@drawable/ic_gallery"
+            app:tint="@color/white"
+            app:layout_constraintHorizontal_bias=".1"
+            app:layout_constraintTop_toTopOf="@id/fabCamera"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+            app:layout_constraintEnd_toEndOf="@id/imgUploadedImage"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDescription"
+            android:layout_width="@dimen/value_0dp"
+            android:layout_height="@dimen/value_350dp"
+            android:layout_marginTop="@dimen/value_24dp"
+            app:cardCornerRadius="@dimen/value_16dp"
+            android:elevation="@dimen/value_4dp"
+            app:layout_constraintTop_toBottomOf="@id/fabCamera"
+            app:layout_constraintStart_toStartOf="@id/imgUploadedImage"
+            app:layout_constraintEnd_toEndOf="@id/imgUploadedImage">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="@dimen/value_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/value_8dp"
+                    android:layout_marginHorizontal="@dimen/value_16dp"
+                    android:text="@string/text_description_upload_title"
+                    android:textColor="@color/purple_700"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="@dimen/value_0dp"
+                    android:layout_height="@dimen/value_0dp"
+                    android:layout_marginTop="@dimen/value_8dp"
+                    android:layout_marginBottom="@dimen/value_16dp"
+                    android:drawablePadding="@dimen/value_8dp"
+                    android:padding="@dimen/value_8dp"
+                    android:gravity="top|start"
+                    android:background="@drawable/bg_edit_text_upload"
+                    android:hint="@string/text_description_upload"
+                    android:textSize="@dimen/value_14sp"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:imeOptions="actionDone"
+                    android:autofillHints="description"
+                    app:layout_constraintTop_toBottomOf="@id/tvDescription"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvDescription"
+                    app:layout_constraintEnd_toEndOf="@id/tvDescription"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpload"
+            android:layout_width="@dimen/value_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/value_16dp"
+            android:enabled="false"
+            android:textAllCaps="false"
+            android:text="@string/action_upload"
+            app:cornerRadius="@dimen/value_100dp"
+            app:layout_constraintTop_toBottomOf="@id/cardDescription"
+            app:layout_constraintStart_toStartOf="@id/imgUploadedImage"
+            app:layout_constraintEnd_toEndOf="@id/imgUploadedImage"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

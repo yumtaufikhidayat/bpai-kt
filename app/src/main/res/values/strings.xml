@@ -29,8 +29,13 @@
     <string name="text_date">Tanggal</string>
     <string name="text_detail">Detail</string>
     <string name="text_uploaded_on">Diunggah</string>
+    <string name="text_uploaded_image">Foto unggahan</string>
+    <string name="text_description_upload_title">Deskripsi</string>
+    <string name="text_description_upload">Tuliskan cerita suksesmu disini.</string>
+    <string name="text_add_story">Tambah Cerita</string>
 
-
+    <string name="action_camera">Kamera</string>
+    <string name="action_gallery">Galeri</string>
     <string name="action_signup">Daftar</string>
     <string name="action_login">Masuk</string>
     <string name="action_show_password">Tampilkan password</string>
@@ -39,6 +44,6 @@
     <string name="action_no">Tidak</string>
     <string name="action_add_story">Tambah Cerita</string>
     <string name="action_close">Tutup</string>
-
+    <string name="action_upload">Unggah</string>
 
 </resources>
