@@ -11,6 +11,7 @@ object CommonExtension {
         Glide.with(this.context)
             .load(url)
             .placeholder(R.color.purple_500)
+            .error(R.color.purple_500)
             .into(this)
     }
 

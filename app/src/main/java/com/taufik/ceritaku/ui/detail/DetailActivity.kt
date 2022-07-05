@@ -3,6 +3,7 @@ package com.taufik.ceritaku.ui.detail
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityDetailBinding
 import com.taufik.ceritaku.ui.main.data.ListStoryItem
 import com.taufik.ceritaku.utils.common.CommonConstant
@@ -44,7 +45,7 @@ class DetailActivity : AppCompatActivity() {
         val date = listStoryItem.createdAt
         val dateParse = date.parseDate(CommonConstant.DATE_YYYY_MM_DD_FORMAT)
         val dateFormat = dateParse.formatDate(CommonConstant.DATE_DD_MMMM_YYYY_FORMAT)
-        tvDetailDate.text = dateFormat
+        tvDetailDate.text = String.format("%s %s", getString(R.string.text_uploaded_on), dateFormat)
 
         tvDetailName.text = listStoryItem.name
         tvDetailDescription.text = listStoryItem.description
