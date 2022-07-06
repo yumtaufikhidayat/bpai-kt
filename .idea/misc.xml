@@ -38,6 +38,7 @@
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16872964169381108" />
         <entry key="app/src/main/res/layout/item_list_stories.xml" value="0.13401894833443606" />
         <entry key="app/src/main/res/layout/shimmer_item_list_stories.xml" value="0.10625" />
+        <entry key="app/src/main/res/xml/file_paths.xml" value="0.1" />
       </map>
     </option>
   </component>

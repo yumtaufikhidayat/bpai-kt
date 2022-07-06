@@ -43,8 +43,8 @@
 
                 <ImageView
                     android:id="@+id/imgUploadedImage"
-                    android:layout_width="@dimen/value_100dp"
-                    android:layout_height="@dimen/value_100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/action_upload"
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
