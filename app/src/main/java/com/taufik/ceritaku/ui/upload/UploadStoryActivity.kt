@@ -32,11 +32,8 @@ import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginResult
 import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.ui.main.MainLocalViewModel
-import com.taufik.ceritaku.utils.ViewModelFactory
-import com.taufik.ceritaku.utils.createCustomTempFile
+import com.taufik.ceritaku.utils.*
 import com.taufik.ceritaku.utils.data.CommonResponse
-import com.taufik.ceritaku.utils.reduceFileImage
-import com.taufik.ceritaku.utils.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
