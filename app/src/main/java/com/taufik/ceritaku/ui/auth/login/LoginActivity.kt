@@ -27,12 +27,12 @@ import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginLocalViewModel
 import com.taufik.ceritaku.ui.auth.register.RegisterActivity
 import com.taufik.ceritaku.ui.main.MainActivity
+import com.taufik.ceritaku.utils.ViewModelFactory
 import com.taufik.ceritaku.utils.common.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.common.CommonConstant.DURATION_ALT
 import com.taufik.ceritaku.utils.common.CommonConstant.LEFT
 import com.taufik.ceritaku.utils.common.CommonConstant.RIGHT
 import com.taufik.ceritaku.utils.common.CommonConstant.VALUES
-import com.taufik.ceritaku.utils.ViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
 

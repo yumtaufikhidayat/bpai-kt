@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.taufik.ceritaku.api.ApiConfig
 import com.taufik.ceritaku.ui.auth.register.data.RegisterRequest
-import com.taufik.ceritaku.utils.data.CommonResponse
 import com.taufik.ceritaku.utils.Event
+import com.taufik.ceritaku.utils.data.CommonResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
