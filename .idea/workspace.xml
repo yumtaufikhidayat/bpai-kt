@@ -17,7 +17,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update upload story by adding progress bar and material dialog." />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Optimize imports.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -240,20 +242,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Rename class.">
-      <created>1656630319442</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1656630319442</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Move SplashScreenActivity.kt class to a package and add view binding.">
-      <created>1656630544696</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1656630544696</updated>
     </task>
     <task id="LOCAL-00007" summary="Move SplashScreenActivity.kt class to a package and add view binding.">
       <created>1656630587211</created>
@@ -584,7 +572,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657159706421</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Update upload story by adding progress bar and material dialog.">
+      <created>1657159944599</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1657159944599</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Optimize imports.">
+      <created>1657160072722</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1657160072722</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -614,7 +616,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Add login session to splash screen." />
     <MESSAGE value="Move some uis to a new package." />
     <MESSAGE value="Update some layouts and classes. Also update main activity class." />
     <MESSAGE value="Update main activity and custom edit text." />
@@ -639,6 +640,7 @@
     <MESSAGE value="Add intent camera and intent gallery." />
     <MESSAGE value="Add upload story." />
     <MESSAGE value="Update upload story by adding progress bar and material dialog." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update upload story by adding progress bar and material dialog." />
+    <MESSAGE value="Optimize imports." />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimize imports." />
   </component>
 </project>

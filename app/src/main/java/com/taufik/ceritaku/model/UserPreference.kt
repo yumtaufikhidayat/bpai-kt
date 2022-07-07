@@ -56,6 +56,9 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     suspend fun logout() {
         dataStore.edit { preferences ->
             preferences[SESSION_KEY] = false
+            preferences.remove(SESSION_KEY)
+            preferences.remove(TOKEN_KEY)
+            preferences.clear()
         }
     }
 
