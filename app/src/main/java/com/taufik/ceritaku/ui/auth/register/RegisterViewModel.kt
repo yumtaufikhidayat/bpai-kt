@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.taufik.ceritaku.api.ApiConfig
 import com.taufik.ceritaku.ui.auth.register.data.RegisterRequest
-import com.taufik.ceritaku.ui.auth.register.data.RegisterResponse
+import com.taufik.ceritaku.utils.data.CommonResponse
 import com.taufik.ceritaku.utils.Event
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,8 +18,8 @@ class RegisterViewModel : ViewModel() {
 
     private val apiConfig = ApiConfig.apiInstance
 
-    private val _registerResponse = MutableLiveData<RegisterResponse>()
-    val registerResponse: LiveData<RegisterResponse> = _registerResponse
+    private val _registerResponse = MutableLiveData<CommonResponse>()
+    val registerResponse: LiveData<CommonResponse> = _registerResponse
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -33,10 +33,10 @@ class RegisterViewModel : ViewModel() {
 
         _isLoading.value = true
         apiConfig.register(registerUser)
-            .enqueue(object : Callback<RegisterResponse>{
+            .enqueue(object : Callback<CommonResponse>{
                 override fun onResponse(
-                    call: Call<RegisterResponse>,
-                    response: Response<RegisterResponse>
+                    call: Call<CommonResponse>,
+                    response: Response<CommonResponse>
                 ) {
                     _isLoading.value = false
                     if (response.isSuccessful) {
@@ -48,7 +48,7 @@ class RegisterViewModel : ViewModel() {
                         try {
                             val responseBody = Gson().fromJson(
                                 response.errorBody()?.charStream(),
-                                RegisterResponse::class.java
+                                CommonResponse::class.java
                             )
                             _responseMessage.value = Event(responseBody.message)
                         } catch (e: Exception) {
@@ -57,7 +57,7 @@ class RegisterViewModel : ViewModel() {
                     }
                 }
 
-                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                override fun onFailure(call: Call<CommonResponse>, t: Throwable) {
                     _isLoading.value = false
                     Log.e(TAG, "onFailure: ${t.printStackTrace()}")
                 }

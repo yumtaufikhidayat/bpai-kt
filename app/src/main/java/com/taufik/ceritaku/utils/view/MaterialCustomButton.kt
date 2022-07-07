@@ -39,6 +39,7 @@ class MaterialCustomButton: MaterialButton {
         text = when (id) {
             R.id.btnLogin -> this.context.getString(R.string.action_login)
             R.id.btnSignup -> this.context.getString(R.string.action_signup)
+            R.id.btnUpload -> this.context.getString(R.string.action_upload)
             else -> ""
         }
     }

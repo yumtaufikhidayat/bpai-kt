@@ -33,6 +33,7 @@
     <string name="text_description_upload_title">Deskripsi</string>
     <string name="text_description_upload">Tuliskan cerita suksesmu disini.</string>
     <string name="text_add_story">Tambah Cerita</string>
+    <string name="text_insert_image_first">Silakan masukkan berkas gambar terlebih dahulu</string>
 
     <string name="action_camera">Kamera</string>
     <string name="action_gallery">Galeri</string>

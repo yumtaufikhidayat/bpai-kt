@@ -325,7 +325,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialiconsoutlined/image/outline_image_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialiconsoutlined/description/outline_description_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -336,7 +336,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_image" />
+                            <entry key="outputName" value="ic_description" />
                           </map>
                         </option>
                       </PersistentState>

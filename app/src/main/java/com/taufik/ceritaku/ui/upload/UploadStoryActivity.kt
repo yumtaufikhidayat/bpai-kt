@@ -1,5 +1,6 @@
 package com.taufik.ceritaku.ui.upload
 
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
 import android.graphics.BitmapFactory
@@ -7,17 +8,38 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityUploadStoryBinding
+import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.ui.auth.login.data.LoginResult
+import com.taufik.ceritaku.ui.main.MainActivity
+import com.taufik.ceritaku.ui.main.MainLocalViewModel
+import com.taufik.ceritaku.utils.ViewModelFactory
 import com.taufik.ceritaku.utils.createCustomTempFile
+import com.taufik.ceritaku.utils.reduceFileImage
 import com.taufik.ceritaku.utils.uriToFile
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
 class UploadStoryActivity : AppCompatActivity() {
@@ -26,16 +48,21 @@ class UploadStoryActivity : AppCompatActivity() {
         ActivityUploadStoryBinding.inflate(layoutInflater)
     }
 
+    private lateinit var mainLocalViewModel: MainLocalViewModel
     private lateinit var currentPhotoPath: String
+    private lateinit var result: LoginResult
+
     private var getFile: File? = null
+    private val viewModel: UploadStoryViewModel by viewModels()
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         setupToolbar()
+        initObserver()
         setAction()
-        checkUploadResource()
     }
 
     private fun setupToolbar() {
@@ -46,9 +73,31 @@ class UploadStoryActivity : AppCompatActivity() {
         }
     }
 
+    private fun initObserver() {
+        mainLocalViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel.getToken().observe(this) {
+            result = it
+        }
+
+        viewModel.apply {
+            isLoading.observe(this@UploadStoryActivity) {
+                showLoading(it)
+            }
+
+            responseMessage.observe(this@UploadStoryActivity) {
+                it.getContentIfNotHandled()?.let { text ->
+                    showSnackBar(text)
+                }
+            }
+        }
+    }
+
     private fun setAction() = with(binding) {
         fabCamera.setOnClickListener { startTakePhoto() }
         fabGallery.setOnClickListener { openGallery() }
+        btnUpload.setOnClickListener { uploadImageToServer() }
+        etDescription.addTextChangedListener(textWatcher())
+        clearDescription()
     }
 
     private fun startTakePhoto() {
@@ -76,6 +125,65 @@ class UploadStoryActivity : AppCompatActivity() {
 
         val chooser = Intent.createChooser(intent, "Pilih gambar")
         launchIntentGallery.launch(chooser)
+    }
+
+    private fun uploadImageToServer() = with(binding) {
+        if (getFile != null) {
+            val file = reduceFileImage(getFile as File)
+            val etDescription = etDescription.text.toString()
+            val description = etDescription.toRequestBody("text/plain".toMediaType())
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "photo",
+                file.name,
+                requestImageFile
+            )
+
+            mainLocalViewModel.getUser().observe(this@UploadStoryActivity) { user ->
+                if (user.isLogin) {
+                    val token = result.token
+                    viewModel.apply {
+                        uploadImage(imageMultipart, description, token)
+                        uploadImage.observe(this@UploadStoryActivity) { response ->
+                            showSnackBar(response.message)
+                        }
+                        startActivity(Intent(this@UploadStoryActivity, MainActivity::class.java),
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(this@UploadStoryActivity).toBundle())
+                    }
+                }
+            }
+        } else {
+            showSnackBar(getString(R.string.text_insert_image_first))
+        }
+    }
+
+    private fun textWatcher(): TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            checkUploadResource()
+            showClear()
+        }
+
+        override fun afterTextChanged(p0: Editable?) {}
+    }
+
+    private fun showClear() = with(binding) {
+        imgClear.visibility = if (tvDescription.text.toString().isNotEmpty()) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+
+    private fun clearDescription() = with(binding) {
+        imgClear.setOnClickListener {
+            if (imgClear.visibility == View.VISIBLE) {
+                etDescription.text.clear()
+                imgClear.visibility = View.GONE
+                btnUpload.isEnabled = false
+            }
+        }
     }
 
     private val launchIntentCamera = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -106,9 +214,8 @@ class UploadStoryActivity : AppCompatActivity() {
     }
 
     private fun checkUploadResource() = with(binding) {
-        btnUpload.isEnabled = (imgUploadedImage.resources != null
-                || imgUploadedImage.drawable != null)
-                && tvDescription.text.isNotEmpty()
+        btnUpload.isEnabled = (getFile != null && tvDescription.text.toString().isNotEmpty())
+        Log.i("Upload", "checkUploadResource: ")
     }
 
     private fun showSnackBar(text: String) {
@@ -119,6 +226,14 @@ class UploadStoryActivity : AppCompatActivity() {
             cornerRadius(18F)
             duration(Snackbar.LENGTH_LONG)
             message(text)
+        }
+    }
+
+    private fun showLoading(isShow: Boolean) = with(binding) {
+        progressLogin.visibility = if (isShow) {
+            View.VISIBLE
+        } else {
+            View.GONE
         }
     }
 

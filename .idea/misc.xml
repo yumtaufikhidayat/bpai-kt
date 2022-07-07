@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/ic_clear.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/ic_clear_grey.xml" value="0.1725" />
+        <entry key="app/src/main/res/drawable/ic_description.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/ic_image.xml" value="0.1545" />
         <entry key="app/src/main/res/drawable/ic_outline_clear.xml" value="0.1" />
@@ -34,7 +35,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.1109100341796875" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.16872964169381108" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_upload_story.xml" value="0.17039473684210527" />
+        <entry key="app/src/main/res/layout/activity_upload_story.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16872964169381108" />
         <entry key="app/src/main/res/layout/item_list_stories.xml" value="0.13401894833443606" />
         <entry key="app/src/main/res/layout/shimmer_item_list_stories.xml" value="0.10625" />
