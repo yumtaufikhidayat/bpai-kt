@@ -17,9 +17,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Optimize imports.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove session and token key in preference." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -242,13 +240,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Move SplashScreenActivity.kt class to a package and add view binding.">
-      <created>1656630587211</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1656630587211</updated>
     </task>
     <task id="LOCAL-00008" summary="Add splashscreen.">
       <created>1656642246706</created>
@@ -586,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657160072722</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Remove session and token key in preference.">
+      <created>1657160756009</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1657160756009</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -616,7 +614,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Move some uis to a new package." />
     <MESSAGE value="Update some layouts and classes. Also update main activity class." />
     <MESSAGE value="Update main activity and custom edit text." />
     <MESSAGE value="Update register with API." />
@@ -641,6 +638,18 @@
     <MESSAGE value="Add upload story." />
     <MESSAGE value="Update upload story by adding progress bar and material dialog." />
     <MESSAGE value="Optimize imports." />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimize imports." />
+    <MESSAGE value="Remove session and token key in preference." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove session and token key in preference." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/main/MainActivity.kt</url>
+          <line>133</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
