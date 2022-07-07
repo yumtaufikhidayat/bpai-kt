@@ -191,7 +191,7 @@
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <ProgressBar
-        android:id="@+id/progressLogin"
+        android:id="@+id/progressbarUpload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"

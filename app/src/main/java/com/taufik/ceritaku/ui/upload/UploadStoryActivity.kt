@@ -23,6 +23,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
@@ -33,6 +34,7 @@ import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.ui.main.MainLocalViewModel
 import com.taufik.ceritaku.utils.ViewModelFactory
 import com.taufik.ceritaku.utils.createCustomTempFile
+import com.taufik.ceritaku.utils.data.CommonResponse
 import com.taufik.ceritaku.utils.reduceFileImage
 import com.taufik.ceritaku.utils.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
@@ -145,15 +147,26 @@ class UploadStoryActivity : AppCompatActivity() {
                     viewModel.apply {
                         uploadImage(imageMultipart, description, token)
                         uploadImage.observe(this@UploadStoryActivity) { response ->
-                            showSnackBar(response.message)
+                            showSuccessDialog(response)
                         }
-                        startActivity(Intent(this@UploadStoryActivity, MainActivity::class.java),
-                            ActivityOptionsCompat.makeSceneTransitionAnimation(this@UploadStoryActivity).toBundle())
+
                     }
                 }
             }
-        } else {
-            showSnackBar(getString(R.string.text_insert_image_first))
+        }
+    }
+
+    private fun showSuccessDialog(response: CommonResponse) {
+        MaterialAlertDialogBuilder(this).apply {
+            setTitle(resources.getString(R.string.action_upload))
+            setMessage(response.message)
+            setCancelable(false)
+            setPositiveButton(resources.getString(R.string.action_close)) { _, _ ->
+                startActivity(Intent(this@UploadStoryActivity, MainActivity::class.java),
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(this@UploadStoryActivity).toBundle())
+                finish()
+            }
+            show()
         }
     }
 
@@ -208,7 +221,7 @@ class UploadStoryActivity : AppCompatActivity() {
                 getFile = myFile
                 imgUploadedImage.setImageURI(selectedImage)
             } else {
-                it.toString()
+                showSnackBar(it.toString())
             }
         }
     }
@@ -230,7 +243,7 @@ class UploadStoryActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isShow: Boolean) = with(binding) {
-        progressLogin.visibility = if (isShow) {
+        progressbarUpload.visibility = if (isShow) {
             View.VISIBLE
         } else {
             View.GONE
