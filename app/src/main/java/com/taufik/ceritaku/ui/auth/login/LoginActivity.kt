@@ -4,6 +4,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -16,10 +17,13 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
+import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityLoginBinding
 import com.taufik.ceritaku.model.User
@@ -79,6 +83,12 @@ class LoginActivity : AppCompatActivity() {
             isLoading.observe(this@LoginActivity) {
                 showLoading(it)
             }
+
+            responseMessage.observe(this@LoginActivity) {
+                it.getContentIfNotHandled()?.let { text->
+                    showSnackBar(text)
+                }
+            }
         }
     }
 
@@ -87,21 +97,15 @@ class LoginActivity : AppCompatActivity() {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
-            when {
-                email != user.email -> etEmail.error = "Email tidak sesuai"
-                password != user.password -> etPassword.error = "Password tidak sesuai"
-                else -> {
-                    viewModel.apply {
-                        login(email, password)
-                        viewModel.loginResponse.observe(this@LoginActivity) {
-                            loginLocalViewModel.login()
-                            loginLocalViewModel.saveToken(it.loginResult.token)
-                            startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
-                            finish()
+            viewModel.apply {
+                loginUser(email, password)
+                viewModel.loginResponse.observe(this@LoginActivity) {
+                    loginLocalViewModel.login()
+                    loginLocalViewModel.saveToken(it.loginResult.token)
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
+                    finish()
 
-                            Toast.makeText(this@LoginActivity, "${getString(R.string.text_welcome)} ${user.name}", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                    Toast.makeText(this@LoginActivity, "${getString(R.string.text_welcome)} ${user.name}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -177,6 +181,17 @@ class LoginActivity : AppCompatActivity() {
             View.VISIBLE
         } else {
             View.GONE
+        }
+    }
+
+    private fun showSnackBar(text: String) {
+        CustomSnackbar(this).show {
+            textColor(ContextCompat.getColor(this@LoginActivity, R.color.white))
+            textTypeface(Typeface.DEFAULT_BOLD)
+            backgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.purple_500))
+            cornerRadius(18F)
+            duration(Snackbar.LENGTH_LONG)
+            message(text)
         }
     }
 }
