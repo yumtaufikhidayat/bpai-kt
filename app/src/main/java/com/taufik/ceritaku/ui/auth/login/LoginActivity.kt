@@ -101,7 +101,6 @@ class LoginActivity : AppCompatActivity() {
                 loginUser(email, password)
                 viewModel.loginResponse.observe(this@LoginActivity) {
                     loginLocalViewModel.login(it.loginResult)
-//                    loginLocalViewModel.saveUser(it.loginResult)
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
                     finish()
 
