@@ -11,6 +11,5 @@ import kotlinx.coroutines.launch
 class LoginLocalViewModel(private val pref: UserPreference): ViewModel() {
     fun getUser(): LiveData<User> = pref.getUser().asLiveData()
     fun login() = viewModelScope.launch { pref.login() }
-//    fun saveToken(token: String) = viewModelScope.launch { pref.saveToken(token) }
     fun saveUser(loginResult: LoginResult) = viewModelScope.launch { pref.saveUser(loginResult) }
 }
