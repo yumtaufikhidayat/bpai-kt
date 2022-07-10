@@ -17,7 +17,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove saved email and password while login.">
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update string.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -242,20 +242,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Update custom edit text.">
-      <created>1656719300456</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1656719300456</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Update custom edit text.">
-      <created>1656719515948</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1656719515948</updated>
     </task>
     <task id="LOCAL-00017" summary="Update custom edit text.">
       <created>1656719520898</created>
@@ -586,7 +572,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657254032202</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Remove saved email and password while login.">
+      <created>1657254646594</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1657254646594</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Update string.">
+      <created>1657254702754</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1657254702754</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -616,7 +616,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Update register with API." />
     <MESSAGE value="Update login with API." />
     <MESSAGE value="Update main activity and other stuffs." />
     <MESSAGE value="Add adapter and enable show hide fab." />
@@ -641,6 +640,7 @@
     <MESSAGE value="Update remove session and token key in preference." />
     <MESSAGE value="Update project." />
     <MESSAGE value="Remove saved email and password while login." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove saved email and password while login." />
+    <MESSAGE value="Update string." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update string." />
   </component>
 </project>
