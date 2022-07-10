@@ -144,7 +144,7 @@ class RegisterActivity : AppCompatActivity() {
             viewModel.apply {
                 registerUser(name, email, password)
                 registerResponse.observe(this@RegisterActivity) {
-                    showSuccessDialog(name, email, password)
+                    showSuccessDialog()
                 }
             }
         }
@@ -195,13 +195,12 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun showSuccessDialog(name: String, email: String, password: String) {
+    private fun showSuccessDialog() {
         MaterialAlertDialogBuilder(this).apply {
             setTitle(resources.getString(R.string.action_signup))
             setMessage(resources.getString(R.string.text_register_success))
             setCancelable(false)
             setPositiveButton(resources.getString(R.string.action_login)) { _, _ ->
-                registerLocalViewModel.saveUser(User(name, email, password, isLogin = false))
                 startActivity(Intent(this@RegisterActivity, LoginActivity::class.java),
                     ActivityOptionsCompat.makeSceneTransitionAnimation(this@RegisterActivity).toBundle()
                 )

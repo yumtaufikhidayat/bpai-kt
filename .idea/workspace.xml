@@ -17,8 +17,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update string.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update project.">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/model/UserPreference.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/model/UserPreference.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/login/data/LoginLocalViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/login/data/LoginLocalViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/register/RegisterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/register/RegisterActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/register/RegisterLocalViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/register/RegisterLocalViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,13 +246,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Update custom edit text.">
-      <created>1656719520898</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1656719520898</updated>
     </task>
     <task id="LOCAL-00018" summary="Add sign up, update login, and update custom edit text.">
       <created>1656729889393</created>
@@ -586,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657254702754</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Update project.">
+      <created>1657432041368</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1657432041368</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -638,9 +642,9 @@
     <MESSAGE value="Optimize imports." />
     <MESSAGE value="Remove session and token key in preference." />
     <MESSAGE value="Update remove session and token key in preference." />
-    <MESSAGE value="Update project." />
     <MESSAGE value="Remove saved email and password while login." />
     <MESSAGE value="Update string." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update string." />
+    <MESSAGE value="Update project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
   </component>
 </project>
