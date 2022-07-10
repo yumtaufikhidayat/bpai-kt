@@ -17,7 +17,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove save user data while register." />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update project.">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/model/UserPreference.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/model/UserPreference.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/login/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/login/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/login/data/LoginLocalViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/login/data/LoginLocalViewModel.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,11 +85,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="submission-1" />
-                    <option name="lastUsedInstant" value="1657254058" />
+                    <option name="lastUsedInstant" value="1657443837" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1657254025" />
+                    <option name="lastUsedInstant" value="1657443795" />
                   </RecentBranch>
                 </list>
               </option>
@@ -240,27 +244,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Update some layouts and classes. Also update main activity class.">
-      <created>1656805328769</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1656805328769</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Update main activity and custom edit text.">
-      <created>1656811920929</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1656811920929</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Update main activity and custom edit text.">
-      <created>1656811924466</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1656811924466</updated>
     </task>
     <task id="LOCAL-00025" summary="Update register with API.">
       <created>1656844941658</created>
@@ -584,7 +567,28 @@
       <option name="project" value="LOCAL" />
       <updated>1657443575574</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Remove save user data while register.">
+      <created>1657443768487</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1657443768487</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Remove save user data while register.">
+      <created>1657443771944</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1657443771944</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Update project.">
+      <created>1657443819410</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1657443819410</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -637,19 +641,8 @@
     <MESSAGE value="Update remove session and token key in preference." />
     <MESSAGE value="Remove saved email and password while login." />
     <MESSAGE value="Update string." />
-    <MESSAGE value="Update project." />
     <MESSAGE value="Remove save user data while register." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove save user data while register." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/login/LoginActivity.kt</url>
-          <line>105</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Update project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
   </component>
 </project>

@@ -32,15 +32,10 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
-    suspend fun saveUser(loginResult: LoginResult) {
+    suspend fun login(loginResult: LoginResult) {
         dataStore.edit { preferences ->
             preferences[NAME_KEY] = loginResult.name
             preferences[TOKEN_KEY] = loginResult.token
-        }
-    }
-
-    suspend fun login() {
-        dataStore.edit { preferences ->
             preferences[SESSION_KEY] = true
         }
     }

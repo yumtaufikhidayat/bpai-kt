@@ -100,12 +100,12 @@ class LoginActivity : AppCompatActivity() {
             viewModel.apply {
                 loginUser(email, password)
                 viewModel.loginResponse.observe(this@LoginActivity) {
-                    loginLocalViewModel.login()
-                    loginLocalViewModel.saveUser(it.loginResult)
+                    loginLocalViewModel.login(it.loginResult)
+//                    loginLocalViewModel.saveUser(it.loginResult)
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
                     finish()
 
-                    Toast.makeText(this@LoginActivity, "${getString(R.string.text_welcome)} ${user.name}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "${getString(R.string.text_welcome)} ${it.loginResult.name}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
