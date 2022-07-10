@@ -21,11 +21,11 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
-    suspend fun saveToken(token: String) {
-        dataStore.edit { preferences ->
-            preferences[TOKEN_KEY] = token
-        }
-    }
+//    suspend fun saveToken(token: String) {
+//        dataStore.edit { preferences ->
+//            preferences[TOKEN_KEY] = token
+//        }
+//    }
 
     fun getUser(): Flow<User> {
         return dataStore.data.map { preferences ->
@@ -38,9 +38,15 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
+    suspend fun saveUser(loginResult: LoginResult) {
+        dataStore.edit { preferences ->
+            preferences[NAME_KEY] = loginResult.name
+            preferences[TOKEN_KEY] = loginResult.token
+        }
+    }
+
     suspend fun login() {
         dataStore.edit { preferences ->
-            preferences[EMAIL_KEY]
             preferences[SESSION_KEY] = true
         }
     }
@@ -48,6 +54,9 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     suspend fun logout() {
         dataStore.edit { preferences ->
             preferences[SESSION_KEY] = false
+            preferences.remove(NAME_KEY)
+            preferences.remove(EMAIL_KEY)
+            preferences.remove(PASSWORD_KEY)
             preferences.remove(SESSION_KEY)
             preferences.remove(TOKEN_KEY)
         }
