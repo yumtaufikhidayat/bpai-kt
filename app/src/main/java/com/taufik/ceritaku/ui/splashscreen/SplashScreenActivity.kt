@@ -75,7 +75,7 @@ class SplashScreenActivity : AppCompatActivity() {
         val delayMillis = 6000L
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(delayMillis) {
-            mainLocalViewModel.getToken().observe(this@SplashScreenActivity) { user ->
+            mainLocalViewModel.getUser().observe(this@SplashScreenActivity) { user ->
                 if (user.token.isNotEmpty()) {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())

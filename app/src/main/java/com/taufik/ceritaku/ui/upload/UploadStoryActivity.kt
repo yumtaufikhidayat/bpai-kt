@@ -75,7 +75,7 @@ class UploadStoryActivity : AppCompatActivity() {
 
     private fun initObserver() {
         mainLocalViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
-        mainLocalViewModel.getToken().observe(this) {
+        mainLocalViewModel.getUser().observe(this) {
             result = it
         }
 

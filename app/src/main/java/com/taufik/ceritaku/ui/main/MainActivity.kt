@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         mainLocalViewModel = ViewModelProvider(this@MainActivity, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
-        mainLocalViewModel.getToken().observe(this@MainActivity) {
+        mainLocalViewModel.getUser().observe(this@MainActivity) {
             result = it
         }
 
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showData() = with(binding) {
-        mainLocalViewModel.getToken().observe(this@MainActivity) { user ->
+        mainLocalViewModel.getUser().observe(this@MainActivity) { user ->
             if (user.token.isNotEmpty()) {
                 val name = result.name
                 val token = result.token

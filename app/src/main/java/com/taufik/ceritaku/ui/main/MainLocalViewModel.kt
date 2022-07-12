@@ -10,5 +10,5 @@ import kotlinx.coroutines.launch
 
 class MainLocalViewModel(private val pref: UserPreference): ViewModel() {
     fun logout() = viewModelScope.launch { pref.logout() }
-    fun getToken(): LiveData<LoginResult> = pref.getUser().asLiveData()
+    fun getUser(): LiveData<LoginResult> = pref.getUser().asLiveData()
 }
