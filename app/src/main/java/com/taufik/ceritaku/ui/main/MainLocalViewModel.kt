@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.utils.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginResult
 import kotlinx.coroutines.launch
 

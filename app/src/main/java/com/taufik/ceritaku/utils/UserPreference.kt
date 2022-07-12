@@ -1,4 +1,4 @@
-package com.taufik.ceritaku.model
+package com.taufik.ceritaku.utils
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

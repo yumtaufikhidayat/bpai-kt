@@ -2,7 +2,6 @@ package com.taufik.ceritaku.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginLocalViewModel
 import com.taufik.ceritaku.ui.main.MainLocalViewModel
 

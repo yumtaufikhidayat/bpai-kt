@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityMainBinding
-import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.utils.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginResult
 import com.taufik.ceritaku.ui.upload.UploadStoryActivity
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity

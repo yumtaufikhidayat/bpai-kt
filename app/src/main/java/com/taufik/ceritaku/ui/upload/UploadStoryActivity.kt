@@ -29,7 +29,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityUploadStoryBinding
-import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.utils.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginResult
 import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.ui.main.MainLocalViewModel

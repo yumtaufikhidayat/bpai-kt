@@ -18,7 +18,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.databinding.ActivitySplashScreenBinding
-import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.utils.UserPreference
 import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.ui.main.MainLocalViewModel
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
@@ -70,7 +70,8 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun setSplashscreen() {
-        mainLocalViewModel = ViewModelProvider(this@SplashScreenActivity, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel = ViewModelProvider(this@SplashScreenActivity, ViewModelFactory(
+            UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
 
         val delayMillis = 6000L
         val handler = Handler(Looper.getMainLooper())

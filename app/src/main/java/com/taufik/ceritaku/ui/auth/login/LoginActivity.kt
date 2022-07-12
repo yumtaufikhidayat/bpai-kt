@@ -26,7 +26,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityLoginBinding
-import com.taufik.ceritaku.model.UserPreference
+import com.taufik.ceritaku.utils.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginLocalViewModel
 import com.taufik.ceritaku.ui.auth.register.RegisterActivity
 import com.taufik.ceritaku.ui.main.MainActivity
