@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.view.isVisible
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -240,11 +241,7 @@ class UploadStoryActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isShow: Boolean) = with(binding) {
-        progressbarUpload.visibility = if (isShow) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
+        progressbarUpload.isVisible = isShow
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

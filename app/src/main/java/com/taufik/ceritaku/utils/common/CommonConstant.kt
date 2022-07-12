@@ -1,5 +1,7 @@
 package com.taufik.ceritaku.utils.common
 
+import com.taufik.ceritaku.BuildConfig
+
 object CommonConstant {
     const val LEFT = -30f
     const val RIGHT = 30f
@@ -10,7 +12,7 @@ object CommonConstant {
     const val DATE_DD_MMMM_YYYY_FORMAT = "dd MMMM yyyy"
     const val DATE_YYYY_MM_DD_FORMAT = "yyyy-MM-dd"
 
-    const val BASE_URL = "https://story-api.dicoding.dev/v1/"
+    const val BASE_URL = BuildConfig.DICODING_BASE_URL
     const val REGISTER = "register"
     const val LOGIN = "login"
     const val ADD_NEW_STORY = "stories"
