@@ -16,9 +16,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Optimize imports">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update project." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -243,20 +241,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Add search function.">
-      <created>1656935083131</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1656935083131</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Add search function.">
-      <created>1656936189381</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1656936189381</updated>
     </task>
     <task id="LOCAL-00037" summary="Simplified search widget.">
       <created>1656936310121</created>
@@ -587,7 +571,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657621392410</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Remove unused class.">
+      <created>1657665742990</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1657665742991</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Update project.">
+      <created>1657665752965</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1657665752965</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -637,11 +635,11 @@
     <MESSAGE value="Remove save user data while register." />
     <MESSAGE value="Update welcome message and remove commented code." />
     <MESSAGE value="Save base url to build config." />
-    <MESSAGE value="Update project." />
     <MESSAGE value="Update session." />
-    <MESSAGE value="Remove unused class." />
     <MESSAGE value="Rename method." />
     <MESSAGE value="Optimize imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimize imports" />
+    <MESSAGE value="Remove unused class." />
+    <MESSAGE value="Update project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
   </component>
 </project>
