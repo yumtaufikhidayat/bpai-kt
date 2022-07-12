@@ -9,22 +9,15 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="okh" />
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update welcome message and remove commented code.">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Save base url to build config.">
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/upload/UploadStoryActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/upload/UploadStoryActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/utils/common/CommonConstant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/utils/common/CommonConstant.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,12 +81,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="submission-1" />
-                    <option name="lastUsedInstant" value="1657444462" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1657586257" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1657443795" />
+                    <option name="branchName" value="submission-1" />
+                    <option name="lastUsedInstant" value="1657444462" />
                   </RecentBranch>
                 </list>
               </option>
@@ -250,20 +243,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Update login with API.">
-      <created>1656855318769</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1656855318769</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Update main activity and other stuffs.">
-      <created>1656900418139</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1656900418140</updated>
     </task>
     <task id="LOCAL-00029" summary="Add adapter and enable show hide fab.">
       <created>1656906164413</created>
@@ -594,7 +573,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657444439581</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Save base url to build config.">
+      <created>1657586204528</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1657586204529</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Save base url to build config.">
+      <created>1657586229700</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1657586229700</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -624,7 +617,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Add adapter and enable show hide fab." />
     <MESSAGE value="Update main activity." />
     <MESSAGE value="Add date parse and data format." />
     <MESSAGE value="Update item list stories." />
@@ -649,6 +641,7 @@
     <MESSAGE value="Remove save user data while register." />
     <MESSAGE value="Update project." />
     <MESSAGE value="Update welcome message and remove commented code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update welcome message and remove commented code." />
+    <MESSAGE value="Save base url to build config." />
+    <option name="LAST_COMMIT_MESSAGE" value="Save base url to build config." />
   </component>
 </project>
