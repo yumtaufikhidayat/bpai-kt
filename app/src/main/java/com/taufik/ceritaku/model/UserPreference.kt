@@ -2,7 +2,6 @@ package com.taufik.ceritaku.model
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.taufik.ceritaku.ui.auth.login.data.LoginResult
@@ -11,7 +10,7 @@ import kotlinx.coroutines.flow.map
 
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>){
 
-    fun getToken(): Flow<LoginResult> {
+    fun getUser(): Flow<LoginResult> {
         return dataStore.data.map {
             LoginResult(
                 it[NAME_KEY] ?: "",
@@ -21,32 +20,16 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
-    fun getUser(): Flow<User> {
-        return dataStore.data.map { preferences ->
-            User(
-                preferences[NAME_KEY] ?: "",
-                preferences[EMAIL_KEY] ?: "",
-                preferences[PASSWORD_KEY] ?: "",
-                preferences[SESSION_KEY] ?: false
-            )
-        }
-    }
-
     suspend fun login(loginResult: LoginResult) {
         dataStore.edit { preferences ->
             preferences[NAME_KEY] = loginResult.name
             preferences[TOKEN_KEY] = loginResult.token
-            preferences[SESSION_KEY] = true
         }
     }
 
     suspend fun logout() {
         dataStore.edit { preferences ->
-            preferences[SESSION_KEY] = false
             preferences.remove(NAME_KEY)
-            preferences.remove(EMAIL_KEY)
-            preferences.remove(PASSWORD_KEY)
-            preferences.remove(SESSION_KEY)
             preferences.remove(TOKEN_KEY)
         }
     }
@@ -56,9 +39,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private var INSTANCE: UserPreference? = null
 
         private val NAME_KEY = stringPreferencesKey("name")
-        private val EMAIL_KEY = stringPreferencesKey("email")
-        private val PASSWORD_KEY = stringPreferencesKey("password")
-        private val SESSION_KEY = booleanPreferencesKey("session")
         private val USER_ID = stringPreferencesKey("userId")
         private val TOKEN_KEY = stringPreferencesKey("token")
 

@@ -2,7 +2,6 @@ package com.taufik.ceritaku.ui.auth.register
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Build
@@ -17,19 +16,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityRegisterBinding
-import com.taufik.ceritaku.model.User
-import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.LoginActivity
-import com.taufik.ceritaku.utils.ViewModelFactory
 import com.taufik.ceritaku.utils.common.CommonConstant
 import com.taufik.ceritaku.utils.common.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.common.CommonConstant.VALUES
@@ -39,10 +31,8 @@ class RegisterActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityRegisterBinding.inflate(layoutInflater)
     }
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
     private val viewModel: RegisterViewModel by viewModels()
-    private lateinit var registerLocalViewModel: RegisterLocalViewModel
-    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,10 +58,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        registerLocalViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[RegisterLocalViewModel::class.java]
-        registerLocalViewModel.getUser().observe(this) {
-            user = it
-        }
 
         viewModel.apply {
             isLoading.observe(this@RegisterActivity) {

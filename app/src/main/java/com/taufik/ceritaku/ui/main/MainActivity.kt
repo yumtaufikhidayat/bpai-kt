@@ -90,8 +90,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showData() = with(binding) {
-        mainLocalViewModel.getUser().observe(this@MainActivity) { user ->
-            if (user.isLogin) {
+        mainLocalViewModel.getToken().observe(this@MainActivity) { user ->
+            if (user.token.isNotEmpty()) {
                 val name = result.name
                 val token = result.token
                 tvName.text = name

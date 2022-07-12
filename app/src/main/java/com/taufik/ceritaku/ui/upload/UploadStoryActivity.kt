@@ -139,16 +139,11 @@ class UploadStoryActivity : AppCompatActivity() {
                 requestImageFile
             )
 
-            mainLocalViewModel.getUser().observe(this@UploadStoryActivity) { user ->
-                if (user.isLogin) {
-                    val token = result.token
-                    viewModel.apply {
-                        uploadImage(imageMultipart, description, token)
-                        uploadImage.observe(this@UploadStoryActivity) { response ->
-                            showSuccessDialog(response)
-                        }
-
-                    }
+            val token = result.token
+            viewModel.apply {
+                uploadImage(imageMultipart, description, token)
+                uploadImage.observe(this@UploadStoryActivity) { response ->
+                    showSuccessDialog(response)
                 }
             }
         }

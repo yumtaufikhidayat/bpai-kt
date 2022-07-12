@@ -26,7 +26,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.databinding.ActivityLoginBinding
-import com.taufik.ceritaku.model.User
 import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginLocalViewModel
 import com.taufik.ceritaku.ui.auth.register.RegisterActivity
@@ -46,7 +45,6 @@ class LoginActivity : AppCompatActivity() {
 
     private val viewModel: LoginViewModel by viewModels()
     private lateinit var loginLocalViewModel: LoginLocalViewModel
-    private lateinit var user: User
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -75,9 +73,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         loginLocalViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[LoginLocalViewModel::class.java]
-        loginLocalViewModel.getUser().observe(this) {
-            user = it
-        }
 
         viewModel.apply {
             isLoading.observe(this@LoginActivity) {

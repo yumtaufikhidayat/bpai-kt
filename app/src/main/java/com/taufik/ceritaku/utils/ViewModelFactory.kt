@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.taufik.ceritaku.model.UserPreference
 import com.taufik.ceritaku.ui.auth.login.data.LoginLocalViewModel
-import com.taufik.ceritaku.ui.auth.register.RegisterLocalViewModel
 import com.taufik.ceritaku.ui.main.MainLocalViewModel
 
 class ViewModelFactory(private val pref: UserPreference): ViewModelProvider.NewInstanceFactory() {
@@ -13,7 +12,6 @@ class ViewModelFactory(private val pref: UserPreference): ViewModelProvider.NewI
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(MainLocalViewModel::class.java) -> MainLocalViewModel(pref) as T
-            modelClass.isAssignableFrom(RegisterLocalViewModel::class.java) -> RegisterLocalViewModel(pref) as T
             modelClass.isAssignableFrom(LoginLocalViewModel::class.java) -> LoginLocalViewModel(pref) as T
             else -> throw IllegalAccessException("Unknown ViewModel class: " + modelClass.name)
         }
