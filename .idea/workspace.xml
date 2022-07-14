@@ -16,7 +16,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update project." />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update proejct.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,10 +146,10 @@
       <recent name="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.taufik.ceritaku.utils" />
       <recent name="com.taufik.ceritaku.utils.data" />
       <recent name="com.taufik.ceritaku.utils.common" />
       <recent name="com.taufik.ceritaku.utils.view" />
-      <recent name="com.taufik.ceritaku.utils" />
       <recent name="com.taufik.ceritaku.ui.splashscreen" />
     </key>
     <key name="android.template.985361428">
@@ -241,20 +243,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Simplified search widget.">
-      <created>1656936310121</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1656936310121</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Add detail.">
-      <created>1656975567749</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1656975567749</updated>
     </task>
     <task id="LOCAL-00039" summary="Change action bar background to transparent.">
       <created>1656976076384</created>
@@ -585,7 +573,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657665752965</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Move class to another package.">
+      <created>1657665835634</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1657665835634</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Update proejct.">
+      <created>1657665849391</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1657665849391</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -615,8 +617,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Add search function." />
-    <MESSAGE value="Simplified search widget." />
     <MESSAGE value="Add detail." />
     <MESSAGE value="Change action bar background to transparent." />
     <MESSAGE value="Add shared element animation." />
@@ -640,6 +640,8 @@
     <MESSAGE value="Optimize imports" />
     <MESSAGE value="Remove unused class." />
     <MESSAGE value="Update project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
+    <MESSAGE value="Move class to another package." />
+    <MESSAGE value="Update proejct." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update proejct." />
   </component>
 </project>
