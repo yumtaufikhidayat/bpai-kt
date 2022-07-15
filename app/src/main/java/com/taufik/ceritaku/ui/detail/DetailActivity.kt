@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.taufik.ceritaku.R
+import com.taufik.ceritaku.data.remote.response.main.ListStoryItem
 import com.taufik.ceritaku.databinding.ActivityDetailBinding
-import com.taufik.ceritaku.ui.main.data.ListStoryItem
 import com.taufik.ceritaku.utils.common.CommonConstant
 import com.taufik.ceritaku.utils.common.CommonExtension.formatDate
 import com.taufik.ceritaku.utils.common.CommonExtension.loadImage

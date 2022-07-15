@@ -20,7 +20,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
+import com.taufik.ceritaku.data.remote.Result
 import com.taufik.ceritaku.databinding.ActivityRegisterBinding
+import com.taufik.ceritaku.ui.ViewModelFactory
 import com.taufik.ceritaku.ui.auth.login.LoginActivity
 import com.taufik.ceritaku.utils.common.CommonConstant
 import com.taufik.ceritaku.utils.common.CommonConstant.DURATION
@@ -32,14 +34,16 @@ class RegisterActivity : AppCompatActivity() {
         ActivityRegisterBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: RegisterViewModel by viewModels()
+    private val factory = ViewModelFactory.getInstance(this@RegisterActivity)
+    private val registerViewModel: RegisterViewModel by viewModels {
+        factory
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         setupView()
-        setupViewModel()
         playAnimation()
         setupAction()
     }
@@ -55,21 +59,6 @@ class RegisterActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
-    }
-
-    private fun setupViewModel() {
-
-        viewModel.apply {
-            isLoading.observe(this@RegisterActivity) {
-                showLoading(it)
-            }
-
-            responseMessage.observe(this@RegisterActivity) {
-                it.getContentIfNotHandled()?.let { text ->
-                    showSnackBar(text)
-                }
-            }
-        }
     }
 
     private fun playAnimation() = with(binding) {
@@ -127,10 +116,21 @@ class RegisterActivity : AppCompatActivity() {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
-            viewModel.apply {
-                registerUser(name, email, password)
-                registerResponse.observe(this@RegisterActivity) {
-                    showSuccessDialog()
+            registerViewModel.registerUser(name, email, password).observe(this@RegisterActivity) {
+                if (it != null) {
+                    when (it) {
+                        is Result.Loading -> showLoading(true)
+                        is Result.Success -> {
+                            showLoading(false)
+                            showDialog(resources.getString(R.string.text_register_success))
+                            showSnackBar(it.data.message)
+                        }
+                        is Result.Error -> {
+                            showLoading(false)
+                            showDialog(resources.getString(R.string.text_register_failed))
+                            showSnackBar(it.error)
+                        }
+                    }
                 }
             }
         }
@@ -181,16 +181,22 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun showSuccessDialog() {
+    private fun showDialog(text: String) {
         MaterialAlertDialogBuilder(this).apply {
             setTitle(resources.getString(R.string.action_signup))
-            setMessage(resources.getString(R.string.text_register_success))
+            setMessage(text)
             setCancelable(false)
-            setPositiveButton(resources.getString(R.string.action_login)) { _, _ ->
-                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java),
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(this@RegisterActivity).toBundle()
-                )
-                finish()
+            if (text == resources.getString(R.string.text_register_success)) {
+                setPositiveButton(resources.getString(R.string.action_login)) { _, _ ->
+                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java),
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(this@RegisterActivity).toBundle()
+                    )
+                    finish()
+                }
+            } else {
+                setPositiveButton(resources.getString(R.string.action_close)) { _, _ ->
+                    show().dismiss()
+                }
             }
             show()
         }

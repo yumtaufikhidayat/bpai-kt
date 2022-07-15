@@ -20,12 +20,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.taufik.ceritaku.R
+import com.taufik.ceritaku.data.UserPreference
+import com.taufik.ceritaku.data.remote.Result
+import com.taufik.ceritaku.data.remote.response.auth.login.LoginResult
 import com.taufik.ceritaku.databinding.ActivityMainBinding
-import com.taufik.ceritaku.utils.UserPreference
-import com.taufik.ceritaku.ui.auth.login.data.LoginResult
+import com.taufik.ceritaku.ui.LocalViewModelFactory
+import com.taufik.ceritaku.ui.ViewModelFactory
 import com.taufik.ceritaku.ui.upload.UploadStoryActivity
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
-import com.taufik.ceritaku.utils.ViewModelFactory
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,11 +36,15 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private lateinit var mainAdapter: MainAdapter
+    private val factory = ViewModelFactory.getInstance(this)
+    private val mainViewModel: MainViewModel by viewModels {
+        factory
+    }
 
-    private lateinit var mainLocalViewModel: MainLocalViewModel
+    private lateinit var mainAdapter: MainAdapter
     private lateinit var result: LoginResult
-    private val viewModel: MainViewModel by viewModels()
+    private lateinit var mainLocalViewModel: MainLocalViewModel
+
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,13 +85,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        mainLocalViewModel = ViewModelProvider(this@MainActivity, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel = ViewModelProvider(this@MainActivity, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
         mainLocalViewModel.getUser().observe(this@MainActivity) {
             result = it
-        }
-
-        viewModel.isLoading.observe(this) {
-            showLoading(it)
         }
     }
 
@@ -96,11 +98,17 @@ class MainActivity : AppCompatActivity() {
                 val token = result.token
                 tvName.text = name
 
-                viewModel.apply {
-                    listStories(token)
-                    lisOfStories.observe(this@MainActivity) {
-                        if (it.isNotEmpty()) {
-                            mainAdapter.setData(it)
+                mainViewModel.listOfStories(token).observe(this@MainActivity) {
+                    if (it != null) {
+                        when (it) {
+                            is Result.Loading -> showLoading(true)
+                            is Result.Success -> {
+                                if (it.data.listStory.isNotEmpty()) {
+                                    showLoading(false)
+                                    mainAdapter.setData(it.data.listStory)
+                                }
+                            }
+                            is Result.Error -> showLoading(false)
                         }
                     }
                 }
@@ -129,7 +137,7 @@ class MainActivity : AppCompatActivity() {
                     show().dismiss()
                 }
                 setPositiveButton(resources.getString(R.string.action_yes)) { _, _ ->
-                    mainLocalViewModel.logout()
+                    mainLocalViewModel.logoutUser()
                     startActivity(Intent(this@MainActivity, WelcomeActivity::class.java),
                         ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity).toBundle()
                     )

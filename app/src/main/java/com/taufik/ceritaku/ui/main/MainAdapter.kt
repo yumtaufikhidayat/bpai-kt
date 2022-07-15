@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.taufik.ceritaku.databinding.ItemListStoriesBinding
 import com.taufik.ceritaku.ui.detail.DetailActivity
-import com.taufik.ceritaku.ui.main.data.ListStoryItem
+import com.taufik.ceritaku.data.remote.response.main.ListStoryItem
 import com.taufik.ceritaku.utils.common.CommonConstant
 import com.taufik.ceritaku.utils.common.CommonExtension.formatDate
 import com.taufik.ceritaku.utils.common.CommonExtension.loadImage

@@ -28,14 +28,15 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
+import com.taufik.ceritaku.data.UserPreference
+import com.taufik.ceritaku.data.remote.Result
+import com.taufik.ceritaku.data.remote.response.auth.login.LoginResult
 import com.taufik.ceritaku.databinding.ActivityUploadStoryBinding
-import com.taufik.ceritaku.utils.UserPreference
-import com.taufik.ceritaku.ui.auth.login.data.LoginResult
+import com.taufik.ceritaku.ui.LocalViewModelFactory
+import com.taufik.ceritaku.ui.ViewModelFactory
 import com.taufik.ceritaku.ui.main.MainActivity
 import com.taufik.ceritaku.ui.main.MainLocalViewModel
-import com.taufik.ceritaku.utils.ViewModelFactory
 import com.taufik.ceritaku.utils.createCustomTempFile
-import com.taufik.ceritaku.utils.data.CommonResponse
 import com.taufik.ceritaku.utils.reduceFileImage
 import com.taufik.ceritaku.utils.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
@@ -51,13 +52,17 @@ class UploadStoryActivity : AppCompatActivity() {
         ActivityUploadStoryBinding.inflate(layoutInflater)
     }
 
+    private val factory = ViewModelFactory.getInstance(this)
+    private val uploadViewModel: UploadStoryViewModel by viewModels {
+        factory
+    }
+
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
     private lateinit var mainLocalViewModel: MainLocalViewModel
     private lateinit var currentPhotoPath: String
-    private lateinit var result: LoginResult
-
+    private lateinit var loginResult: LoginResult
     private var getFile: File? = null
-    private val viewModel: UploadStoryViewModel by viewModels()
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,21 +82,9 @@ class UploadStoryActivity : AppCompatActivity() {
     }
 
     private fun initObserver() {
-        mainLocalViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
         mainLocalViewModel.getUser().observe(this) {
-            result = it
-        }
-
-        viewModel.apply {
-            isLoading.observe(this@UploadStoryActivity) {
-                showLoading(it)
-            }
-
-            responseMessage.observe(this@UploadStoryActivity) {
-                it.getContentIfNotHandled()?.let { text ->
-                    showSnackBar(text)
-                }
-            }
+            loginResult = it
         }
     }
 
@@ -142,20 +135,29 @@ class UploadStoryActivity : AppCompatActivity() {
                 requestImageFile
             )
 
-            val token = result.token
-            viewModel.apply {
-                uploadImage(imageMultipart, description, token)
-                uploadImage.observe(this@UploadStoryActivity) { response ->
-                    showSuccessDialog(response)
+            uploadViewModel.uploadStory(imageMultipart, description, loginResult.token).observe(this@UploadStoryActivity) {
+                if (loginResult.token.isNotEmpty() && it != null) {
+                    when (it) {
+                        is Result.Loading -> showLoading(true)
+                        is Result.Success -> {
+                            showLoading(false)
+                            showSuccessDialog()
+                            showSnackBar(it.data.message)
+                        }
+                        is Result.Error -> {
+                            showLoading(false)
+                            showSnackBar(it.error)
+                        }
+                    }
                 }
             }
         }
     }
 
-    private fun showSuccessDialog(response: CommonResponse) {
+    private fun showSuccessDialog() {
         MaterialAlertDialogBuilder(this).apply {
             setTitle(resources.getString(R.string.action_upload))
-            setMessage(response.message)
+            setMessage(resources.getString(R.string.text_upload_success))
             setCancelable(false)
             setPositiveButton(resources.getString(R.string.action_close)) { _, _ ->
                 startActivity(Intent(this@UploadStoryActivity, MainActivity::class.java),

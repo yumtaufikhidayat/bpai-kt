@@ -25,12 +25,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
+import com.taufik.ceritaku.data.UserPreference
+import com.taufik.ceritaku.data.remote.Result
 import com.taufik.ceritaku.databinding.ActivityLoginBinding
-import com.taufik.ceritaku.utils.UserPreference
-import com.taufik.ceritaku.ui.auth.login.data.LoginLocalViewModel
+import com.taufik.ceritaku.ui.LocalViewModelFactory
+import com.taufik.ceritaku.ui.ViewModelFactory
 import com.taufik.ceritaku.ui.auth.register.RegisterActivity
 import com.taufik.ceritaku.ui.main.MainActivity
-import com.taufik.ceritaku.utils.ViewModelFactory
 import com.taufik.ceritaku.utils.common.CommonConstant.DURATION
 import com.taufik.ceritaku.utils.common.CommonConstant.DURATION_ALT
 import com.taufik.ceritaku.utils.common.CommonConstant.LEFT
@@ -43,7 +44,11 @@ class LoginActivity : AppCompatActivity() {
         ActivityLoginBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: LoginViewModel by viewModels()
+    private val factory = ViewModelFactory.getInstance(this@LoginActivity)
+    private val loginViewModel: LoginViewModel by viewModels {
+        factory
+    }
+
     private lateinit var loginLocalViewModel: LoginLocalViewModel
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -72,19 +77,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        loginLocalViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(dataStore)))[LoginLocalViewModel::class.java]
-
-        viewModel.apply {
-            isLoading.observe(this@LoginActivity) {
-                showLoading(it)
-            }
-
-            responseMessage.observe(this@LoginActivity) {
-                it.getContentIfNotHandled()?.let { text->
-                    showSnackBar(text)
-                }
-            }
-        }
+        loginLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[LoginLocalViewModel::class.java]
     }
 
     private fun setUpAction() = with(binding) {
@@ -92,14 +85,23 @@ class LoginActivity : AppCompatActivity() {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
-            viewModel.apply {
-                loginUser(email, password)
-                viewModel.loginResponse.observe(this@LoginActivity) {
-                    loginLocalViewModel.login(it.loginResult)
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
-                    finish()
+            loginViewModel.loginUser(email, password).observe(this@LoginActivity) {
+                if (it != null) {
+                    when (it) {
+                        is Result.Loading -> showLoading(true)
+                        is Result.Success -> {
+                            showLoading(false)
+                            loginLocalViewModel.loginUser(it.data.loginResult)
+                            startActivity(Intent(this@LoginActivity, MainActivity::class.java), ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
+                            finish()
 
-                    Toast.makeText(this@LoginActivity, "${getString(R.string.text_welcome)} ${it.loginResult.name}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "${getString(R.string.text_welcome)} ${it.data.loginResult.name}", Toast.LENGTH_SHORT).show()
+                        }
+                        is Result.Error -> {
+                            showLoading(false)
+                            showSnackBar(it.error)
+                        }
+                    }
                 }
             }
         }
