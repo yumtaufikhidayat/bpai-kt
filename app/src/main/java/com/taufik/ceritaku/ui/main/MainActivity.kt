@@ -79,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                         super.onScrollStateChanged(recyclerView, newState)
                     }
                 })
+
                 adapter = mainAdapter
             }
         }
