@@ -17,7 +17,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update project to make maintainable." />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update project.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,15 +83,15 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1657870863" />
+                    <option name="lastUsedInstant" value="1657871405" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="revamp/clean-architecture" />
+                    <option name="lastUsedInstant" value="1657871192" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="backup/backup-main" />
                     <option name="lastUsedInstant" value="1657870844" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="revamp/clean-architecture" />
-                    <option name="lastUsedInstant" value="1657793742" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="submission-1" />
@@ -250,34 +252,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Adjust date in activity detail.">
-      <created>1657009401226</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1657009401226</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Adjust date in activity detail.">
-      <created>1657014939648</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1657014939648</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Update project.">
-      <created>1657015065854</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1657015065854</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Update activity upload.">
-      <created>1657016400976</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1657016400976</updated>
     </task>
     <task id="LOCAL-00046" summary="Update activity upload.">
       <created>1657016558362</created>
@@ -594,7 +568,35 @@
       <option name="project" value="LOCAL" />
       <updated>1657870924693</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Update project to make maintainable.">
+      <created>1657871064577</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1657871064578</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Update dialog.">
+      <created>1657871159049</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1657871159049</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Optimize imports.">
+      <created>1657871301148</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1657871301148</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Update project.">
+      <created>1657871325774</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1657871325774</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -624,7 +626,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Change action bar background to transparent." />
     <MESSAGE value="Add shared element animation." />
     <MESSAGE value="Add upload story and adjust some stuff." />
     <MESSAGE value="Adjust date in activity detail." />
@@ -633,7 +634,6 @@
     <MESSAGE value="Add intent camera and intent gallery." />
     <MESSAGE value="Add upload story." />
     <MESSAGE value="Update upload story by adding progress bar and material dialog." />
-    <MESSAGE value="Optimize imports." />
     <MESSAGE value="Remove session and token key in preference." />
     <MESSAGE value="Update remove session and token key in preference." />
     <MESSAGE value="Remove saved email and password while login." />
@@ -647,34 +647,10 @@
     <MESSAGE value="Remove unused class." />
     <MESSAGE value="Move class to another package." />
     <MESSAGE value="Update proejct." />
-    <MESSAGE value="Update project." />
     <MESSAGE value="Update project to make maintainable." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update project to make maintainable." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/register/RegisterActivity.kt</url>
-          <line>130</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/auth/register/RegisterActivity.kt</url>
-          <line>125</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/upload/UploadStoryActivity.kt</url>
-          <line>148</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/upload/UploadStoryActivity.kt</url>
-          <line>144</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Update dialog." />
+    <MESSAGE value="Optimize imports." />
+    <MESSAGE value="Update project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
   </component>
 </project>
