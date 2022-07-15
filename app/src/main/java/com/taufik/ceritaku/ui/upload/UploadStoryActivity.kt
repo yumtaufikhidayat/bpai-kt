@@ -135,8 +135,9 @@ class UploadStoryActivity : AppCompatActivity() {
                 requestImageFile
             )
 
-            uploadViewModel.uploadStory(imageMultipart, description, loginResult.token).observe(this@UploadStoryActivity) {
-                if (loginResult.token.isNotEmpty() && it != null) {
+            val token = loginResult.token
+            uploadViewModel.uploadStory(imageMultipart, description, token).observe(this@UploadStoryActivity) {
+                if (token.isNotEmpty() && it != null) {
                     when (it) {
                         is Result.Loading -> showLoading(true)
                         is Result.Success -> {
