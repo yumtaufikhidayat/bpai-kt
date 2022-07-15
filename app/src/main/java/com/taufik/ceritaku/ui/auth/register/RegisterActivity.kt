@@ -186,16 +186,20 @@ class RegisterActivity : AppCompatActivity() {
             setTitle(resources.getString(R.string.action_signup))
             setMessage(text)
             setCancelable(false)
-            if (text == resources.getString(R.string.text_register_success)) {
-                setPositiveButton(resources.getString(R.string.action_login)) { _, _ ->
-                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java),
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(this@RegisterActivity).toBundle()
-                    )
-                    finish()
+
+            when (text) {
+                resources.getString(R.string.text_register_success) -> {
+                    setPositiveButton(resources.getString(R.string.action_login)) { _, _ ->
+                        startActivity(Intent(this@RegisterActivity, LoginActivity::class.java),
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(this@RegisterActivity).toBundle()
+                        )
+                        finish()
+                    }
                 }
-            } else {
-                setPositiveButton(resources.getString(R.string.action_close)) { _, _ ->
-                    show().dismiss()
+                else -> {
+                    setPositiveButton(resources.getString(R.string.action_close)) { _, _ ->
+                        show().dismiss()
+                    }
                 }
             }
             show()
