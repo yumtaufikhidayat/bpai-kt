@@ -9,8 +9,7 @@ object CommonConstant {
     const val DURATION_ALT = 500L
     const val VALUES = 1f
 
-    const val DATE_DD_MMMM_YYYY_FORMAT = "dd MMMM yyyy"
-    const val DATE_YYYY_MM_DD_FORMAT = "yyyy-MM-dd"
+    const val DATE_DD_MMMM_YYYY_FULL_FORMAT = "dd MMMM yyyy | HH:mm"
 
     const val BASE_URL = BuildConfig.DICODING_BASE_URL
     const val REGISTER = "register"

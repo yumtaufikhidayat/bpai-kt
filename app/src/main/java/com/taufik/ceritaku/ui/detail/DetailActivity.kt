@@ -6,10 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.data.remote.response.main.ListStoryItem
 import com.taufik.ceritaku.databinding.ActivityDetailBinding
-import com.taufik.ceritaku.utils.common.CommonConstant
-import com.taufik.ceritaku.utils.common.CommonExtension.formatDate
+import com.taufik.ceritaku.utils.common.Common
 import com.taufik.ceritaku.utils.common.CommonExtension.loadImage
-import com.taufik.ceritaku.utils.common.CommonExtension.parseDate
+import java.util.*
 
 class DetailActivity : AppCompatActivity() {
 
@@ -43,9 +42,7 @@ class DetailActivity : AppCompatActivity() {
         imgDetailStory.loadImage(listStoryItem.photoUrl)
 
         val date = listStoryItem.createdAt
-        val dateParse = date.parseDate(CommonConstant.DATE_YYYY_MM_DD_FORMAT)
-        val dateFormat = dateParse.formatDate(CommonConstant.DATE_DD_MMMM_YYYY_FORMAT)
-        tvDetailDate.text = String.format("%s %s", getString(R.string.text_uploaded_on), dateFormat)
+        tvDetailDate.text = String.format("%s %s", getString(R.string.text_uploaded_on), Common.formattedDate(date, TimeZone.getDefault().id))
 
         tvDetailName.text = listStoryItem.name
         tvDetailDescription.text = listStoryItem.description

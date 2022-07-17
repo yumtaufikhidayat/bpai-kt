@@ -13,10 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.taufik.ceritaku.data.remote.response.main.ListStoryItem
 import com.taufik.ceritaku.databinding.ItemListStoriesBinding
 import com.taufik.ceritaku.ui.detail.DetailActivity
-import com.taufik.ceritaku.utils.common.CommonConstant
-import com.taufik.ceritaku.utils.common.CommonExtension.formatDate
+import com.taufik.ceritaku.utils.common.Common.formattedDate
 import com.taufik.ceritaku.utils.common.CommonExtension.loadImage
-import com.taufik.ceritaku.utils.common.CommonExtension.parseDate
 import java.util.*
 
 class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDiffCallback), Filterable {
@@ -55,9 +53,7 @@ class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDi
             tvName.text = data.name
 
             val date = data.createdAt
-            val dateParse = date.parseDate(CommonConstant.DATE_YYYY_MM_DD_FORMAT)
-            val dateFormat = dateParse.formatDate(CommonConstant.DATE_DD_MMMM_YYYY_FORMAT)
-            tvCreatedAt.text = dateFormat
+            tvCreatedAt.text = formattedDate(date, TimeZone.getDefault().id)
 
             tvDescription.text = data.description
 
