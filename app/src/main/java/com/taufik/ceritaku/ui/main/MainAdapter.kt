@@ -52,8 +52,7 @@ class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDi
             imgStory.loadImage(data.photoUrl)
             tvName.text = data.name
 
-            val date = data.createdAt
-            tvCreatedAt.text = formattedDate(date, TimeZone.getDefault().id)
+            tvCreatedAt.text = formattedDate(data.createdAt, TimeZone.getDefault().id)
 
             tvDescription.text = data.description
 
