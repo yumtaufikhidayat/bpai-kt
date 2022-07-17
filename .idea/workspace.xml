@@ -17,22 +17,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update project.">
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/taufik/ceritaku/utils/common/CommonExtensionTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/detail/DetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/detail/DetailActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/main/MainAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/main/MainAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/utils/common/Common.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/utils/common/Common.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/utils/common/CommonConstant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/utils/common/CommonConstant.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/utils/common/CommonExtension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/utils/common/CommonExtension.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/taufik/ceritaku/ExampleUnitTest.kt" beforeDir="false" />
-    </list>
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove class example unit test, remove extension function for date, add date format test, and implement format date." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[192.168.8.100:5555]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -164,6 +155,9 @@
       <recent name="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.taufik.ceritaku.view.main" />
       <recent name="com.taufik.ceritaku.view.welcome" />
@@ -174,6 +168,9 @@
     <key name="android.template.985361428">
       <recent name="com.taufik.ceritaku.ui.upload" />
       <recent name="com.taufik.ceritaku.ui.detail" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.taufik.ceritaku.utils.common" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.taufik.ceritaku.ui.main" />
@@ -186,7 +183,7 @@
       <recent name="com.taufik.ceritaku.ui.welcome" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.CommonExtensionTest.given correct ISO 8601 format then should formatted correctly">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Ceritaku.app" />
       <option name="DEPLOY" value="true" />
@@ -263,6 +260,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="CommonExtensionTest.given wrong ISO 8601 format then should throw error" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.taufik.ceritaku.utils.common.CommonExtensionTest.given wrong ISO 8601 format then should throw error&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:testDebugUnitTest" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -276,6 +294,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.CommonExtensionTest.given wrong ISO 8601 format then should throw error" />
         <item itemvalue="Gradle.CommonExtensionTest.given correct ISO 8601 format then should formatted correctly" />
       </list>
     </recent_temporary>
@@ -288,13 +307,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Add event and update register.">
-      <created>1657062115280</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1657062115280</updated>
     </task>
     <task id="LOCAL-00050" summary="Add intent camera and intent gallery.">
       <created>1657151209049</created>
@@ -632,7 +644,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658099040414</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="Remove class example unit test, remove extension function for date, add date format test, and implement format date.">
+      <created>1658100364065</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1658100364065</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -662,7 +681,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Add shared element animation." />
     <MESSAGE value="Add upload story and adjust some stuff." />
     <MESSAGE value="Adjust date in activity detail." />
     <MESSAGE value="Update activity upload." />
@@ -687,6 +705,7 @@
     <MESSAGE value="Update dialog." />
     <MESSAGE value="Optimize imports." />
     <MESSAGE value="Update project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
+    <MESSAGE value="Remove class example unit test, remove extension function for date, add date format test, and implement format date." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove class example unit test, remove extension function for date, add date format test, and implement format date." />
   </component>
 </project>
