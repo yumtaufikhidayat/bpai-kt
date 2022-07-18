@@ -11,15 +11,9 @@ import com.taufik.ceritaku.utils.common.CommonConstant.REGISTER
 import com.taufik.ceritaku.utils.data.CommonResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
-
-    @POST(REGISTER)
-    fun register(
-        @Body registerRequest: RegisterRequest
-    ): Call<CommonResponse>
 
     @POST(REGISTER)
     suspend fun registerUser(
