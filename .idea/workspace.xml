@@ -17,9 +17,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove unused variable.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove unused functions." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -309,20 +307,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Add upload story.">
-      <created>1657158602253</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1657158602254</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Update upload story by adding progress bar and material dialog.">
-      <created>1657159706420</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1657159706421</updated>
     </task>
     <task id="LOCAL-00054" summary="Update upload story by adding progress bar and material dialog.">
       <created>1657159944599</created>
@@ -653,7 +637,21 @@
       <option name="project" value="LOCAL" />
       <updated>1658100505888</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Update project.">
+      <created>1658109302649</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1658109302649</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Remove unused functions.">
+      <created>1658109356535</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1658109356535</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -683,7 +681,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Update activity upload." />
     <MESSAGE value="Add event and update register." />
     <MESSAGE value="Add intent camera and intent gallery." />
     <MESSAGE value="Add upload story." />
@@ -704,10 +701,11 @@
     <MESSAGE value="Update project to make maintainable." />
     <MESSAGE value="Update dialog." />
     <MESSAGE value="Optimize imports." />
-    <MESSAGE value="Update project." />
     <MESSAGE value="Remove class example unit test, remove extension function for date, add date format test, and implement format date." />
     <MESSAGE value="Remove unused imports." />
     <MESSAGE value="Remove unused variable." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unused variable." />
+    <MESSAGE value="Update project." />
+    <MESSAGE value="Remove unused functions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove unused functions." />
   </component>
 </project>
