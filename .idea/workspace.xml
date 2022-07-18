@@ -17,7 +17,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove class example unit test, remove extension function for date, add date format test, and implement format date." />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove unused variable.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -307,20 +309,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Add intent camera and intent gallery.">
-      <created>1657151209049</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1657151209049</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Add upload story.">
-      <created>1657156549176</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1657156549176</updated>
     </task>
     <task id="LOCAL-00052" summary="Add upload story.">
       <created>1657158602253</created>
@@ -651,7 +639,21 @@
       <option name="project" value="LOCAL" />
       <updated>1658100364065</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Remove unused imports.">
+      <created>1658100434329</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1658100434330</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Remove unused variable.">
+      <created>1658100505887</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1658100505888</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -681,8 +683,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Add upload story and adjust some stuff." />
-    <MESSAGE value="Adjust date in activity detail." />
     <MESSAGE value="Update activity upload." />
     <MESSAGE value="Add event and update register." />
     <MESSAGE value="Add intent camera and intent gallery." />
@@ -706,6 +706,8 @@
     <MESSAGE value="Optimize imports." />
     <MESSAGE value="Update project." />
     <MESSAGE value="Remove class example unit test, remove extension function for date, add date format test, and implement format date." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove class example unit test, remove extension function for date, add date format test, and implement format date." />
+    <MESSAGE value="Remove unused imports." />
+    <MESSAGE value="Remove unused variable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove unused variable." />
   </component>
 </project>
