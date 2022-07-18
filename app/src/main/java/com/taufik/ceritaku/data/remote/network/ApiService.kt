@@ -27,32 +27,14 @@ interface ApiService {
     ): CommonResponse
 
     @POST(LOGIN)
-    fun login(
-        @Body loginRequest: LoginRequest
-    ): Call<LoginResponse>
-
-    @POST(LOGIN)
     suspend fun loginUser(
         @Body loginRequest: LoginRequest
     ): LoginResponse
 
     @GET(GET_ALL_STORIES)
-    fun getAllStories(
-        @Header("Authorization") token: String
-    ): Call<AllStoriesResponse>
-
-    @GET(GET_ALL_STORIES)
     suspend fun getAllOfStories(
         @Header("Authorization") token: String
     ): AllStoriesResponse
-
-    @Multipart
-    @POST(ADD_NEW_STORY)
-    fun uploadImage(
-        @Part file: MultipartBody.Part,
-        @Part("description") description: RequestBody,
-        @Header("Authorization") token: String
-    ): Call<CommonResponse>
 
     @Multipart
     @POST(ADD_NEW_STORY)
