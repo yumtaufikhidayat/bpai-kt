@@ -16,7 +16,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove snack bar." />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update proejct." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +31,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -81,23 +84,19 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1658196860" />
+                    <option name="lastUsedInstant" value="1658197202" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="submission/submission-1" />
+                    <option name="lastUsedInstant" value="1658197164" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/clean-architecture" />
+                    <option name="lastUsedInstant" value="1658197065" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/local-data" />
                     <option name="lastUsedInstant" value="1658180576" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="revamp/clean-architecture" />
-                    <option name="lastUsedInstant" value="1657871192" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="backup/backup-main" />
-                    <option name="lastUsedInstant" value="1657870844" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="submission-1" />
-                    <option name="lastUsedInstant" value="1657621441" />
                   </RecentBranch>
                 </list>
               </option>
