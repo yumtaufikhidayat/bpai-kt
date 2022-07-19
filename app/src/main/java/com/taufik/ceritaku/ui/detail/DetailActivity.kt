@@ -1,14 +1,11 @@
 package com.taufik.ceritaku.ui.detail
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.google.android.material.snackbar.Snackbar
-import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.data.local.entity.StoryEntity
 import com.taufik.ceritaku.databinding.ActivityDetailBinding
@@ -93,17 +90,6 @@ class DetailActivity : AppCompatActivity() {
             ContextCompat.getDrawable(this, R.drawable.ic_favorite_enable)
         } else {
             ContextCompat.getDrawable(this, R.drawable.ic_favorite_disable)
-        }
-    }
-
-    private fun showSnackBar(text: String) {
-        CustomSnackbar(this).show {
-            textColor(ContextCompat.getColor(this@DetailActivity, R.color.white))
-            textTypeface(Typeface.DEFAULT_BOLD)
-            backgroundColor(ContextCompat.getColor(this@DetailActivity, R.color.purple_500))
-            cornerRadius(18F)
-            duration(Snackbar.LENGTH_LONG)
-            message(text)
         }
     }
 
