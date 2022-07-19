@@ -90,6 +90,13 @@ dependencies {
 //    Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
-    //    Desugaring = using Java8 feature on Android O below
+//    Desugaring = using Java8 feature on Android O below
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
+
+//    Room
+    def roomVersion = "2.4.2"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    testImplementation "androidx.room:room-testing:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 }

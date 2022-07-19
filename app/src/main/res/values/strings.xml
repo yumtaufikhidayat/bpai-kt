@@ -35,6 +35,8 @@
     <string name="text_description_upload">Tuliskan cerita suksesmu disini.</string>
     <string name="text_add_story">Tambah Cerita</string>
     <string name="text_insert_image_first">Silakan masukkan berkas gambar terlebih dahulu</string>
+    <string name="text_no_favorite">Oops.. \nKamu belum menyimpan data favorit</string>
+    <string name="text_no_search">Oops.. \nTidak ada hasil</string>
 
     <string name="action_camera">Kamera</string>
     <string name="action_gallery">Galeri</string>
@@ -47,5 +49,5 @@
     <string name="action_add_story">Tambah Cerita</string>
     <string name="action_close">Tutup</string>
     <string name="action_upload">Unggah</string>
-
+    <string name="action_favorite">Favorit</string>
 </resources>

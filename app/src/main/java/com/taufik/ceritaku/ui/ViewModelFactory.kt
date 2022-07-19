@@ -7,6 +7,8 @@ import com.taufik.ceritaku.data.CeritakuRepository
 import com.taufik.ceritaku.di.Injection
 import com.taufik.ceritaku.ui.auth.login.LoginViewModel
 import com.taufik.ceritaku.ui.auth.register.RegisterViewModel
+import com.taufik.ceritaku.ui.detail.DetailViewModel
+import com.taufik.ceritaku.ui.favorite.FavoriteViewModel
 import com.taufik.ceritaku.ui.main.MainViewModel
 import com.taufik.ceritaku.ui.upload.UploadStoryViewModel
 
@@ -19,6 +21,8 @@ class ViewModelFactory private constructor(private val ceritakuRepository: Cerit
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(ceritakuRepository) as T
             modelClass.isAssignableFrom(MainViewModel::class.java) -> MainViewModel(ceritakuRepository) as T
             modelClass.isAssignableFrom(UploadStoryViewModel::class.java) -> UploadStoryViewModel(ceritakuRepository) as T
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> DetailViewModel(ceritakuRepository) as T
+            modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> FavoriteViewModel(ceritakuRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -26,7 +30,7 @@ class ViewModelFactory private constructor(private val ceritakuRepository: Cerit
     companion object {
         @Volatile
         private var instance: ViewModelFactory? = null
-        fun getInstance(context: Context, ): ViewModelFactory = instance ?: synchronized(this) {
+        fun getInstance(context: Context): ViewModelFactory = instance ?: synchronized(this) {
                 instance ?: ViewModelFactory(Injection.provideRepository(context))
             }.also { instance = it }
     }

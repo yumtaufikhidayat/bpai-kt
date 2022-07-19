@@ -1,11 +1,18 @@
 package com.taufik.ceritaku.ui.detail
 
+import android.graphics.Typeface
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
+import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
-import com.taufik.ceritaku.data.remote.response.main.ListStoryItem
+import com.taufik.ceritaku.data.local.entity.StoryEntity
 import com.taufik.ceritaku.databinding.ActivityDetailBinding
+import com.taufik.ceritaku.ui.ViewModelFactory
 import com.taufik.ceritaku.utils.common.Common
 import com.taufik.ceritaku.utils.common.CommonExtension.loadImage
 import java.util.*
@@ -16,7 +23,12 @@ class DetailActivity : AppCompatActivity() {
         ActivityDetailBinding.inflate(layoutInflater)
     }
 
-    private lateinit var listStoryItem: ListStoryItem
+    private lateinit var storyEntity: StoryEntity
+    private val factory = ViewModelFactory.getInstance(this)
+    private val detailViewModel: DetailViewModel by viewModels {
+        factory
+    }
+    private var menu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +40,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getParcelableData() {
-        listStoryItem = intent.getParcelableExtra<ListStoryItem>(EXTRA_DATA) as ListStoryItem
+        storyEntity = intent.getParcelableExtra<StoryEntity>(EXTRA_DATA) as StoryEntity
     }
 
     private fun setupToolbar() {
@@ -39,20 +51,60 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setData() = with(binding) {
-        imgDetailStory.loadImage(listStoryItem.photoUrl)
+        storyEntity.apply {
+            imgDetailStory.loadImage(photoUrl)
 
-        val date = listStoryItem.createdAt
-        tvDetailDate.text = String.format("%s %s", getString(R.string.text_uploaded_on), Common.formattedDate(date, TimeZone.getDefault().id))
+            val date = createdAt
+            tvDetailDate.text = String.format(
+                "%s %s",
+                getString(R.string.text_uploaded_on),
+                Common.formattedDate(date, TimeZone.getDefault().id)
+            )
 
-        tvDetailName.text = listStoryItem.name
-        tvDetailDescription.text = listStoryItem.description
+            tvDetailName.text = name
+            tvDetailDescription.text = description
+        }
+        detailViewModel.setStoryData(storyEntity)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_detail, menu)
+        this.menu = menu
+        detailViewModel.favoriteStatus.observe(this) {
+            setFavoriteState(it)
+        }
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> onBackPressed()
+            R.id.action_favorite -> {
+                detailViewModel.changeFavorite(storyEntity)
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setFavoriteState(state: Boolean) {
+        if (menu == null) return
+        val menuItem = menu?.findItem(R.id.action_favorite)
+        menuItem?.icon = if (state) {
+            ContextCompat.getDrawable(this, R.drawable.ic_favorite_enable)
+        } else {
+            ContextCompat.getDrawable(this, R.drawable.ic_favorite_disable)
+        }
+    }
+
+    private fun showSnackBar(text: String) {
+        CustomSnackbar(this).show {
+            textColor(ContextCompat.getColor(this@DetailActivity, R.color.white))
+            textTypeface(Typeface.DEFAULT_BOLD)
+            backgroundColor(ContextCompat.getColor(this@DetailActivity, R.color.purple_500))
+            cornerRadius(18F)
+            duration(Snackbar.LENGTH_LONG)
+            message(text)
+        }
     }
 
     companion object {

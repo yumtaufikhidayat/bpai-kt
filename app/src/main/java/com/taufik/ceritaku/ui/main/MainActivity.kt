@@ -26,6 +26,7 @@ import com.taufik.ceritaku.data.remote.response.auth.login.LoginResult
 import com.taufik.ceritaku.databinding.ActivityMainBinding
 import com.taufik.ceritaku.ui.LocalViewModelFactory
 import com.taufik.ceritaku.ui.ViewModelFactory
+import com.taufik.ceritaku.ui.favorite.FavoriteStoryActivity
 import com.taufik.ceritaku.ui.upload.UploadStoryActivity
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
 
@@ -34,11 +35,6 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
-    }
-
-    private val factory = ViewModelFactory.getInstance(this)
-    private val mainViewModel: MainViewModel by viewModels {
-        factory
     }
 
     private lateinit var mainAdapter: MainAdapter
@@ -55,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         setupView()
         setupViewModel()
         showData()
+        favoriteStory()
         logout()
         searchStory()
     }
@@ -86,8 +83,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        mainLocalViewModel = ViewModelProvider(this@MainActivity, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
-        mainLocalViewModel.getUser().observe(this@MainActivity) {
+        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel.getUser().observe(this) {
             result = it
         }
     }
@@ -99,14 +96,19 @@ class MainActivity : AppCompatActivity() {
                 val token = result.token
                 tvName.text = name
 
-                mainViewModel.listOfStories(token).observe(this@MainActivity) {
+                val factory = ViewModelFactory.getInstance(this@MainActivity)
+                val mainViewModel: MainViewModel by viewModels {
+                    factory
+                }
+
+                mainViewModel.getListOfStories(token).observe(this@MainActivity) {
                     if (it != null) {
                         when (it) {
                             is Result.Loading -> showLoading(true)
                             is Result.Success -> {
-                                if (it.data.listStory.isNotEmpty()) {
+                                if (it.data.isNotEmpty()) {
                                     showLoading(false)
-                                    mainAdapter.setData(it.data.listStory)
+                                    mainAdapter.setData(it.data)
                                 }
                             }
                             is Result.Error -> showLoading(false)
@@ -124,6 +126,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(
                 this@MainActivity, UploadStoryActivity::class.java
             ), ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity).toBundle())
+        }
+    }
+
+    private fun favoriteStory() = with(binding) {
+        imgFavorite.setOnClickListener {
+            startActivity(Intent(this@MainActivity, FavoriteStoryActivity::class.java),
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity).toBundle()
+            )
         }
     }
 

@@ -10,31 +10,31 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.taufik.ceritaku.data.remote.response.main.ListStoryItem
+import com.taufik.ceritaku.data.local.entity.StoryEntity
 import com.taufik.ceritaku.databinding.ItemListStoriesBinding
 import com.taufik.ceritaku.ui.detail.DetailActivity
 import com.taufik.ceritaku.utils.common.Common.formattedDate
 import com.taufik.ceritaku.utils.common.CommonExtension.loadImage
 import java.util.*
 
-class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDiffCallback), Filterable {
+class MainAdapter: ListAdapter<StoryEntity, MainAdapter.MainViewHolder>(MainDiffCallback), Filterable {
 
-    private var listStories = listOf<ListStoryItem>()
+    private var listStories = listOf<StoryEntity>()
 
-    fun setData(list: List<ListStoryItem>) {
+    fun setData(list: List<StoryEntity>) {
         this.listStories = list
         submitList(list)
     }
 
-    object MainDiffCallback: DiffUtil.ItemCallback<ListStoryItem>(){
+    object MainDiffCallback: DiffUtil.ItemCallback<StoryEntity>(){
         override fun areItemsTheSame(
-            oldItem: ListStoryItem,
-            newItem: ListStoryItem
+            oldItem: StoryEntity,
+            newItem: StoryEntity
         ): Boolean = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: ListStoryItem,
-            newItem: ListStoryItem
+            oldItem: StoryEntity,
+            newItem: StoryEntity
         ): Boolean = oldItem == newItem
     }
 
@@ -48,7 +48,7 @@ class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDi
 
     inner class MainViewHolder(private val binding: ItemListStoriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: ListStoryItem) = with(binding) {
+        fun onBind(data: StoryEntity) = with(binding) {
             imgStory.loadImage(data.photoUrl)
             tvName.text = data.name
 
@@ -69,7 +69,7 @@ class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDi
 
     private val searchFilter = object : Filter() {
         override fun performFiltering(p0: CharSequence): FilterResults {
-            val filteredList = mutableListOf<ListStoryItem>()
+            val filteredList = mutableListOf<StoryEntity>()
             if (p0.isEmpty()) {
                 filteredList.addAll(listStories)
             } else {
@@ -87,7 +87,7 @@ class MainAdapter: ListAdapter<ListStoryItem, MainAdapter.MainViewHolder>(MainDi
         }
 
         override fun publishResults(constraint: CharSequence?, filterResults: FilterResults?) {
-            submitList(filterResults?.values as MutableList<ListStoryItem>?)
+            submitList(filterResults?.values as MutableList<StoryEntity>?)
         }
     }
 }
