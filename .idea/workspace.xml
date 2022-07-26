@@ -16,13 +16,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Add some keys for logout." />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Add some keys for logout.">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[192.168.8.100:5555]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -312,13 +315,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Update project.">
-      <created>1657253959872</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1657253959873</updated>
     </task>
     <task id="LOCAL-00061" summary="Remove saved email and password while login.">
       <created>1657254000891</created>
@@ -656,7 +652,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658225792843</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Add some keys for logout.">
+      <created>1658225844108</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1658225844108</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
