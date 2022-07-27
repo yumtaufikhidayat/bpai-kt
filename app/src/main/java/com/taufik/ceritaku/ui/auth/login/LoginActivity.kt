@@ -44,11 +44,6 @@ class LoginActivity : AppCompatActivity() {
         ActivityLoginBinding.inflate(layoutInflater)
     }
 
-    private val factory = ViewModelFactory.getInstance(this@LoginActivity)
-    private val loginViewModel: LoginViewModel by viewModels {
-        factory
-    }
-
     private lateinit var loginLocalViewModel: LoginLocalViewModel
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -85,6 +80,11 @@ class LoginActivity : AppCompatActivity() {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
+            val factory = ViewModelFactory.getInstance(this@LoginActivity)
+            val loginViewModel: LoginViewModel by viewModels {
+                factory
+            }
+
             loginViewModel.loginUser(email, password).observe(this@LoginActivity) {
                 if (it != null) {
                     when (it) {
@@ -101,6 +101,7 @@ class LoginActivity : AppCompatActivity() {
                             showLoading(false)
                             showSnackBar(it.error)
                         }
+                        is Result.Unauthorized, is Result.ServerError -> showSnackBar(it.toString())
                     }
                 }
             }

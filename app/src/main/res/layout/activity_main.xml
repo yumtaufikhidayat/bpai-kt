@@ -62,24 +62,6 @@
         app:layout_constraintEnd_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvWelcome" />
 
-    <com.taufik.ceritaku.utils.view.MaterialCustomEditText
-        android:id="@+id/etSearch"
-        android:layout_width="@dimen/value_0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/value_16dp"
-        android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="@dimen/value_8dp"
-        android:padding="@dimen/value_8dp"
-        android:background="@drawable/bg_search"
-        android:hint="@string/text_search"
-        android:textSize="@dimen/value_14sp"
-        android:inputType="text"
-        android:imeOptions="actionSearch"
-        android:autofillHints=""
-        app:layout_constraintTop_toBottomOf="@id/tvName"
-        app:layout_constraintStart_toStartOf="@id/tvWelcome"
-        app:layout_constraintEnd_toEndOf="@id/tvName"/>
-
     <TextView
         android:id="@+id/tvYourStory"
         android:layout_width="wrap_content"
@@ -89,7 +71,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/etSearch"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
         app:layout_constraintStart_toStartOf="@id/tvWelcome" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -3,8 +3,10 @@ package com.taufik.ceritaku.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.paging.*
 import com.taufik.ceritaku.data.local.entity.StoryEntity
 import com.taufik.ceritaku.data.local.room.StoryDao
+import com.taufik.ceritaku.data.remote.CeritakuPagingSource
 import com.taufik.ceritaku.data.remote.Result
 import com.taufik.ceritaku.data.remote.network.ApiService
 import com.taufik.ceritaku.data.remote.response.auth.login.LoginRequest
@@ -13,6 +15,8 @@ import com.taufik.ceritaku.data.remote.response.auth.register.RegisterRequest
 import com.taufik.ceritaku.utils.data.CommonResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -47,27 +51,29 @@ class CeritakuRepository private constructor(
         }
     }
 
-    fun getListOfStories(token: String): LiveData<Result<List<StoryEntity>>> = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiService.getAllOfStories("Bearer $token")
-            val listOfStories = response.listStory
-            val storyList = listOfStories.map {
-                StoryEntity(
-                    it.id,
-                    it.photoUrl,
-                    it.createdAt,
-                    it.name,
-                    it.description,
-                    it.lon,
-                    it.lat
-                )
+    fun getListOfStories(token: String): LiveData<PagingData<StoryEntity>> {
+        return Pager(
+            config = PagingConfig(pageSize = 6),
+            pagingSourceFactory = {
+                CeritakuPagingSource(apiService, "Bearer $token")
             }
-            emit(Result.Success(storyList))
-        } catch (e: Exception) {
-            val errorMessage = e.message.toString()
-            Log.e(TAG, "listOfStories: $errorMessage")
-            emit(Result.Error(errorMessage))
+        ).liveData
+    }
+
+    fun dataResult(loadState: CombinedLoadStates) : Flow<Result<Unit>> = flow {
+        when(val result = loadState.source.refresh) {
+            is LoadState.Loading -> emit(Result.Loading)
+            is LoadState.NotLoading -> emit(Result.Success(Unit))
+            is LoadState.Error -> {
+                val error = result.error.message?.split(" - ")
+                val codeResponse = error?.get(0)
+                val message = error?.get(1)
+                when (codeResponse?.toInt()) {
+                    401 -> emit(Result.Unauthorized(message.toString()))
+                    500, 502 -> emit(Result.ServerError(message.toString()))
+                    else -> emit(Result.Error(message.toString()))
+                }
+            }
         }
     }
 

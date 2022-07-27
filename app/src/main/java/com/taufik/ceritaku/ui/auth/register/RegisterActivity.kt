@@ -34,11 +34,6 @@ class RegisterActivity : AppCompatActivity() {
         ActivityRegisterBinding.inflate(layoutInflater)
     }
 
-    private val factory = ViewModelFactory.getInstance(this@RegisterActivity)
-    private val registerViewModel: RegisterViewModel by viewModels {
-        factory
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -116,6 +111,11 @@ class RegisterActivity : AppCompatActivity() {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
+            val factory = ViewModelFactory.getInstance(this@RegisterActivity)
+            val registerViewModel: RegisterViewModel by viewModels {
+                factory
+            }
+
             registerViewModel.registerUser(name, email, password).observe(this@RegisterActivity) {
                 if (it != null) {
                     when (it) {
@@ -130,6 +130,7 @@ class RegisterActivity : AppCompatActivity() {
                             showDialog(resources.getString(R.string.text_register_failed))
                             showSnackBar(it.error)
                         }
+                        is Result.Unauthorized, is Result.ServerError -> showSnackBar(it.toString())
                     }
                 }
             }

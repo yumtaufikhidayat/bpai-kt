@@ -60,18 +60,6 @@ class MaterialCustomEditText: AppCompatEditText, View.OnTouchListener {
                 })
             }
 
-            R.id.etSearch -> {
-                addTextChangedListener(object: TextWatcher {
-                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                        if (p0.toString().isNotEmpty()) showClearButton() else hideClearButton()
-                    }
-
-                    override fun afterTextChanged(p0: Editable?) {}
-                })
-            }
-
             R.id.etEmail -> {
                 addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -117,13 +105,6 @@ class MaterialCustomEditText: AppCompatEditText, View.OnTouchListener {
                 )
             }
 
-            R.id.etSearch -> {
-                setButtonDrawables(
-                    startOfTheText = searchIcon,
-                    endOfTheText = clearIconGrey
-                )
-            }
-
             R.id.etEmail -> {
                 setButtonDrawables(
                     startOfTheText = emailIcon,
@@ -145,12 +126,6 @@ class MaterialCustomEditText: AppCompatEditText, View.OnTouchListener {
             R.id.etName -> {
                 setButtonDrawables(
                     startOfTheText = personIcon
-                )
-            }
-
-            R.id.etSearch -> {
-                setButtonDrawables(
-                    startOfTheText = searchIcon
                 )
             }
 
@@ -208,48 +183,6 @@ class MaterialCustomEditText: AppCompatEditText, View.OnTouchListener {
                             MotionEvent.ACTION_UP -> {
                                 personIcon = ContextCompat.getDrawable(context, R.drawable.ic_person) as Drawable
                                 clearIcon = ContextCompat.getDrawable(context, R.drawable.ic_clear) as Drawable
-                                when {
-                                    text != null -> text?.clear()
-                                }
-
-                                hideClearButton()
-                                return true
-                            }
-                            else -> return false
-                        }
-                    } else return false
-                }
-            }
-
-            R.id.etSearch -> {
-                if (compoundDrawables[2] != null) {
-                    val clearButtonStart: Float
-                    val clearButtonEnd: Float
-                    var isClearButtonClicked = false
-                    if (layoutDirection == View.LAYOUT_DIRECTION_RTL) {
-                        clearButtonEnd = (clearIcon.intrinsicWidth + paddingStart).toFloat()
-                        when {
-                            event.x < clearButtonEnd -> isClearButtonClicked = true
-                        }
-                    } else {
-                        clearButtonStart = (width - paddingEnd - clearIcon.intrinsicWidth).toFloat()
-                        when {
-                            event.x > clearButtonStart -> isClearButtonClicked = true
-                        }
-                    }
-
-                    if (isClearButtonClicked) {
-                        when (event.action) {
-                            MotionEvent.ACTION_DOWN -> {
-                                personIcon = ContextCompat.getDrawable(context, R.drawable.ic_search) as Drawable
-                                clearIconGrey = ContextCompat.getDrawable(context, R.drawable.ic_clear_grey) as Drawable
-                                showClearButton()
-                                return true
-                            }
-
-                            MotionEvent.ACTION_UP -> {
-                                personIcon = ContextCompat.getDrawable(context, R.drawable.ic_search) as Drawable
-                                clearIconGrey = ContextCompat.getDrawable(context, R.drawable.ic_clear_grey) as Drawable
                                 when {
                                     text != null -> text?.clear()
                                 }

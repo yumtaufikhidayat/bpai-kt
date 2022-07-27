@@ -27,7 +27,9 @@ interface ApiService {
 
     @GET(GET_ALL_STORIES)
     suspend fun getAllOfStories(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
     ): AllStoriesResponse
 
     @Multipart

@@ -149,6 +149,7 @@ class UploadStoryActivity : AppCompatActivity() {
                             showLoading(false)
                             showSnackBar(it.error)
                         }
+                        is Result.Unauthorized, is Result.ServerError -> showSnackBar(it.toString())
                     }
                 }
             }

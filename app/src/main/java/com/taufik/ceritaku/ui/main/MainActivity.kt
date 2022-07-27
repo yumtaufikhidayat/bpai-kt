@@ -2,15 +2,13 @@ package com.taufik.ceritaku.ui.main
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
-import android.widget.TextView.OnEditorActionListener
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.widget.addTextChangedListener
+import androidx.core.content.ContextCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -19,6 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
+import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.data.UserPreference
 import com.taufik.ceritaku.data.remote.Result
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private lateinit var mainAdapter: MainAdapter
+    private lateinit var listAdapter: CeritakuListAdapter
     private lateinit var result: LoginResult
     private lateinit var mainLocalViewModel: MainLocalViewModel
 
@@ -48,20 +48,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupActionBar()
-        setupView()
         setupViewModel()
-        showData()
+        setupView()
         favoriteStory()
         logout()
-        searchStory()
     }
 
     private fun setupActionBar() {
         supportActionBar?.hide()
     }
 
+    private fun setupViewModel() {
+        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel.getUser().observe(this) {
+            result = it
+        }
+    }
+
     private fun setupView() {
-        mainAdapter = MainAdapter()
+        listAdapter = CeritakuListAdapter()
+        showLoading(true)
         binding.apply {
             with(rvStories) {
                 layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
@@ -77,46 +83,44 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
 
-                adapter = mainAdapter
-            }
-        }
-    }
+                adapter = listAdapter.withLoadStateFooter(
+                    footer = LoadingStateAdapter {
+                        listAdapter.retry()
+                    }
+                )
 
-    private fun setupViewModel() {
-        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
-        mainLocalViewModel.getUser().observe(this) {
-            result = it
-        }
-    }
+                mainLocalViewModel.getUser().observe(this@MainActivity) { user ->
+                    if (user.token.isNotEmpty()) {
+                        val name = result.name
+                        val token = result.token
+                        tvName.text = name
 
-    private fun showData() = with(binding) {
-        mainLocalViewModel.getUser().observe(this@MainActivity) { user ->
-            if (user.token.isNotEmpty()) {
-                val name = result.name
-                val token = result.token
-                tvName.text = name
+                        val factory = ViewModelFactory.getInstance(this@MainActivity)
+                        val mainViewModel: MainViewModel by viewModels {
+                            factory
+                        }
 
-                val factory = ViewModelFactory.getInstance(this@MainActivity)
-                val mainViewModel: MainViewModel by viewModels {
-                    factory
-                }
-
-                mainViewModel.getListOfStories(token).observe(this@MainActivity) {
-                    if (it != null) {
-                        when (it) {
-                            is Result.Loading -> showLoading(true)
-                            is Result.Success -> {
-                                if (it.data.isNotEmpty()) {
-                                    showLoading(false)
-                                    mainAdapter.setData(it.data)
+                        listAdapter.addLoadStateListener {
+                            mainViewModel.dataResult(it).observe(this@MainActivity) { state ->
+                                when (state) {
+                                    is Result.Loading -> showLoading(true)
+                                    is Result.Success -> showLoading(false)
+                                    is Result.Error -> showLoading(false)
+                                    is Result.Unauthorized -> showSnackBar(state.error)
+                                    is Result.ServerError -> showSnackBar(state.error)
                                 }
                             }
-                            is Result.Error -> showLoading(false)
                         }
+                        mainViewModel.getListOfStories(token).observe(this@MainActivity) {
+                            if (it != null) {
+                                showLoading(false)
+                                listAdapter.submitData(lifecycle, it)
+                            }
+                        }
+
+                        addStory()
                     }
                 }
-
-                addStory()
             }
         }
     }
@@ -158,26 +162,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun searchStory() = with(binding) {
-        etSearch.apply {
-            setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    hideKeyboard()
-                    return@OnEditorActionListener true
-                }
-                false
-            })
-
-            addTextChangedListener(afterTextChanged = { p0 ->
-                mainAdapter.filter.filter(p0.toString())
-            })
+    private fun showSnackBar(text: String) {
+        CustomSnackbar(this).show {
+            textColor(ContextCompat.getColor(this@MainActivity, R.color.white))
+            textTypeface(Typeface.DEFAULT_BOLD)
+            backgroundColor(ContextCompat.getColor(this@MainActivity, R.color.purple_500))
+            cornerRadius(18F)
+            duration(Snackbar.LENGTH_LONG)
+            message(text)
         }
-    }
-
-    private fun hideKeyboard() = with(binding) {
-        etSearch.clearFocus()
-        val imm: InputMethodManager = this@MainActivity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(etSearch.windowToken, 0)
     }
 
     private fun showLoading(isShow: Boolean) = with(binding) {
