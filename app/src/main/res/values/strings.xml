@@ -39,6 +39,10 @@
     <string name="text_no_search">Oops.. \nTidak ada hasil</string>
     <string name="text_retry">Coba lagi</string>
     <string name="text_maps">Peta Lokasi</string>
+    <string name="normal_type">Normal</string>
+    <string name="satellite_type">Satellite</string>
+    <string name="terrain_type">Terrain</string>
+    <string name="hybrid_type">Hybrid</string>
 
     <string name="action_camera">Kamera</string>
     <string name="action_gallery">Galeri</string>

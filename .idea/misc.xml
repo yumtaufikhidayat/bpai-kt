@@ -46,6 +46,7 @@
         <entry key="app/src/main/res/layout/layout_error.xml" value="0.1326388888888889" />
         <entry key="app/src/main/res/layout/shimmer_item_list_stories.xml" value="0.10625" />
         <entry key="app/src/main/res/menu/menu_detail.xml" value="0.1326388888888889" />
+        <entry key="app/src/main/res/menu/menu_maps.xml" value="0.1" />
         <entry key="app/src/main/res/xml/file_paths.xml" value="0.1" />
       </map>
     </option>
