@@ -3,15 +3,25 @@ package com.taufik.ceritaku.ui.maps
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -20,9 +30,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.taufik.ceritaku.R
 import com.taufik.ceritaku.data.CeritakuUserPreference
 import com.taufik.ceritaku.data.remote.Result
@@ -82,8 +90,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.apply {
             isZoomControlsEnabled = true
             isIndoorLevelPickerEnabled = true
-            isCompassEnabled = true
+            isCompassEnabled = false
             isMapToolbarEnabled = true
+            isScrollGesturesEnabledDuringRotateOrZoom = false
+            isRotateGesturesEnabled = false
         }
 
         getMyLocation()
@@ -113,13 +123,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                     val addressName = getAddressName(lat, lon)
 
                                     mMap.addMarker(MarkerOptions()
-                                            .position(latLng)
-                                            .title(story.name)
+                                        .position(latLng)
+                                        .title(story.name)
+                                        .icon(vectorToBitmap(R.drawable.ic_outline_person_pin, Color.parseColor("#FF0000")))
                                     )?.snippet = addressName
 
                                     boundsBuilder.include(latLng)
                                 }
 
+                                showCustomInfoWindow()
                                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                                     latLng,
                                     ZOOM_LEVEL
@@ -149,6 +161,53 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         return addressName
+    }
+
+    private fun vectorToBitmap(@DrawableRes id: Int, @ColorInt color: Int): BitmapDescriptor {
+        val vectorDrawable = ResourcesCompat.getDrawable(resources, id, null)
+        if (vectorDrawable == null) {
+            Log.e("BitmapHelper", "Resource not found")
+            return BitmapDescriptorFactory.defaultMarker()
+        }
+        val bitmap = Bitmap.createBitmap(
+            vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        vectorDrawable.setBounds(0, 0, canvas.width, canvas.height)
+        DrawableCompat.setTint(vectorDrawable, color)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
+    private fun showCustomInfoWindow() {
+        mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
+
+            private val view: View = layoutInflater.inflate(R.layout.item_list_stories, null)
+
+            private fun windowInfo(marker: Marker, view: View) {
+                val imgStory = view.findViewById<ImageView>(R.id.imgStory)
+                val tvName = view.findViewById<TextView>(R.id.tvName)
+                val tvCreatedAt = view.findViewById<TextView>(R.id.tvCreatedAt)
+                val tvDescription = view.findViewById<TextView>(R.id.tvDescription)
+
+                imgStory.visibility = View.GONE
+                tvName.text = marker.title
+                tvCreatedAt.visibility = View.GONE
+                tvDescription.text = StringBuilder(getString(R.string.text_location)).append("\n").append(marker.snippet)
+            }
+
+            override fun getInfoContents(p0: Marker): View {
+                windowInfo(p0, view)
+                return view
+            }
+
+            override fun getInfoWindow(p0: Marker): View {
+                windowInfo(p0, view)
+                return view
+            }
+        })
     }
 
     private fun getMyLocation() {
