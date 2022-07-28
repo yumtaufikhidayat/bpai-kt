@@ -51,6 +51,30 @@ class CeritakuRepository private constructor(
         }
     }
 
+    fun getLocations(token: String): LiveData<Result<List<StoryEntity>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getLocation("Bearer $token")
+            val listOfLocations = response.listStory
+            val storyList = listOfLocations.map {
+                StoryEntity(
+                    it.id,
+                    it.photoUrl,
+                    it.createdAt,
+                    it.name,
+                    it.description,
+                    it.lon,
+                    it.lat
+                )
+            }
+            emit(Result.Success(storyList))
+        } catch (e: Exception) {
+            val errorMessage = e.message.toString()
+            Log.e(TAG, "listOfStories: $errorMessage")
+            emit(Result.Error(errorMessage))
+        }
+    }
+
     fun getListOfStories(token: String): LiveData<PagingData<StoryEntity>> {
         return Pager(
             config = PagingConfig(pageSize = 6),

@@ -2,11 +2,11 @@ package com.taufik.ceritaku.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.taufik.ceritaku.data.UserPreference
+import com.taufik.ceritaku.data.CeritakuUserPreference
 import com.taufik.ceritaku.ui.auth.login.LoginLocalViewModel
 import com.taufik.ceritaku.ui.main.MainLocalViewModel
 
-class LocalViewModelFactory(private val pref: UserPreference) :
+class LocalViewModelFactory(private val pref: CeritakuUserPreference) :
     ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")

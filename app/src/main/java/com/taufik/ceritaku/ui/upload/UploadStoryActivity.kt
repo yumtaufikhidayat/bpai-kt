@@ -28,7 +28,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
-import com.taufik.ceritaku.data.UserPreference
+import com.taufik.ceritaku.data.CeritakuUserPreference
 import com.taufik.ceritaku.data.remote.Result
 import com.taufik.ceritaku.data.remote.response.auth.login.LoginResult
 import com.taufik.ceritaku.databinding.ActivityUploadStoryBinding
@@ -82,7 +82,7 @@ class UploadStoryActivity : AppCompatActivity() {
     }
 
     private fun initObserver() {
-        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(CeritakuUserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
         mainLocalViewModel.getUser().observe(this) {
             loginResult = it
         }

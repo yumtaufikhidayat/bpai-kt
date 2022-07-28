@@ -20,13 +20,14 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
-import com.taufik.ceritaku.data.UserPreference
+import com.taufik.ceritaku.data.CeritakuUserPreference
 import com.taufik.ceritaku.data.remote.Result
 import com.taufik.ceritaku.data.remote.response.auth.login.LoginResult
 import com.taufik.ceritaku.databinding.ActivityMainBinding
 import com.taufik.ceritaku.ui.LocalViewModelFactory
 import com.taufik.ceritaku.ui.ViewModelFactory
 import com.taufik.ceritaku.ui.favorite.FavoriteStoryActivity
+import com.taufik.ceritaku.ui.maps.MapsActivity
 import com.taufik.ceritaku.ui.upload.UploadStoryActivity
 import com.taufik.ceritaku.ui.welcome.WelcomeActivity
 
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(CeritakuUserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
         mainLocalViewModel.getUser().observe(this) {
             result = it
         }
@@ -75,10 +76,12 @@ class MainActivity : AppCompatActivity() {
                 addOnScrollListener(object : RecyclerView.OnScrollListener(){
                     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                         if (dy > 0 || dy < 0 && fabAddStory.isShown) fabAddStory.hide()
+                        if (dy > 0 || dy < 0 && fabMaps.isShown) fabMaps.hide()
                     }
 
                     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                         if (newState == RecyclerView.SCROLL_STATE_IDLE) fabAddStory.show()
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE) fabMaps.show()
                         super.onScrollStateChanged(recyclerView, newState)
                     }
                 })
@@ -119,6 +122,7 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         addStory()
+                        showMaps()
                     }
                 }
             }
@@ -129,6 +133,14 @@ class MainActivity : AppCompatActivity() {
         fabAddStory.setOnClickListener {
             startActivity(Intent(
                 this@MainActivity, UploadStoryActivity::class.java
+            ), ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity).toBundle())
+        }
+    }
+
+    private fun showMaps() = with(binding) {
+        fabMaps.setOnClickListener {
+            startActivity(Intent(
+                this@MainActivity, MapsActivity::class.java
             ), ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity).toBundle())
         }
     }

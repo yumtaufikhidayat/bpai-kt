@@ -13,4 +13,5 @@ import com.taufik.ceritaku.data.local.entity.StoryEntity
 class MainViewModel(private val repository: CeritakuRepository): ViewModel() {
     fun getListOfStories(token: String): LiveData<PagingData<StoryEntity>> = repository.getListOfStories(token).cachedIn(viewModelScope)
     fun dataResult(combinedLoadStates: CombinedLoadStates) = repository.dataResult(combinedLoadStates).asLiveData()
+    fun getLocation(token: String) = repository.getLocations(token)
 }

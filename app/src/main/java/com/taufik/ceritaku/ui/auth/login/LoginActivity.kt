@@ -25,7 +25,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.taufik.ceritaku.R
-import com.taufik.ceritaku.data.UserPreference
+import com.taufik.ceritaku.data.CeritakuUserPreference
 import com.taufik.ceritaku.data.remote.Result
 import com.taufik.ceritaku.databinding.ActivityLoginBinding
 import com.taufik.ceritaku.ui.LocalViewModelFactory
@@ -72,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        loginLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(UserPreference.getInstance(dataStore)))[LoginLocalViewModel::class.java]
+        loginLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(CeritakuUserPreference.getInstance(dataStore)))[LoginLocalViewModel::class.java]
     }
 
     private fun setUpAction() = with(binding) {

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "712398827779",
+    "project_id": "ceritaku-537da",
+    "storage_bucket": "ceritaku-537da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712398827779:android:f701688b5c6d6973f93936",
+        "android_client_info": {
+          "package_name": "com.taufik.ceritaku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712398827779-tf79c0kakhboq6q2nfedqvvs9hhfroq5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taufik.ceritaku",
+            "certificate_hash": "3392c34c1eced044dec7a34f39e2903ef4148ddd"
+          }
+        },
+        {
+          "client_id": "712398827779-dnnk8a9nf2dhahvtoho83p8g1sri0k9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKhG0Xud1fLuslj758-ovHipgB4xoTJlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712398827779-dnnk8a9nf2dhahvtoho83p8g1sri0k9s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

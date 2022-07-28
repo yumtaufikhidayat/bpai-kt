@@ -6,6 +6,7 @@ import com.taufik.ceritaku.data.remote.response.auth.register.RegisterRequest
 import com.taufik.ceritaku.data.remote.response.main.AllStoriesResponse
 import com.taufik.ceritaku.utils.common.CommonConstant.ADD_NEW_STORY
 import com.taufik.ceritaku.utils.common.CommonConstant.GET_ALL_STORIES
+import com.taufik.ceritaku.utils.common.CommonConstant.GET_LOCATION
 import com.taufik.ceritaku.utils.common.CommonConstant.LOGIN
 import com.taufik.ceritaku.utils.common.CommonConstant.REGISTER
 import com.taufik.ceritaku.utils.data.CommonResponse
@@ -30,6 +31,11 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("page") page: Int,
         @Query("size") size: Int
+    ): AllStoriesResponse
+
+    @GET(GET_LOCATION)
+    suspend fun getLocation(
+        @Header("Authorization") token: String
     ): AllStoriesResponse
 
     @Multipart

@@ -16,6 +16,7 @@ object CommonConstant {
     const val LOGIN = "login"
     const val ADD_NEW_STORY = "stories"
     const val GET_ALL_STORIES = "stories"
+    const val GET_LOCATION = "stories?location=1"
 
     const val TABLE_STORY = "tbl_story"
     const val COLUMN_ID = "id"

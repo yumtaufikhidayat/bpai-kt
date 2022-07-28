@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -103,4 +104,12 @@ dependencies {
 //    Paging
     implementation "androidx.paging:paging-runtime-ktx:3.1.0"
 
+//    Maps
+    def mapsVersion = "18.0.0"
+    implementation "com.google.android.gms:play-services-maps:$mapsVersion"
+    implementation "com.google.android.gms:play-services-location:$mapsVersion"
+
+//    Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
