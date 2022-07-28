@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_normal_type"
-        android:title="@string/normal_type"
+        android:title="@string/action_normal_type"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_satellite_type"
-        android:title="@string/satellite_type"
+        android:title="@string/action_satellite_type"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_terrain_type"
-        android:title="@string/terrain_type"
+        android:title="@string/action_terrain_type"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_hybrid_type"
-        android:title="@string/hybrid_type"
+        android:title="@string/action_hybrid_type"
         app:showAsAction="never" />
 </menu>

@@ -39,10 +39,7 @@
     <string name="text_no_search">Oops.. \nTidak ada hasil</string>
     <string name="text_retry">Coba lagi</string>
     <string name="text_maps">Peta Lokasi</string>
-    <string name="normal_type">Normal</string>
-    <string name="satellite_type">Satellite</string>
-    <string name="terrain_type">Terrain</string>
-    <string name="hybrid_type">Hybrid</string>
+    <string name="text_info_image">Info gambar</string>
 
     <string name="action_camera">Kamera</string>
     <string name="action_gallery">Galeri</string>
@@ -56,4 +53,8 @@
     <string name="action_close">Tutup</string>
     <string name="action_upload">Unggah</string>
     <string name="action_favorite">Favorit</string>
+    <string name="action_normal_type">Normal</string>
+    <string name="action_satellite_type">Satellite</string>
+    <string name="action_terrain_type">Terrain</string>
+    <string name="action_hybrid_type">Hybrid</string>
 </resources>
