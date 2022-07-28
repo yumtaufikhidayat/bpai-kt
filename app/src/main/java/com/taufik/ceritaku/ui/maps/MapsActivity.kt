@@ -40,6 +40,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var result: LoginResult
     private lateinit var mainLocalViewModel: MainLocalViewModel
+    private lateinit var latLng: LatLng
     private val boundsBuilder = LatLngBounds.Builder()
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -102,23 +103,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                     val lat = story.lat
                                     val lon = story.lon
 
-                                    val latLng = LatLng(lat, lon)
+                                    latLng = LatLng(lat, lon)
                                     val addressName = getAddressName(lat, lon)
 
-                                    mMap.addMarker(
-                                        MarkerOptions().position(latLng)
+                                    mMap.addMarker(MarkerOptions()
+                                            .position(latLng)
                                             .title(story.name)
                                     )?.snippet = addressName
 
                                     boundsBuilder.include(latLng)
                                 }
 
-                                val bounds = boundsBuilder.build()
-                                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(
-                                    bounds,
-                                    resources.displayMetrics.widthPixels,
-                                    resources.displayMetrics.heightPixels,
-                                    300
+                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                    latLng,
+                                    ZOOM_LEVEL
                                 ))
                             }
                             is Result.Error -> {}
@@ -156,5 +154,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object {
         private const val TAG = "MapActivity"
+        private const val ZOOM_LEVEL = 5f
     }
 }
