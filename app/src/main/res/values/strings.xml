@@ -40,6 +40,7 @@
     <string name="text_retry">Coba lagi</string>
     <string name="text_maps">Peta Lokasi</string>
     <string name="text_info_image">Info gambar</string>
+    <string name="text_location">Lokasi:</string>
 
     <string name="action_camera">Kamera</string>
     <string name="action_gallery">Galeri</string>

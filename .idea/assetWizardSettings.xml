@@ -325,7 +325,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialiconsoutlined/arrow_back/outline_arrow_back_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/person_pin_circle/baseline_person_pin_circle_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -335,8 +335,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_outline_arrow_back" />
+                            <entry key="color" value="3700b3" />
+                            <entry key="outputName" value="ic_outline_person_pin" />
                           </map>
                         </option>
                       </PersistentState>
