@@ -17,12 +17,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Add location permission.">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_maps.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/maps/MapsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/ceritaku/ui/maps/MapsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Add map style type." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -353,13 +348,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Remove save user data while register.">
-      <created>1657432744577</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1657432744577</updated>
     </task>
     <task id="LOCAL-00068" summary="Remove save user data while register.">
       <created>1657432751785</created>
@@ -697,7 +685,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658967671237</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="Add map style type.">
+      <created>1658968155564</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1658968155565</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -727,7 +722,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Remove save user data while register." />
     <MESSAGE value="Update welcome message and remove commented code." />
     <MESSAGE value="Save base url to build config." />
     <MESSAGE value="Update session." />
@@ -752,6 +746,7 @@
     <MESSAGE value="Add user location." />
     <MESSAGE value="Update zoom level." />
     <MESSAGE value="Add location permission." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add location permission." />
+    <MESSAGE value="Add map style type." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add map style type." />
   </component>
 </project>
