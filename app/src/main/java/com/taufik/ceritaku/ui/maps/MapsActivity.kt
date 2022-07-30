@@ -132,7 +132,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                 }
 
                                 showCustomInfoWindow()
-                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     latLng,
                                     ZOOM_LEVEL
                                 ))

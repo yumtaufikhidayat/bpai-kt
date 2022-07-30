@@ -168,6 +168,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this@MainActivity, WelcomeActivity::class.java),
                         ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity).toBundle()
                     )
+                    finish()
                 }
                 show()
             }
