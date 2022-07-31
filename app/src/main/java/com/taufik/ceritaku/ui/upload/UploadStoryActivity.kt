@@ -1,8 +1,10 @@
 package com.taufik.ceritaku.ui.upload
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Typeface
 import android.net.Uri
@@ -24,6 +26,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
@@ -46,7 +50,7 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
-class UploadStoryActivity : AppCompatActivity() {
+class UploadStoryActivity : AppCompatActivity(){
 
     private val binding by lazy {
         ActivityUploadStoryBinding.inflate(layoutInflater)
@@ -63,6 +67,7 @@ class UploadStoryActivity : AppCompatActivity() {
     private lateinit var currentPhotoPath: String
     private lateinit var loginResult: LoginResult
     private var getFile: File? = null
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +75,8 @@ class UploadStoryActivity : AppCompatActivity() {
 
         setupToolbar()
         initObserver()
+        getFusedLocation()
+        getMyLastLocation()
         setAction()
     }
 
@@ -86,6 +93,10 @@ class UploadStoryActivity : AppCompatActivity() {
         mainLocalViewModel.getUser().observe(this) {
             loginResult = it
         }
+    }
+
+    private fun getFusedLocation() {
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
     private fun setAction() = with(binding) {
@@ -136,20 +147,28 @@ class UploadStoryActivity : AppCompatActivity() {
             )
 
             val token = loginResult.token
-            uploadViewModel.uploadStory(imageMultipart, description, token).observe(this@UploadStoryActivity) {
-                if (token.isNotEmpty() && it != null) {
-                    when (it) {
-                        is Result.Loading -> showLoading(true)
-                        is Result.Success -> {
-                            showLoading(false)
-                            showSuccessDialog()
-                            showSnackBar(it.data.message)
+            uploadViewModel.getMyLocation().observe(this@UploadStoryActivity) { location ->
+                uploadViewModel.uploadStory(
+                    token,
+                    imageMultipart,
+                    description,
+                    location.latitude.toFloat(),
+                    location.longitude.toFloat()
+                ).observe(this@UploadStoryActivity) {
+                    if (token.isNotEmpty() && it != null) {
+                        when (it) {
+                            is Result.Loading -> showLoading(true)
+                            is Result.Success -> {
+                                showLoading(false)
+                                showSuccessDialog()
+                                showSnackBar(it.data.message)
+                            }
+                            is Result.Error -> {
+                                showLoading(false)
+                                showSnackBar(it.error)
+                            }
+                            is Result.Unauthorized, is Result.ServerError -> showSnackBar(it.toString())
                         }
-                        is Result.Error -> {
-                            showLoading(false)
-                            showSnackBar(it.error)
-                        }
-                        is Result.Unauthorized, is Result.ServerError -> showSnackBar(it.toString())
                     }
                 }
             }
@@ -182,11 +201,7 @@ class UploadStoryActivity : AppCompatActivity() {
     }
 
     private fun showClear() = with(binding) {
-        imgClear.visibility = if (tvDescription.text.toString().isNotEmpty()) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
+        imgClear.visibility = if (tvDescription.text.toString().isNotEmpty()) View.VISIBLE else View.GONE
     }
 
     private fun clearDescription() = with(binding) {
@@ -246,10 +261,61 @@ class UploadStoryActivity : AppCompatActivity() {
         progressbarUpload.isVisible = isShow
     }
 
+    private fun getMyLastLocation() {
+        if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+        ) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    uploadViewModel.setMyLocation(location)
+                } else {
+                    Log.i(TAG, "last location failed: $location")
+                }
+            }
+        } else {
+            requestPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
+        }
+    }
+
+    private fun checkPermission(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
+                    // Precise location access granted.
+                    getMyLastLocation()
+                }
+                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
+                    // Only approximate location access granted.
+                    getMyLastLocation()
+                }
+                else -> {
+                    showSnackBar(getString(R.string.text_permission_not_granted))
+                }
+            }
+        }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+    
+    companion object {
+        private val TAG = UploadStoryActivity::class.java.simpleName
     }
 }
