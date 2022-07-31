@@ -116,11 +116,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             is Result.Loading -> {}
                             is Result.Success -> {
                                 it.data.forEach { story ->
-                                    val lat = story.lat
-                                    val lon = story.lon
+                                    val latitude = story.lat
+                                    val longitude = story.lon
 
-                                    latLng = LatLng(lat, lon)
-                                    val addressName = getAddressName(lat, lon)
+                                    latLng = LatLng(latitude, longitude)
+                                    val addressName = getAddressName(latitude, longitude)
 
                                     mMap.addMarker(MarkerOptions()
                                         .position(latLng)

@@ -101,10 +101,10 @@ class CeritakuRepository private constructor(
         }
     }
 
-    fun uploadStory(file: MultipartBody.Part, description: RequestBody, token: String): LiveData<Result<CommonResponse>> = liveData {
+    fun uploadStory(token: String, file: MultipartBody.Part, description: RequestBody, latitude: Float, longitude: Float): LiveData<Result<CommonResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.uploadStory(file, description, "Bearer $token")
+            val response = apiService.uploadStory("Bearer $token", file, description, latitude, longitude)
             emit(Result.Success(response))
         } catch (e: Exception) {
             val errorMessage = e.message.toString()
