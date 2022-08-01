@@ -32,3 +32,4 @@ This application has some features:
 - Submission 2
   - Infinite scroll -> Using [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-migration)
   - Show users location -> Using [Google Maps API](https://developers.google.com/maps/documentation/android-sdk)
+  - Favorite user's story -> Using [Room](https://developer.android.com/training/data-storage/room)
