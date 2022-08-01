@@ -25,3 +25,7 @@ This application has some features:
   - Animation -> Using property animation. See [https://developer.android.com/guide/topics/graphics/prop-animation](https://developer.android.com/guide/topics/graphics/prop-animation)
   - List of story -> Using recyclerview.
   - Upload image to server -> Using Retrofit with Multipart.
+
+- Submission 2
+  - Infinite scroll -> Using [paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-migration)
+  - Show users location -> Using [Google Maps APi](https://developers.google.com/maps/documentation/android-sdk)
