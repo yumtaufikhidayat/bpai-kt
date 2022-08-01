@@ -29,5 +29,5 @@ This application has some features:
   - Upload image to server -> Using Retrofit with Multipart.
 
 - Submission 2
-  - Infinite scroll -> Using [paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-migration)
+  - Infinite scroll -> Using [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-migration)
   - Show users location -> Using [Google Maps API](https://developers.google.com/maps/documentation/android-sdk)
