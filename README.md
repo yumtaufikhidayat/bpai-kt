@@ -17,6 +17,7 @@ This application is a simple Github user search app using Kotlin. Built using th
 - View Binding
 - Coroutine Flow
 - DataStore
+- Room Persistent Database
 - Retrofit
 - Paging 3
 - Google Maps API
