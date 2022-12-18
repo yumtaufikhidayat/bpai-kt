@@ -1,6 +1,5 @@
 package com.taufik.ceritaku.data
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.paging.*
@@ -33,7 +32,6 @@ class CeritakuRepository private constructor(
             emit(Result.Success(response))
         } catch (e: Exception) {
             val errorMessage = e.message.toString()
-            Log.e(TAG, "listOfStories: $errorMessage")
             emit(Result.Error(errorMessage))
         }
     }
@@ -46,7 +44,6 @@ class CeritakuRepository private constructor(
             emit(Result.Success(response))
         } catch (e: Exception) {
             val errorMessage = e.message.toString()
-            Log.e(TAG, "listOfStories: $errorMessage")
             emit(Result.Error(errorMessage))
         }
     }
@@ -70,7 +67,6 @@ class CeritakuRepository private constructor(
             emit(Result.Success(storyList))
         } catch (e: Exception) {
             val errorMessage = e.message.toString()
-            Log.e(TAG, "listOfStories: $errorMessage")
             emit(Result.Error(errorMessage))
         }
     }
@@ -112,7 +108,6 @@ class CeritakuRepository private constructor(
             emit(Result.Success(response))
         } catch (e: Exception) {
             val errorMessage = e.message.toString()
-            Log.e(TAG, "listOfStories: $errorMessage")
             emit(Result.Error(errorMessage))
         }
     }
@@ -138,7 +133,6 @@ class CeritakuRepository private constructor(
     }
 
     companion object {
-        private val TAG = CeritakuRepository::class.java.simpleName
 
         @Volatile
         private var instance: CeritakuRepository? = null
