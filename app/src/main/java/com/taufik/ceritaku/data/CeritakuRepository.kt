@@ -89,13 +89,17 @@ class CeritakuRepository private constructor(
             is LoadState.Loading -> emit(Result.Loading)
             is LoadState.NotLoading -> emit(Result.Success(Unit))
             is LoadState.Error -> {
-                val error = result.error.message?.split(" - ")
-                val codeResponse = error?.get(0)
-                val message = error?.get(1)
-                when (codeResponse?.toInt()) {
-                    401 -> emit(Result.Unauthorized(message.toString()))
-                    500, 502 -> emit(Result.ServerError(message.toString()))
-                    else -> emit(Result.Error(message.toString()))
+                try {
+                    val error = result.error.message?.split(" - ")
+                    val codeResponse = error?.get(0)
+                    val message = error?.get(1)
+                    when (codeResponse?.toInt()) {
+                        401 -> emit(Result.Unauthorized(message.toString()))
+                        500, 502 -> emit(Result.ServerError(message.toString()))
+                        else -> emit(Result.Error(message.toString()))
+                    }
+                } catch (e: Exception) {
+                    emit(Result.Error(e.localizedMessage ?: ""))
                 }
             }
         }
