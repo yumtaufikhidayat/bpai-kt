@@ -16,7 +16,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Add handling OutOfBoundsException error to show main data." />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove TAG after used for handling security issue." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -347,20 +347,6 @@
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
     </task>
-    <task id="LOCAL-00083" summary="Optimize imports">
-      <created>1657621392410</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1657621392410</updated>
-    </task>
-    <task id="LOCAL-00084" summary="Remove unused class.">
-      <created>1657665742990</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1657665742991</updated>
-    </task>
     <task id="LOCAL-00085" summary="Update project.">
       <created>1657665752965</created>
       <option name="number" value="00085" />
@@ -690,7 +676,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671324739612</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="Update project.">
+      <created>1671324867910</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1671324867910</updated>
+    </task>
+    <task id="LOCAL-00133" summary="Remove TAG after used for handling security issue.">
+      <created>1671324924040</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1671324924040</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -719,7 +719,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Move class to another package." />
     <MESSAGE value="Update proejct." />
     <MESSAGE value="Update project to make maintainable." />
     <MESSAGE value="Update dialog." />
@@ -740,10 +739,11 @@
     <MESSAGE value="Adjust custom marker." />
     <MESSAGE value="Fix bug logout and update maps activity move camera." />
     <MESSAGE value="Add latitude and longitude while upload story." />
-    <MESSAGE value="Update project." />
     <MESSAGE value="Update some dependencies" />
     <MESSAGE value="Update some dependencies." />
     <MESSAGE value="Add handling OutOfBoundsException error to show main data." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add handling OutOfBoundsException error to show main data." />
+    <MESSAGE value="Update project." />
+    <MESSAGE value="Remove TAG after used for handling security issue." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove TAG after used for handling security issue." />
   </component>
 </project>
