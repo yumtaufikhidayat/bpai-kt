@@ -45,9 +45,7 @@ class CeritakuListAdapter: PagingDataAdapter<StoryEntity, CeritakuListAdapter.Ma
         fun onBind(data: StoryEntity) = with(binding) {
             imgStory.loadImage(data.photoUrl)
             tvName.text = data.name
-
             tvCreatedAt.text = formattedDate(data.createdAt, TimeZone.getDefault().id)
-
             tvDescription.text = data.description
 
             constraintListStories.setOnClickListener {
