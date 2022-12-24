@@ -60,7 +60,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(CeritakuUserPreference.getInstance(dataStore)))[MainLocalViewModel::class.java]
+        mainLocalViewModel = ViewModelProvider(this, LocalViewModelFactory(
+            CeritakuUserPreference.getInstance(dataStore))
+        )[MainLocalViewModel::class.java]
         mainLocalViewModel.getUser().observe(this) {
             result = it
         }
