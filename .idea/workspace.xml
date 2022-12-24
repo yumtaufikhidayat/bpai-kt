@@ -16,13 +16,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Remove TAG after used for handling security issue." />
+    <list default="true" id="4694972c-9da8-4fbf-b569-58f81fe536d8" name="Changes" comment="Update project." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[192.168.8.100:5555]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/binar-taufik/.android/avd/Pixel_3a_XL_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -347,34 +347,6 @@
       <option name="presentableId" value="Default" />
       <updated>1656626867464</updated>
     </task>
-    <task id="LOCAL-00085" summary="Update project.">
-      <created>1657665752965</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1657665752965</updated>
-    </task>
-    <task id="LOCAL-00086" summary="Move class to another package.">
-      <created>1657665835634</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1657665835634</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Update proejct.">
-      <created>1657665849391</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1657665849391</updated>
-    </task>
-    <task id="LOCAL-00088" summary="Update project.">
-      <created>1657793629492</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1657793629492</updated>
-    </task>
     <task id="LOCAL-00089" summary="Update project.">
       <created>1657793632611</created>
       <option name="number" value="00089" />
@@ -690,7 +662,35 @@
       <option name="project" value="LOCAL" />
       <updated>1671324924040</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="Update project.">
+      <created>1671873874581</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1671873874581</updated>
+    </task>
+    <task id="LOCAL-00135" summary="Update indentation.">
+      <created>1671874057135</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1671874057135</updated>
+    </task>
+    <task id="LOCAL-00136" summary="Update project.">
+      <created>1671874347521</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1671874347521</updated>
+    </task>
+    <task id="LOCAL-00137" summary="Update project.">
+      <created>1671874469944</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1671874469944</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -719,7 +719,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-    <MESSAGE value="Update proejct." />
     <MESSAGE value="Update project to make maintainable." />
     <MESSAGE value="Update dialog." />
     <MESSAGE value="Optimize imports." />
@@ -742,8 +741,9 @@
     <MESSAGE value="Update some dependencies" />
     <MESSAGE value="Update some dependencies." />
     <MESSAGE value="Add handling OutOfBoundsException error to show main data." />
-    <MESSAGE value="Update project." />
     <MESSAGE value="Remove TAG after used for handling security issue." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove TAG after used for handling security issue." />
+    <MESSAGE value="Update indentation." />
+    <MESSAGE value="Update project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
   </component>
 </project>
